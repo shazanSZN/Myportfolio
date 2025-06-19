@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/aos.css" rel="stylesheet">
+    <link href="assets/css/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/kursor.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Portfolio Website | DevChapter</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="logo" data-aos-delay="200" data-aos="fade-down">
+            <svg viewBox="0 0 114 41">
+                <use xlink:href="assets/img/sprite.svg#gif"></use>
+            </svg>
+        </div>
+        <nav class="nav">
+            <ul class="nav-links">
+                <li class="services active" data-aos-delay="200" data-aos="fade-down"><a href="#education-skill">Education</a></li>
+                <li class="portfolios" data-aos-delay="250" data-aos="fade-down"><a href="#portfolios">Portfolios</a></li>
+                <li class="experience" data-aos-delay="300" data-aos="fade-down"><a href="#experience">Experience</a></li>
+                <li class="blog" data-aos-delay="350" data-aos="fade-down"><a href="#blogs">Blog</a></li>
+
+                <li class="testimonials mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="#testimonials">Testimonials</a></li>
+                <li class="education-skill mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="#work">Education</a></li>
+                <li class="contact mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="#contact">Contact</a></li>
+                <li class="mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="assets/Resume.pdf" >Resume</a></li>
+                <li data-aos-delay="400" data-aos="fade-down" class="more-links">
+                    <svg viewBox="0 0 12 3"><use xlink:href="assets/img/sprite.svg#more-links"></use></svg>
+                    <ul class="menu-list">
+                        <li class="testimonials"><a href="#work">Certificate</a></li>
+                        <li class="education-skill"><a href="#services">Specialized </a></li>
+                        <li class="contact"><a href="#contact">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="right-content" data-aos-delay="500" data-aos="fade-down">
+            <div class="theme-color-toggle">
+                <svg class="moon" viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
+                </svg>
+                <svg class="sun" viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
+                </svg>
+            </div>
+            <a href="assets/Resume.pdf" target="_blank" class="btn btn-outline-light download-resume">Resume</a>
+            <svg class="mobile-menu-toggle" viewBox="0 0 24 24">
+                <use xlink:href="assets/img/sprite.svg#menu"></use>
+            </svg>
+        </div>
+    </div>
+</header>
+<main>
+    
+    
+    
+    
+    
+<section class="hero-section">
+    <div class="container">
+        <div class="content" data-aos="fade-up">
+            <p class="above-title mb-16">My name is</p>
+            <h1 class="full-name">Mohamed <span style="color:#7E74F1;">Shazan.</span></h1>
+            <h1 class="full-name">I'M <span class="primary">Freelancer</span></h1>
+            <p class="about">Creative full-stack developer with more than 6 months of experience in enterprise companies and startups. Proficient in .NET, Java, JavaScript, and React. Passionate about UI/UX.</p>
+            <a href="assets/" target="_blank" class="btn btn-outline-light download-resume-mobile">Download Resume</a>
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.instagram.com/shazan_szn_?r=nametag">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#instagram-icon"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/Mohamedshazan">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#github-icon"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/ar_shasan0?t=3wHCQjnCHRHM-Eay_WT9lQ&s=35">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#twitter-icon"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/mohamed-shazan">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#linkedin-icon"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        
+ <div class="image" data-aos="fade-up">
+    <div class="cover">
+        <svg class="home__blob" width="100%" height="100%" viewBox="0 0 669 665" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <mask id="mask0" mask-type="alpha">
+                <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+            </mask>
+           
+        </svg>
+        
+        
+    </div>
+    
+     <g mask="url(#mask0)">
+                <!--<image class="home__blob-img" x="-80" y="20" width="4000" height="1000" href="assets/img/b7.jpg"/>-->
+                
+                 <img class="avatar" src="assets/img/11.png" height="100" alt="shazan img">
+            </g>
+</div>
+</div>
+
+
+
+
+
+
+
+  <!--<div class="image" data-aos="fade-up">-->
+  <!--              <div class="cover">-->
+  <!--                  <svg class="lines-vector" viewBox="0 0 199 210">-->
+  <!--                      <use xlink:href="assets/img/sprite.svg#lines-vector"></use>-->
+  <!--                  </svg>-->
+  <!--              </div>-->
+  <!--              <img class="avatar" src="assets/img/11.png" alt="shazan img">-->
+  <!--          </div>-->
+        
+
+
+
+</section>
+
+
+<!--EDUCATION & SKILLSSSSSS    -->
+
+    <section class="education-skill-section" id="education-skill">
+        <div class="container">
+            <div class="section-name" data-aos="fade-up">
+                <p class="above-title">Learning Path</p>
+                <h4 class="title">Education & Skills</h4>
+            </div>
+            <div class="education-skill-wrapper">
+                <div class="education">
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="school">OPEN UNIVERSITY OF SRILANKA [OUSL]</h4>
+                        <p class="degree-field">Faculty Of Engineering Technology Department Of  Electrical &
+                            Computer Engineering Bachelor Of Software Engineering HONOURS[BSE]</p>
+                        <p class="date">2021 Present</p>
+                    </div>
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="150">
+                        <h4 class="school">SRILANKA INSTITUTE OF ADVANCED TECHNOLOGICAL EDUCATION[SLIATE]</h4>
+                        <p class="degree-field">Higher National Diploma in Information Technology [HND]</p>
+                        <p class="date">2020 - 2022</p>
+                    </div>
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="school">NATIONAL YOUTH SERVICES COUNCIL [SLYC]</h4>
+                        <p class="degree-field">National Vocational Qualification [NVQ LEVEL-3] IN Computer Application Assistent </p>
+                        <p class="date">2020 - 2021</p>
+                    </div>
+
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="school">ZAHIRA COLLAGE KALMUNAI</h4>
+                        <p class="degree-field">Completed General Certificate Of Education Advanced Level ,Conducted by Department of Education Srilanka </p>
+                        <p class="date">2013 - 2018</p>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p class="description" data-aos="fade-up" data-aos-delay="50">For 6+ Month, I have been continuously learning in the field of front-end and back-end experimenting
+                        with new technologies and frameworks, and here you can see a summary of my skills.</p>
+                    <div class="progress-bar-wrapper" data-aos="fade-up" data-aos-delay="60">
+                        <div class="progress-bar">
+                            <p class="label">JavaScript</p>
+                            <div class="main-bar"><div class="fill" data-width="70"></div></div>
+                        </div>
+                        <div class="progress-bar">
+                            <p class="label">ReactJS</p>
+                            <div class="main-bar"><div class="fill" data-width="60"></div></div>
+                        </div>
+                        <div class="progress-bar">
+                            <p class="label">Html</p>
+                            <div class="main-bar"><div class="fill" data-width="90"></div></div>
+                        </div>
+                        <div class="progress-bar">
+                            <p class="label">java</p>
+                            <div class="main-bar"><div class="fill" data-width="70"></div></div>
+                        </div>
+                        <div class="progress-bar">
+                            <p class="label">Php</p>
+                            <div class="main-bar"><div class="fill" data-width="50"></div></div>
+                        </div>
+
+                            <div class="progress-bar">
+                                <p class="label">MYSQL</p>
+                                <div class="main-bar"><div class="fill" data-width="50"></div></div>
+
+<!--                        </div> <div class="progress-bar">-->
+<!--                        <p class="label"> Google clude Firebase</p>-->
+<!--                        <div class="main-bar"><div class="fill" data-width="40"></div></div>-->
+<!--                    </div>-->
+
+<!--                        <div class="progress-bar">-->
+<!--                            <p class="label"> java</p>-->
+<!--                            <div class="main-bar"><div class="fill" data-width="55"></div></div>-->
+<!--                        </div>-->
+
+<!--                        <div class="progress-bar">-->
+<!--                            <p class="label"> MYSQL</p>-->
+<!--                            <div class="main-bar"><div class="fill" data-width="55"></div></div>-->
+<!--                        </div>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    </section>
+
+
+
+<!--SERVICES SPECIALIZED;   -->
+
+    <section class="service-section" id="services">
+        <div class="container">
+            <div class="section-name center" data-aos="fade-up">
+                <div class="content">
+                    <p class="above-title">Services</p>
+                    <h4 class="title">Specialized in</h4>
+                </div>
+            </div>
+            <div class="service-item-wrapper">
+                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon">
+                        <svg viewBox="0 0 25 24">
+                            <use xlink:href="assets/img/sprite.svg#ux-service"></use>
+                        </svg>
+                    </div>
+                    <h4 class="title">6 +</h4>
+                    <p class="body"> Month Of Experience.</p>
+                </div>
+                <div class="service-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="icon">
+                        <svg viewBox="0 0 25 24">
+                            <use xlink:href="assets/img/sprite.svg#app-development"></use>
+                        </svg>
+                    </div>
+                    <h4 class="title">5+</h4>
+                    <p class="body">Project Completed.</p>
+                </div>
+                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon">
+                        <svg viewBox="0 0 25 24">
+                            <use xlink:href="assets/img/sprite.svg#web-development"></use>
+                        </svg>
+                    </div>
+                    <h4 class="title">0+</h4>
+                    <p class="body">Awards Won</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+<!--FEATURED PORTFOLIOS  ..===============================================================================================================;   -->
+
+    <section class="portfolio-section" id="portfolios">
+        <div class="container">
+            <div class="section-name" data-aos="fade-up" data-aos-delay="200">
+                <div class="content">
+                    <p class="above-title">My works</p>
+                    <h4 class="title">Featured Portfolios</h4>
+                </div>
+                <div class="slider-navigation">
+                    <div class="prev">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#arrow-left"></use>
+                        </svg>
+                    </div>
+                    <div class="next">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item-wrapper">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/Tourisam.png">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">Tourism Website.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">HTML,CSS,JS</span>
+                                        <a class="link" href="https://github.com/Mohamedshazan/Tourism-Wabsite.git">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/laraval%20crud.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">CRUD APPLICATION OPERATION.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">php-lARAVEL-MYSQL-BOOTSTRUP </span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/vujs%20laravel.png">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">MEDICAL BOOKING Mobile Application.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">JAVA-ANDROID STUDIO</span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+<br>
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/portfolio-item-3.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">Music App.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">JAVA-ANDROID STUDIO</span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/portfolio-item-4.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">Blog Website.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">Jekyll</span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container">
+            <div class="section-name" data-aos="fade-up" data-aos-delay="200">
+                <!--                <div class="content">-->
+                <!--                    <p class="above-title">My works</p>-->
+                <!--                    <h4 class="title">Featured Portfolios</h4>-->
+                <!--                </div>-->
+                <div class="slider-navigation">
+                    <div class="prev">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#arrow-left"></use>
+                        </svg>
+                    </div>
+                    <div class="next">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item-wrapper">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/Tourisam.png">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">LOGIN SYSTEM.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">REACT JS-TYPESCRIPT- FIREBASE</span>
+                                        <a class="link" href="https://github.com/Mohamedshazan/Tourism-Wabsite.git">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/myportpolio.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">PORTPOLIO WEBSITE.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">HTML-CSS-JAVASCRIPT </span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/portfolio-item-3.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">CRUD APPLICATION.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">VUEJS - LARAVEL-MYSQL-PHP</span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <br>
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/portfolio-item-3.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">CRUD APPLICATION.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">VUEJS - LARAVEL-MYSQL-PHP</span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                            <article class="portfolio-item">
+                                <figure>
+                                    <img src="assets/img/portfolio-item-4.jpg">
+                                </figure>
+                                <div class="detail">
+                                    <h4 class="title">Blog Website.</h4>
+                                    <div class="bottom">
+                                        <span class="tag">Jekyll</span>
+                                        <a class="link" href="#">
+                                            <svg viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+<!--WORK EXPERENCE; ========================================================================================================================   -->
+
+
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="side">
+                <div class="section-name" data-aos="fade-up">
+                    <p class="above-title">Career path</p>
+                    <h4 class="title">Work Experience</h4>
+                </div>
+                <div class="companies-list">
+                    <div class="selector">
+                        <svg viewBox="0 0 24 24">
+                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                    <ul>
+                        <li data-tab="apple" class="active" data-aos="fade-up">ILT Software</li>
+                        <li data-tab="microsoft" data-aos-delay="50" data-aos="fade-up">SAFANAS
+                            CONSTRUCTION</li>
+                        <li data-tab="facebook" data-aos-delay="100" data-aos="fade-up">MEXAIRE COMPANY</li>
+<!--                        <li data-tab="slack" data-aos-delay="150" data-aos="fade-up">Slack</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="content active" id="apple">
+                <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                    <h4 class="job-title">Full-stack developer <span class="company-name">ILT</span></h4>
+                    <p class="location">Colombo ,Srilanka</p>
+                    <p class="period"> 2022 -· Full-time</p>
+                    <ul class="stack-list">
+                        <li class="tag">ReactJs</li>
+                        <li class="tag">NextJS</li>
+                        <li class="tag">TypeScript</li>
+                        <li class="tag">Google clude Firebase</li>
+                    </ul>
+                </div>
+                <div class="line"></div>
+                <ul class="responsibilities">
+                    <li data-aos-delay="50" data-aos="fade-up">Improving overall website performance for Expoloader.</li>
+                    <li data-aos-delay="100" data-aos="fade-up">Collaborate with back-end developers and web designers to improve usability</li>
+                    <li data-aos-delay="150" data-aos="fade-up">Add voice search feature for mobile app.</li>
+                    <li data-aos-delay="200" data-aos="fade-up">Developing an admin panel to manage contents, users, products and ...</li>
+                </ul>
+            </div>
+            <div class="content" id="microsoft">
+                <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                    <h4 class="job-title">TRAINEE TECHNICAL ASSISTANT <span class="company-name">SAFANAS
+                            CONSTRUCTION</span></h4>
+                    <p class="location">Gurunagal ,Srilanka</p>
+                    <p class="period"> 2020 · Full-time</p>
+                    <ul class="stack-list">
+<!--                        <li class="tag">ASP.NET</li>-->
+<!--                        <li class="tag">Python</li>-->
+                    </ul>
+                </div>
+                <div class="line"></div>
+                <ul class="responsibilities">
+                    <li>Duties: Supervising Labors, Assisting With
+                        Engineers </li>
+                    <li>Worked In safanas construction PVT Ltd.</li>
+<!--                    <li>Maecenas egestas elit eget enim mattis aliquet eget vitae felis..</li>-->
+<!--                    <li>Nam sodales ultrices nisl sed dictum. Vestibulum ante ipsum primis in faucibus  ...</li>-->
+                </ul>
+            </div>
+            <div class="content" id="facebook">
+                <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                    <h4 class="job-title"> TRAINEE   <span>ELECTRICIAN </span> <span class="company-name">   MEXAIRE  COMPANY</span></h4>
+                    <p class="location">Colome,Srilanka</p>
+                    <p class="period"> 2019 · Full-time</p>
+                    <ul class="stack-list">
+                        <li class="tag">PHP</li>
+                        <li class="tag">React</li>
+                    </ul>
+                </div>
+                <div class="line"></div>
+                <ul class="responsibilities">
+                    <li>Worked In mexaire company |at Altaire
+                        construction PVT Ltd</li>
+
+                </ul>
+            </div>
+         </div>
+    </section>
+
+
+
+
+<!--MY CERTIFICATES ================================================================================================================================-->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-name center" data-aos="fade-up">
+                <div class="content">
+                    <p class="above-title">My articles</p>
+                    <h4 class="title">MY CERTIFICATES</h4>
+                </div>
+            </div>
+
+
+
+
+    <!-- WORK SECTION ===========================================================================================================================-->
+    <section class="work section" id="work" align="center">
+        <h2 class="section-title" data-aos="fade-down"></h2>
+        <br><br>
+
+        <div
+                class="work_container bd_grid"
+                data-aos="fade-down"
+                data-aos-delay="250"
+        >
+            <div class="work_img" align="center">
+                <img src="./assets/img/slass.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/wpds.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/udmy.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/courseC.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/courseD.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/courseE.jpg" alt="" />
+            </div>
+
+
+            <div class="work_img">
+                <img src="./assets/img/css.jpg" alt="" />
+            </div>
+
+
+
+            <div class="work_img">
+                <img src="./assets/img/css.jpg" alt="" />
+            </div>
+
+            <div class="work_img">
+                <img src="./assets/img/html.jpg" alt="" />
+            </div>
+
+            <div class="work_img">
+                <img src="./assets/img/SQL.jpg" alt="" />
+            </div>
+
+            <div class="work_img">
+                <img src="./assets/img/pyds.jpg" alt="" />
+            </div>
+
+            <div class="work_img">
+                <img src="./assets/img/pythn%20big.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/pyth%20core.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/javascript.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/c.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/react.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/java.jpg" alt="" />
+            </div>
+            <div class="work_img">
+                <img src="./assets/img/php.jpg" alt="" />
+            </div>
+
+        </div>
+    </section>
+            <br><br>
+
+<!--PERSONAL BLOGS;  ================================================================================================================================== -->
+
+            <section class="blog-section" id="blogs">
+                <div class="container">
+                    <div class="section-name center" data-aos="fade-up">
+                        <div class="content">
+                            <p class="above-title">My articles</p>
+                            <h4 class="title">Personal Blog</h4>
+                        </div>
+                    </div>
+                    <div class="post-item-wrapper">
+                        <article class="post-item" data-aos="fade-up" data-aos-delay="50" >
+                            <figure>
+                                <img src="assets/img/ati.drawio.png" alt="Deploy Next.js Project on Heroku">
+                            </figure>
+                            <div class="content">
+                                <h3 class="title">LARAVEL INSTALL SETUP.
+                                    - August 30, 2022</h3>
+                                <div class="detail">
+                                    <time class="tag">July 15, 2021</time>
+                                </div>
+                                <p class="body">Laravel is a popular PHP web framework known for its elegant syntax, MVC architecture, and developer-friendly features. It offers features like Eloquent ORM, Blade templating, routing, middleware, authentication, and more. </p>
+                                <div class="bottom">
+                                    <a href="https://shasanmsn.blogspot.com/2022/08/overview-to-it-industry-ifs.html">Continue Reading</a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="post-item" data-aos="fade-up" data-aos-delay="100" >
+                            <figure>
+                                <img src="assets/img/Screenshot 2023-07-14 115213.png" alt="Deploy Next.js Project on Heroku">
+                            </figure>
+                            <div class="content">
+                                <h3 class="title">Beginners guide to laravel.</h3>
+                                <div class="detail">
+                                    <time class="tag">Aug 8, 2020</time>
+                                </div>
+                                <p class="body">Install Laravel: composer global require laravel/installer
+
+Create project: laravel new project-name
+
+Start server: php artisan serve
+
+That's it! Now you have a running Laravel application at "http://localhost:8000". ...</p>
+                                <div class="bottom">
+                                    <a href="https://shasanmsn.blogspot.com/2022/11/how-to-run-laravel-project.html">Continue Reading</a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="post-item" data-aos="fade-up" data-aos-delay="150" >
+                            <figure>
+                                <img src="assets/img/Screenshot 2023-07-14 115456.png" alt="Deploy Next.js Project on Heroku">
+                            </figure>
+                            <div class="content">
+                                <h3 class="title"> Overview to the IT industry </h3>
+                                <div class="detail">
+                                    <time class="tag">Feb 19, 2021</time>
+                                </div>
+                                <p class="body">The IT industry in Sri Lanka is a growing and promising sector, with government support, a skilled workforce, thriving startups, and a focus on outsourcing services ...</p>
+                                <div class="bottom">
+                                    <a href="https://shasanmsn.blogspot.com/2022/10/laravel-8-crud-application.html">Continue Reading</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-form">
+                    <form name="contactForm">
+                        <p class="success-submit-message">Your message has been successfully sent.</p>
+                        <p class="fail-submit-message">An error occurred while sending the message.</p>
+                        <div class="form-control">
+                            <input name="name" class="mb-16" type="text" placeholder="Name" data-aos="fade-up" data-aos-delay="50">
+                            <p class="validation-error name">Please enter your name.</p>
+                        </div>
+                        <div class="form-control">
+                            <input name="email" class="mb-24" type="text" placeholder="Email" data-aos="fade-up" data-aos-delay="100">
+                            <p class="validation-error email">Please enter a valid email address.</p>
+                        </div>
+                        <div class="form-control">
+                            <textarea name="message" rows="8" placeholder="Message" data-aos="fade-up" data-aos-delay="150"></textarea>
+                            <p class="validation-error message">Please enter your message.</p>
+                        </div>
+                        <button class="btn btn-primary submit-btn" data-aos="fade-up" data-aos-delay="200">
+                            Submit
+                            <span class="loading"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-info-item" data-aos="fade-up" data-aos-delay="50">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <use xlink:href="assets/img/sprite.svg#address-icon"></use>
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">Address</h4>
+                            <p class="body">326, Osman Road,Sainthamaruthu-7,Srilanka</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item" data-aos="fade-up" data-aos-delay="150">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <use xlink:href="assets/img/sprite.svg#phone-icon"></use>
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">Phone</h4>
+                            <p class="body">0752668412</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <use xlink:href="assets/img/sprite.svg#email-icon"></use>
+                            </svg>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">Email</h4>
+                            <p class="body">shaloste@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+</main>
+
+
+
+<section>
+<footer class="footer">
+    <ul class="social-icons" data-aos="fade-up" data-aos-delay="50">
+        <li>
+            <a href="https://www.instagram.com/shazan_szn_?r=nametag">
+                <svg viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#instagram-icon"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/Mohamedshazan">
+                <svg viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#github-icon"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/ar_shasan0?t=3wHCQjnCHRHM-Eay_WT9lQ&s=35">
+                <svg viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#twitter-icon"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/mohamed-shazan">
+                <svg viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#linkedin-icon"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+    <p class="copyright" data-aos="fade-up" data-aos-delay="100">© <span class="year">year</span>  -  SHAZAN<span class="bold"> SZN</span></p>
+</footer>
+</section>
+
+
+<!--TYPE JS SECTION;  ================================================================================================================================== -->
+
+<!--<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+    var typed = new Typed(".primary", { strings: ["Mobile Developer","full-stack developer", "Web Developer", "UIUX Designer"], typeSpeed: 100,
+        backSpeed: 100,
+        loop: true
+    })
+</script>
+
+
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>-->
+
+</body>
+
+<script src="./script.js"></script>
+<script src="assets/js/aos.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/kursor.js"></script>
+<script src="assets/js/svg4everybody.min.js"></script>
+<script src="assets/js/css-vars-ponyfill.min.js"></script>
+<script src="assets/js/unfetch.js"></script>
+
+
+</html>
