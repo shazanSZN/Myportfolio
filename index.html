@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Shazan - Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP (GreenSock Animation Platform) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <!-- Three.js and Related Dependencies (Latest - v0.132.2) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.min.js"></script>
+
+    <script src="./script.js"></script>
+
+
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: '#7E74F1',
+                        'purple-light-1': '#EAE6FE',
+                        'purple-light-2': '#F5F3FE',
+                        cinder: '#232E35',
+                        'cinder-light': '#656D72',
+                        light: '#FBFBFB',
+                        'light-2': '#f1f1f1',
+                        'light-3': '#f5f5f5',
+                        'light-4': '#D9D9D9',
+                        'midnight-express': '#081c48',
+                        licorice: '#1A1F2C',
+                    },
+                    fontFamily: {
+                        primary: ['Inter', 'sans-serif'],
+                        secondary: ['Plus Jakarta Sans', 'serif'],
+                    },
+                    animation: {
+                        'scroll-wheel': 'scrollAnimation 2s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse': 'pulse 6s infinite alternate',
+                        'rotate': 'rotate 30s linear infinite',
+                        'zoom': 'zoom 0.3s ease',
+                    },
+                    keyframes: {
+                        scrollAnimation: {
+                            '0%': { transform: 'translateY(0)', opacity: '1' },
+                            '100%': { transform: 'translateY(10px)', opacity: '0' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        pulse: {
+                            '0%': { opacity: '0.6', transform: 'scale(1)' },
+                            '100%': { opacity: '0.9', transform: 'scale(1.05)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        zoom: {
+                            'from': { transform: 'scale(0.7)' },
+                            'to': { transform: 'scale(1)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- CSS -->
+    <link href="assets/css/aos.css" rel="stylesheet">
+    <link href="assets/css/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/kursor.css">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transform-style-preserve-3d {
+                transform-style: preserve-3d;
+            }
+            .perspective-1000 {
+                perspective: 1000px;
+            }
+            .animate-scroll-wheel {
+                animation: scrollAnimation 2s infinite;
+            }
+            .animate-zoom {
+                animation: zoom 0.3s ease;
+            }
+            .highlight {
+                background: linear-gradient(to right, #232E35, #7E74F1);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-size: 200% auto;
+            }
+            .dark .highlight {
+                background: linear-gradient(to right, #FFFFFF, #7E74F1);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            /* 3D Containers */
+            .education-3d-container,
+            .services-3d-container,
+            .experience-3d-container,
+            .certificates-3d-container,
+            .contact-3d-container {
+                z-index: -1;
+                opacity: 0.3;
+            }
+            .portfolio-3d-container,
+            .blog-3d-container {
+                z-index: 1;
+            }
+            @media (max-width: 768px) {
+                .education-3d-container,
+                .services-3d-container,
+                .experience-3d-container,
+                .certificates-3d-container,
+                .contact-3d-container {
+                    display: none;
+                }
+            }
+            .dark .education-3d-container canvas,
+            .dark .services-3d-container canvas,
+            .dark .experience-3d-container canvas,
+            .dark .certificates-3d-container canvas,
+            .dark .contact-3d-container canvas {
+                filter: brightness(0.8) contrast(1.2);
+            }
+        }
+    </style>
+</head>
+<body class="font-primary text-cinder bg-light dark:bg-midnight-express dark:text-cinder-light">
+<!-- Header -->
+<header class="header py-4 sticky top-0 z-10 mt-6 bg-transparent transition-all duration-300">
+    <div class="container max-w-[1200px] px-4 mx-auto flex items-center justify-between">
+        <div class="logo w-[113px] h-10 fill-cinder cursor-pointer dark:fill-white" data-aos-delay="200" data-aos="fade-down">
+            <svg viewBox="0 0 114 41">
+                <use xlink:href="assets/img/sprite.svg#gif"></use>
+            </svg>
+        </div>
+        <nav class="nav">
+            <ul class="nav-links flex items-center">
+                <li class="services active mr-14" data-aos-delay="200" data-aos="fade-down"><a href="#education-skill">Education</a></li>
+                <li class="portfolios mr-14" data-aos-delay="250" data-aos="fade-down"><a href="#portfolios">Portfolios</a></li>
+                <li class="experience mr-14" data-aos-delay="300" data-aos="fade-down"><a href="#experience">Experience</a></li>
+                <li class="blog mr-14" data-aos-delay="350" data-aos="fade-down"><a href="#blogs">Blog</a></li>
+
+                <li class="testimonials mobile-link hidden" data-aos-delay="350" data-aos="fade-down"><a href="#testimonials">Testimonials</a></li>
+                <li class="education-skill mobile-link hidden" data-aos-delay="350" data-aos="fade-down"><a href="#work">Education</a></li>
+                <li class="contact mobile-link hidden" data-aos-delay="350" data-aos="fade-down"><a href="#contact">Contact</a></li>
+                <li class="mobile-link hidden" data-aos-delay="350" data-aos="fade-down">
+                    <a href="assets/mycv" target="_blank" rel="noopener noreferrer">Resume</a>
+                </li>
+
+                <li data-aos-delay="400" data-aos="fade-down" class="more-links relative cursor-pointer">
+                    <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white"><use xlink:href="assets/img/sprite.svg#more-links"></use></svg>
+                    <ul class="menu-list absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-[60px] left-[-3px] p-5 rounded-lg invisible opacity-0 transition-all duration-200 z-100">
+                        <li class="testimonials pb-4"><a href="#work">Certificate</a></li>
+                        <li class="education-skill pb-4"><a href="#services">Specialized</a></li>
+                        <li class="contact"><a href="#contact">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="right-content flex items-center" data-aos-delay="500" data-aos="fade-down">
+            <div class="theme-color-toggle mr-8 flex items-center justify-center relative">
+                <svg class="moon w-6 h-6 fill-cinder dark:fill-white cursor-pointer transition-all duration-200" viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
+                </svg>
+                <svg class="sun w-6 h-6 fill-cinder dark:fill-white cursor-pointer transition-all duration-200 invisible opacity-0 scale-0 absolute" viewBox="0 0 24 24">
+                    <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
+                </svg>
+            </div>
+            <a href="assets/mycv.pdf/Shazan cv" target="_blank" class="btn btn-outline-light download-resume">Resume</a>
+            <svg class="mobile-menu-toggle w-6 h-6 fill-cinder dark:fill-white cursor-pointer hidden" viewBox="0 0 24 24">
+                <use xlink:href="assets/img/sprite.svg#menu"></use>
+            </svg>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section relative min-h-screen flex items-center py-[120px] overflow-hidden">
+        <div class="container max-w-[1200px] px-4 mx-auto flex items-center justify-between relative z-10">
+            <div class="content flex-1 max-w-[600px] relative z-30" id="hero-content">
+                <div class="intro-text mb-12">
+                    <p class="above-title" id="above-title">Hi, my name is</p>
+                    <h1 class="full-name text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1] my-0 mx-0 mb-4 font-extrabold text-cinder dark:text-white" id="full-name">Mohamed <span class="highlight">Shazan</span>.</h1>
+                    <h2 class="profession text-[clamp(1.25rem,3vw,1.75rem)] leading-[1.3] my-0 mx-0 mb-6 font-medium text-cinder-light" id="profession">
+                        I'm a <span class="typing primary"></span>
+                    </h2>
+
+                    <div class="about text-[clamp(1rem,2vw,1.125rem)] leading-[1.7] my-0 mx-0 mb-10 text-cinder-light max-w-[90%]" id="about">
+                        <p>I'm an IT professional with nearly 2 years of experience: 6 months as a Software Engineering Intern and over a year and a half as a Senior IT Support Executive at a UK-based software company.</p>
+                        <p>I specialize in <strong>technical support</strong>, <strong>troubleshooting</strong>, <strong>SQL Server management</strong>, and configuring <strong>network infrastructure for EPOS systems</strong>.</p>
+                        <p class="quote">"Turning complex tech issues into smooth solutions - one ticket at a time."</p>
+                    </div>
+                </div>
+
+                <div class="cta-buttons flex gap-4 mb-12">
+                    <a href="assets/mycv.pdf/Shazan cv" target="_blank" class="btn btn-primary download-resume px-8 py-4 text-base font-semibold rounded-full transition-all duration-400" id="resume-btn" aria-label="Download Resume">📄 Download Resume</a>
+                    <a href="#contact" class="btn btn-outline px-8 py-4 text-base font-semibold rounded-full border-2 border-purple text-purple bg-transparent transition-all duration-400" id="contact-btn">📬 Contact Me</a>
+                </div>
+
+                <ul class="social-icons flex items-center gap-4 mt-6" id="social-icons">
+                    <li><a href="#" aria-label="Instagram"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#instagram-icon"></use></svg></a></li>
+                    <li><a href="#" aria-label="GitHub"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#github-icon"></use></svg></a></li>
+                    <li><a href="#" aria-label="Twitter"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#twitter-icon"></use></svg></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#linkedin-icon"></use></svg></a></li>
+                </ul>
+            </div>
+
+            <div class="image w-full max-w-[500px] relative" id="hero-image" role="img" aria-label="Profile image of Mohamed Shazan">
+                <div class="cover glowing-border relative w-full h-[500px] rounded-2xl overflow-hidden transform-style-preserve-3d perspective-1000">
+                    <div class="floating-shapes absolute top-0 left-0 w-full h-full overflow-hidden z-10">
+                        <div class="shape shape-1 absolute w-[280px] h-[300px] top-[-50px] left-[-50px] rounded-full bg-purple-light-1"></div>
+                        <div class="shape shape-2 absolute w-[140px] h-[150px] bottom-[-30px] right-[-30px] rounded-full bg-purple-light-1"></div>
+<!--                        <div class="shape shape-3 absolute w-[150px] h-[150px] top-1/2 right-[20%] rounded-full bg-purple-light-1"></div>-->
+                    </div>
+                    <svg viewBox="0 0 800 800" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+                        <title>Profile Image Mask - Mohamed Shazan</title>
+                        <defs>
+                            <filter id="blobShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="15" stdDeviation="25" flood-color="#000" flood-opacity="0.3" />
+                            </filter>
+                            <mask id="maskBlob">
+                                <circle cx="400" cy="400" r="400" fill="white" />
+                            </mask>
+                        </defs>
+                        <g mask="url(#maskBlob)">
+                            <image href="assets/img/1.jpg" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice" alt="Portrait of Mohamed Shazan" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
+            <span class="text-xs tracking-[2px] text-cinder-light mb-2">Scroll</span>
+            <div class="mouse w-6 h-10 border-2 border-cinder-light rounded-xl flex justify-center pt-1">
+                <div class="wheel w-1 h-2 bg-purple rounded animate-scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Skills Section -->
+    <section class="education-skill-section py-[96px] px-4 bg-white/5 backdrop-blur-sm font-primary text-cinder transition-all duration-300 dark:bg-midnight-express/70 dark:text-white relative overflow-hidden" id="education-skill">
+        <div class="education-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+            <div class="section-name text-center mb-12" data-aos="fade-up">
+                <p class="above-title font-semibold text-sm tracking-[0.1em] text-purple uppercase mb-2">Learning Path</p>
+                <h4 class="title text-4xl font-bold text-cinder dark:text-white">Education & Skills</h4>
+            </div>
+
+            <div class="education-skill-wrapper flex flex-wrap gap-12 max-w-[1100px] mx-auto justify-between">
+                <!-- Education Timeline -->
+                <div class="education flex-1 min-w-[320px] relative pl-12 border-l-4 border-purple-light-2">
+                    <div class="education-item relative mb-14 pl-10" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="school font-bold text-xl text-purple mb-1">Open University of Sri Lanka (OUSL)</h4>
+                        <p class="degree-field font-medium text-sm text-cinder-light mb-2">
+                            Bachelor of Software Engineering (Honours) - Faculty of Engineering Technology, Department of Electrical & Computer Engineering
+                        </p>
+                        <p class="date font-semibold text-xs text-purple mb-3 inline-block px-2 py-1 bg-purple-light-2 rounded">2021 - Present</p>
+                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300">
+                            Currently pursuing an in-depth degree focused on software development, system design, and engineering principles. Coursework includes advanced programming, software testing, database systems, and project management. Gained practical experience through hands-on projects, collaborative team assignments, and research.
+                        </p>
+                    </div>
+
+                    <div class="education-item relative mb-14 pl-10" data-aos="fade-up" data-aos-delay="150">
+                        <h4 class="school font-bold text-xl text-purple mb-1">Sri Lanka Institute of Advanced Technological Education (SLIATE)</h4>
+                        <p class="degree-field font-medium text-sm text-cinder-light mb-2">Higher National Diploma in Information Technology (HND)</p>
+                        <p class="date font-semibold text-xs text-purple mb-3 inline-block px-2 py-1 bg-purple-light-2 rounded">2020 - 2022</p>
+                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300">
+                            Completed a comprehensive diploma emphasizing software development, database management, and networking. Developed strong skills in web technologies, programming languages, and IT infrastructure. Participated in internships to apply theoretical knowledge in real-world environments.
+                        </p>
+                    </div>
+
+                    <div class="education-item relative mb-14 pl-10" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="school font-bold text-xl text-purple mb-1">National Youth Services Council (SLYC)</h4>
+                        <p class="degree-field font-medium text-sm text-cinder-light mb-2">National Vocational Qualification (NVQ Level-3) - Computer Application Assistant</p>
+                        <p class="date font-semibold text-xs text-purple mb-3 inline-block px-2 py-1 bg-purple-light-2 rounded">2020 - 2021</p>
+                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300">
+                            Obtained NVQ Level-3 certification focusing on essential computer skills and office productivity software. Mastered applications like Microsoft Office Suite and basic troubleshooting techniques. Demonstrated ability to support IT operations and assist end-users effectively.
+                        </p>
+                    </div>
+
+                    <div class="education-item relative pl-10" data-aos="fade-up" data-aos-delay="250">
+                        <h4 class="school font-bold text-xl text-purple mb-1">Zahira College, Kalmunai</h4>
+                        <p class="degree-field font-medium text-sm text-cinder-light mb-2">
+                            GCE Advanced Level - Engineering Technology Stream<br />
+                            Conducted by the Department of Education, Sri Lanka
+                        </p>
+                        <p class="date font-semibold text-xs text-purple mb-3 inline-block px-2 py-1 bg-purple-light-2 rounded">2013 - 2018</p>
+                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300">
+                            Completed secondary education specializing in engineering technology, covering subjects such as applied mathematics, electronics, and technical drawing. Developed strong analytical and technical problem-solving skills. Actively engaged in science and technology clubs, fostering teamwork and leadership.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="service-section bg-light py-[114px] mt-[196px] dark:bg-midnight-express relative overflow-hidden" id="services">
+        <div class="services-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+            <div class="section-name text-center mb-12" data-aos="fade-up">
+                <p class="above-title font-semibold text-sm tracking-[0.1em] text-purple uppercase mb-2">Services
+                </p>
+                <h4 class="title text-4xl font-bold text-cinder dark:text-white">Specialized in
+                </h4>
+            </div>
+
+            <div class="service-item-wrapper flex items-center justify-between flex-wrap gap-12 pt-[104px]">
+                <div class="service-item bg-white dark:bg-licorice rounded-lg px-12 py-14 text-center min-w-[320px] flex-1 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mb-6 mx-auto flex items-center justify-center">
+                        <svg viewBox="0 0 25 24" class="w-6 h-6 fill-purple">
+                            <use xlink:href="assets/img/sprite.svg#ux-service"></use>
+                        </svg>
+                    </div>
+                    <h4 class="title font-medium text-2xl leading-[30px] mb-4 text-cinder dark:text-white">2 +</h4>
+                    <p class="body font-normal text-sm leading-6 text-cinder-light">year Of Experience.</p>
+                </div>
+                <div class="service-item bg-white dark:bg-licorice rounded-lg px-12 py-14 text-center min-w-[320px] flex-1 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-lg" data-aos="fade-up" data-aos-delay="250">
+                    <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mb-6 mx-auto flex items-center justify-center">
+                        <svg viewBox="0 0 25 24" class="w-6 h-6 fill-purple">
+                            <use xlink:href="assets/img/sprite.svg#app-development"></use>
+                        </svg>
+                    </div>
+                    <h4 class="title font-medium text-2xl leading-[30px] mb-4 text-cinder dark:text-white">5+</h4>
+                    <p class="body font-normal text-sm leading-6 text-cinder-light">Project Completed.</p>
+                </div>
+                <div class="service-item bg-white dark:bg-licorice rounded-lg px-12 py-14 text-center min-w-[320px] flex-1 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mb-6 mx-auto flex items-center justify-center">
+                        <svg viewBox="0 0 25 24" class="w-6 h-6 fill-purple">
+                            <use xlink:href="assets/img/sprite.svg#web-development"></use>
+                        </svg>
+                    </div>
+                    <h4 class="title font-medium text-2xl leading-[30px] mb-4 text-cinder dark:text-white">0+</h4>
+                    <p class="body font-normal text-sm leading-6 text-cinder-light">Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section py-[104px]" id="portfolios">
+        <div class="container max-w-[1200px] px-4 mx-auto">
+            <div class="section-name flex items-center justify-between mb-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="content">
+                    <p class="above-title text-purple dark:text-purple-light font-medium mb-2">
+                        My works
+                    </p>
+                    <h4 class="title text-4xl font-bold text-cinder dark:text-white relative inline-block">
+                        <span class="relative z-10">Featured Portfolios</span>
+                        <span class="absolute bottom-1 left-0 w-full h-2 bg-purple-light-2 dark:bg-purple-dark-2 opacity-30 z-0"></span>
+                    </h4>
+                </div>
+
+                <div class="slider-navigation flex items-center">
+                    <div class="prev mr-4 w-10 h-10 bg-purple-light-2 dark:bg-licorice rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-purple hover:shadow-lg hover:shadow-purple/30 dark:hover:shadow-purple-dark/20 group">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple dark:fill-white transition-all duration-300 group-hover:fill-white">
+                            <use xlink:href="assets/img/sprite.svg#arrow-left"></use>
+                        </svg>
+                    </div>
+                    <div class="next w-10 h-10 bg-purple-light-2 dark:bg-licorice rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-purple hover:shadow-lg hover:shadow-purple/30 dark:hover:shadow-purple-dark/20 group">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple dark:fill-white transition-all duration-300 group-hover:fill-white">
+                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item-wrapper mt-[72px]">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Portfolio Item 1 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-purple-light-2 to-purple opacity-10 dark:from-purple-dark-3 dark:to-purple-dark"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog5.png" alt="Tourism Website" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                    <span class="absolute top-4 right-4 bg-purple text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">
+                                    Featured
+                                </span>
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Tourism Website</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">HTML5</span>
+                                            <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">CSS3</span>
+                                            <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">JavaScript</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full items-center justify-center transition-all duration-300 hover:bg-purple hover:shadow-md"
+                                           href="https://github.com/Mohamedshazan/Tourism-Wabsite.git"
+                                           target="_blank"
+                                           aria-label="View Tourism Website">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-purple dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 2 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="250">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-blue-100 to-blue-400 opacity-10 dark:from-blue-900 dark:to-blue-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog1.png" alt="Laravel CRUD App" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">CRUD Application</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full">Laravel</span>
+                                            <span class="tag text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full">PHP</span>
+                                            <span class="tag text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full">MySQL</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-blue-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View CRUD Application">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-blue-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 3 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-green-100 to-green-400 opacity-10 dark:from-green-900 dark:to-green-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog2.jpg" alt="Medical Booking App" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                    <span class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">
+                                    Mobile
+                                </span>
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Medical Booking App</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-1 rounded-full">Java</span>
+                                            <span class="tag text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-1 rounded-full">Android</span>
+                                            <span class="tag text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-1 rounded-full">Firebase</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-green-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View Medical Booking App">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-green-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 4 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="350">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-orange-100 to-orange-400 opacity-10 dark:from-orange-900 dark:to-orange-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog3.jpg" alt="E-commerce Dashboard" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">E-commerce Dashboard</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 px-3 py-1 rounded-full">React</span>
+                                            <span class="tag text-xs bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 px-3 py-1 rounded-full">Node.js</span>
+                                            <span class="tag text-xs bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 px-3 py-1 rounded-full">MongoDB</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-orange-100 dark:bg-orange-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-orange-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View E-commerce Dashboard">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-orange-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 5 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-cyan-100 to-cyan-400 opacity-10 dark:from-cyan-900 dark:to-cyan-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog4.jpg" alt="Weather App" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                    <span class="absolute top-4 right-4 bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">
+                                    API
+                                </span>
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Weather Application</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 px-3 py-1 rounded-full">Vue.js</span>
+                                            <span class="tag text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 px-3 py-1 rounded-full">OpenWeather API</span>
+                                            <span class="tag text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 px-3 py-1 rounded-full">Geolocation</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-cyan-100 dark:bg-cyan-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-cyan-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View Weather Application">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-cyan-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 6 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="450">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-pink-100 to-pink-400 opacity-10 dark:from-pink-900 dark:to-pink-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog5.png" alt="Social Media Dashboard" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Social Media Dashboard</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-full">Angular</span>
+                                            <span class="tag text-xs bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-full">D3.js</span>
+                                            <span class="tag text-xs bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-full">REST API</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-pink-100 dark:bg-pink-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-pink-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View Social Media Dashboard">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-pink-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section class="experience-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="experience">
+        <div class="experience-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto flex flex-col md:flex-row relative">
+            <div class="side w-full md:w-[300px] md:mr-[144px] relative flex-shrink-0 mb-10 md:mb-0">
+                <div class="section-name text-center mb-8" data-aos="fade-up">
+                    <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
+                        Career Path
+                    </p>
+                    <h4 class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
+                        Work Experience
+                    </h4>
+                    <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
+                </div>
+
+                <div class="companies-list relative">
+                    <div class="selector bg-white dark:bg-purple-light-2 w-full md:w-[300px] h-14 absolute left-0 top-0 z-0 rounded transition-all duration-300 hidden md:block">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple absolute right-4 top-4">
+                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                    <ul class="mt-20 flex md:block overflow-x-auto pb-4 md:pb-0 relative z-10">
+                        <li class="active py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 font-medium text-purple whitespace-nowrap md:whitespace-normal" data-tab="aimpos" data-aos="fade-up">
+                            AIMPOS (PVT) LTD
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="trace" data-aos-delay="50" data-aos="fade-up">
+                            Trace Sri Lanka
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="ilt" data-aos-delay="100" data-aos="fade-up">
+                            ILT Software
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="safanas" data-aos-delay="150" data-aos="fade-up">
+                            Safanas Construction
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="mexaire" data-aos-delay="200" data-aos="fade-up">
+                            Mexaire Company
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-content flex-grow">
+                <!-- AIMPOS Experience -->
+                <div class="content active pt-8 relative visible opacity-100 w-auto h-auto translate-y-0 transition-all duration-400" id="aimpos">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Senior IT Support Executive <span class="company-name text-purple">AIMPOS (PVT) LTD</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo 06, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">Jan 2024 - Present · Full-time</p>
+                        <ul class="stack-list flex items-center py-4 flex-wrap gap-2">
+                            <li class="tag">SQL Server</li>
+                            <li class="tag">Networking</li>
+                            <li class="tag">Remote Desktop</li>
+                            <li class="tag">EPOS Systems</li>
+                        </ul>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Delivered expert-level IT support for a UK-based EPOS software platform serving retail and hospitality clients.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Handled daily troubleshooting of SQL Server connection errors, backup failures, and permission conflicts.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Configured static IPs, routers, port forwarding, and firewall rules to support secure EPOS connectivity and Watchman CCTV systems.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Installed and maintained a wide range of hardware, including thermal receipt printers, barcode scanners, card payment terminals, and network devices.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Deployed EPOS systems for new customers including setup, testing, activation, and customer onboarding.</li>
+                    </ul>
+                </div>
+
+                <!-- Trace Sri Lanka Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="trace">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Intern Software Engineer <span class="company-name text-purple">Trace Sri Lanka (T2T Organization)</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">Jun 2023 - Dec 2023 · Internship</p>
+                        <ul class="stack-list flex items-center py-4 flex-wrap gap-2">
+                            <li class="tag">Next.js</li>
+                            <li class="tag">TypeScript</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">ShadCN UI</li>
+                            <li class="tag">Docker</li>
+                        </ul>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Actively participated in the full SDLC of two major products: Trace Reservation System and T2T Logbook.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Built modern and reusable front-end components using Next.js and ShadCN design libraries.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Wrote optimized SQL queries and structured PostgreSQL schemas for real-time performance and scalability.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Packaged and deployed builds via Docker, ensuring consistent environments across local and production servers.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Implemented clean UI patterns and ensured responsive design compatibility across devices.</li>
+                    </ul>
+                </div>
+
+                <!-- ILT Software Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="ilt">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Full-Stack Developer <span class="company-name text-purple">ILT Software</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">2022 - Present · Full-time</p>
+                        <ul class="stack-list flex items-center py-4 flex-wrap gap-2">
+                            <li class="tag">React.js</li>
+                            <li class="tag">Next.js</li>
+                            <li class="tag">TypeScript</li>
+                            <li class="tag">Firebase</li>
+                        </ul>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Developed and maintained scalable web applications including user dashboards, admin portals, and e-commerce features.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Optimized page load speed and Core Web Vitals using dynamic imports and advanced caching techniques.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Integrated Firebase services (Auth, Firestore, Hosting) into Next.js for serverless deployments.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Built responsive, accessible interfaces with clean UX using TailwindCSS and modular architecture.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Designed REST APIs and consumed third-party integrations using Axios and SWR for real-time data syncing.</li>
+                    </ul>
+                </div>
+
+                <!-- Safanas Construction Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="safanas">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Trainee Technical Assistant <span class="company-name text-purple">Safanas Construction</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Kurunegala, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">2020 · Full-time</p>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Assisted civil engineers in project planning, site inspection, and daily reporting of progress.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Monitored site compliance with safety standards and material usage accuracy.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Coordinated tasks among construction workers to meet timeline requirements.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Helped track and log construction phases in coordination with supervisors and contractors.</li>
+                    </ul>
+                </div>
+
+                <!-- Mexaire Company Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="mexaire">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Trainee Electrician <span class="company-name text-purple">Mexaire Company</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">2019 · Full-time</p>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Installed and maintained electrical systems for residential and commercial buildings as part of the Altaire project team.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Learned basic wiring, safety protocols, and electrical tool handling.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Assisted senior electricians in troubleshooting and testing equipment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="blog-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="blog">
+        <div class="certificates-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+            <div class="section-name flex justify-center mb-12">
+                <div class="content text-center">
+                    <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
+                        My Articles
+                    </p>
+                    <h4 class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
+                        MY CERTIFICATES
+                    </h4>
+                    <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
+                </div>
+            </div>
+
+            <section class="work section" id="work">
+                <div class="work_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto px-4">
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c1.jpg" alt="SLASS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c2.jpg" alt="Web Programming & Design" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c3.jpg" alt="Udemy Course" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c4.jpg" alt="Course C" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c5.jpg" alt="Course D" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c6.jpg" alt="Course E" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c7.jpg" alt="CSS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c8.jpg" alt="HTML Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c9.jpg" alt="SQL Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c10.jpg" alt="Python for Data Science" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c11.jpg" alt="Advanced Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c12.jpg" alt="Core Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c13.jpg" alt="JavaScript Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img alt="C Programming" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105"
+                             src="./assets/img/c14.jpg"/>
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c15.jpg" alt="React.js Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c16.jpg" alt="Java Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                        <img src="./assets/img/c17.jpg" alt="PHP Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="blogs" aria-labelledby="blog-title">
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+
+            <!-- Section Header -->
+            <div class="section-name flex justify-center mb-12" data-aos="fade-up">
+                <div class="content text-center">
+                    <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
+                        My Articles
+                    </p>
+                    <h2 id="blog-title" class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
+                        Personal Blog
+                    </h2>
+                    <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
+                </div>
+            </div>
+
+            <!-- Blog Posts -->
+            <div class="post-item-wrapper mt-[144px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Blog Post 1 -->
+                <article class="post-item bg-white dark:bg-licorice rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-gray-50 dark:hover:bg-[#1d1d1d]" data-aos="fade-up" data-aos-delay="50">
+                    <figure class="h-[243px] m-0 overflow-hidden">
+                        <img src="assets/img/blog1.png" alt=blog1"Step-by-step Laravel installation setup process" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    </figure>
+                    <div class="content p-6 border border-light-3 dark:border-light-2 border-t-0 rounded-bl-lg rounded-br-lg">
+                        <h3 class="title font-semibold text-lg leading-6 mb-3 text-cinder dark:text-white">
+                            <a href="https://shasanmsn.blogspot.com/2022/08/overview-to-it-industry-ifs.html" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                Laravel Install Setup - August 30, 2022
+                            </a>
+                        </h3>
+                        <div class="detail mb-3 flex items-center flex-wrap gap-2 text-sm text-cinder-light">
+                            <time class="tag bg-purple-light-2 text-purple px-2 py-1 rounded text-xs font-medium" datetime="2022-08-30">
+                                August 30, 2022
+                            </time>
+                        </div>
+                        <p class="body leading-6 text-cinder-light pb-6 text-sm">
+                            Laravel is a popular PHP web framework known for its elegant syntax, MVC architecture, and developer-friendly features...
+                        </p>
+                        <div class="bottom pt-4 border-t border-light-2 text-center font-medium text-sm text-purple hover:text-cinder dark:hover:text-white transition-colors duration-300">
+                            <a href="https://shasanmsn.blogspot.com/2022/08/overview-to-it-industry-ifs.html" target="_blank" rel="noopener noreferrer">Continue Reading</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="post-item bg-white dark:bg-licorice rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-gray-50 dark:hover:bg-[#1d1d1d]" data-aos="fade-up" data-aos-delay="100">
+                    <figure class="h-[243px] m-0 overflow-hidden">
+                        <img src="assets/img/blog4.jpg" alt="Beginner's guide showing Laravel installation and usage steps" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    </figure>
+                    <div class="content p-6 border border-light-3 dark:border-light-2 border-t-0 rounded-bl-lg rounded-br-lg">
+                        <h3 class="title font-semibold text-lg leading-6 mb-3 text-cinder dark:text-white">
+                            <a href="https://shasanmsn.blogspot.com/2022/11/how-to-run-laravel-project.html" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                Beginners Guide to Laravel
+                            </a>
+                        </h3>
+                        <div class="detail mb-3 flex items-center flex-wrap gap-2 text-sm text-cinder-light">
+                            <time class="tag bg-purple-light-2 text-purple px-2 py-1 rounded text-xs font-medium" datetime="2020-08-08">
+                                August 8, 2020
+                            </time>
+                        </div>
+                        <p class="body leading-6 text-cinder-light pb-6 text-sm">
+                            Install Laravel: composer global require laravel/installer.<br />
+                            Create project: laravel new project-name.<br />
+                            Start server: php artisan serve.
+                        </p>
+                        <div class="bottom pt-4 border-t border-light-2 text-center font-medium text-sm text-purple hover:text-cinder dark:hover:text-white transition-colors duration-300">
+                            <a href="https://shasanmsn.blogspot.com/2022/11/how-to-run-laravel-project.html" target="_blank" rel="noopener noreferrer">Continue Reading</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="post-item bg-white dark:bg-licorice rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-gray-50 dark:hover:bg-[#1d1d1d]" data-aos="fade-up" data-aos-delay="150">
+                    <figure class="h-[243px] m-0 overflow-hidden">
+                        <img src="assets/img/blog2.jpg" alt="Infographic showing key points of Sri Lanka’s IT industry overview" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    </figure>
+                    <div class="content p-6 border border-light-3 dark:border-light-2 border-t-0 rounded-bl-lg rounded-br-lg">
+                        <h3 class="title font-semibold text-lg leading-6 mb-3 text-cinder dark:text-white">
+                            <a href="https://shasanmsn.blogspot.com/2022/10/laravel-8-crud-application.html" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                Overview to the IT Industry
+                            </a>
+                        </h3>
+                        <div class="detail mb-3 flex items-center flex-wrap gap-2 text-sm text-cinder-light">
+                            <time class="tag bg-purple-light-2 text-purple px-2 py-1 rounded text-xs font-medium" datetime="2021-02-19">
+                                February 19, 2021
+                            </time>
+                        </div>
+                        <p class="body leading-6 text-cinder-light pb-6 text-sm">
+                            The IT industry in Sri Lanka is a growing and promising sector, with government support, a skilled workforce, thriving startups, and a focus on outsourcing services...
+                        </p>
+                        <div class="bottom pt-4 border-t border-light-2 text-center font-medium text-sm text-purple hover:text-cinder dark:hover:text-white transition-colors duration-300">
+                            <a href="https://shasanmsn.blogspot.com/2022/10/laravel-8-crud-application.html" target="_blank" rel="noopener noreferrer">Continue Reading</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative overflow-hidden bg-light py-24 dark:bg-midnight-express">
+        <div class="contact-3d-container absolute inset-0 pointer-events-none"></div>
+        <div class="container max-w-6xl mx-auto px-4 relative">
+            <div class="contact-wrapper flex flex-col lg:flex-row gap-16 items-start">
+
+                <!-- Contact Form -->
+                <div class="contact-form flex-1 min-w-[300px] w-full">
+                    <form name="contactForm" novalidate>
+                        <!-- Form status messages -->
+                        <p class="success-submit-message hidden mb-4 text-sm rounded px-5 py-3 bg-green-50 dark:bg-[#314548] text-green-600 dark:text-[#9db79e]">
+                            Your message has been successfully sent.
+                        </p>
+                        <p class="fail-submit-message hidden mb-4 text-sm rounded px-5 py-3 bg-red-50 dark:bg-[#533643] text-red-600 dark:text-[#b59a98]">
+                            An error occurred while sending the message.
+                        </p>
+
+                        <!-- Name -->
+                        <div class="form-control mb-6 relative">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                            <input id="name" name="name" type="text" placeholder="Enter your name"
+                                   class="w-full p-4 pl-12 text-sm text-gray-800 dark:text-white bg-white dark:bg-licorice border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+                                   required />
+                            <p class="validation-error name hidden text-red-500 text-sm mt-1">Please enter your name.</p>
+                            <div class="absolute top-10 left-4 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A12.072 12.072 0 0112 15c2.485 0 4.779.755 6.879 2.048M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-control mb-6 relative">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                            <input id="email" name="email" type="email" placeholder="Enter your email"
+                                   class="w-full p-4 pl-12 text-sm text-gray-800 dark:text-white bg-white dark:bg-licorice border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+                                   required />
+                            <p class="validation-error email hidden text-red-500 text-sm mt-1">Please enter a valid email address.</p>
+                            <div class="absolute top-10 left-4 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0l-8-8m8 8l-8 8"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="form-control mb-6">
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Write your message"
+                                      class="w-full p-4 text-sm text-gray-800 dark:text-white bg-white dark:bg-licorice border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+                                      required></textarea>
+                            <p class="validation-error message hidden text-red-500 text-sm mt-1">Please enter your message.</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                                class="w-full mt-6 inline-flex items-center justify-center gap-2 text-white bg-purple hover:bg-purple-dark dark:bg-purple-light dark:text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-300 focus:outline-none">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Submit
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info flex-1 min-w-[300px] w-full space-y-12">
+                    <!-- Address -->
+                    <div class="flex items-start" data-aos="fade-up" data-aos-delay="50">
+                        <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mr-6 flex-shrink-0 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple">
+                                <use xlink:href="assets/img/sprite.svg#address-icon"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-medium text-cinder dark:text-white mb-1">Address</h4>
+                            <p class="text-sm text-cinder-light leading-6">326, Odndksman Road, fgainthamaruthu-7, Sri Lanka</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="flex items-start" data-aos="fade-up" data-aos-delay="150">
+                        <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mr-6 flex-shrink-0 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple">
+                                <use xlink:href="assets/img/sprite.svg#phone-icon"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-medium text-cinder dark:text-white mb-1">Phone</h4>
+                            <p class="text-sm text-cinder-light leading-6">+94 75 266 8414 52</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex items-start" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mr-6 flex-shrink-0 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple">
+                                <use xlink:href="assets/img/sprite.svg#email-icon"></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-medium text-cinder dark:text-white mb-1">Email</h4>
+                            <p class="text-sm text-cinder-light leading-6">shalosyute@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</main>
+
+<footer class="footer bg-light py-[60px] md:py-[88px] text-center dark:bg-midnight-express">
+    <ul class="social-icons flex justify-center mb-6" data-aos="fade-up" data-aos-delay="50">
+        <li class="mr-4">
+            <a href="https://www.instagram.com/shazan_szn_?r=nametag" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
+                    <use xlink:href="assets/img/sprite.svg#instagram-icon"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="mr-4">
+            <a href="https://github.com/Mohamedshazan" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
+                    <use xlink:href="assets/img/sprite.svg#github-icon"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="mr-4">
+            <a href="https://twitter.com/ar_shasan0?t=3wHCQjnCHRHM-Eay_WT9lQ&s=35" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
+                    <use xlink:href="assets/img/sprite.svg#twitter-icon"></use>
+                </svg>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/mohamed-shazan" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
+                    <use xlink:href="assets/img/sprite.svg#linkedin-icon"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+    <p class="copyright font-normal text-sm leading-[17px] text-cinder-light" data-aos="fade-up" data-aos-delay="100">© <span class="year">2024</span> - SHAZAN<span class="font-medium text-purple"> SZN</span></p>
+</footer>
+
+<!-- Back to Top Button -->
+<div class="back-to-top fixed bottom-5 right-5 md:bottom-8 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-purple rounded-full flex items-center justify-center cursor-pointer opacity-0 invisible transition-all duration-300 z-[99] hover:-translate-y-1 hover:shadow-lg">
+    <svg viewBox="0 0 24 24" class="w-5 h-5 md:w-6 md:h-6 fill-white">
+        <use xlink:href="assets/img/sprite.svg#arrow-up"></use>
+    </svg>
+</div>
+
+<!-- Modal -->
+<div id="imgModal" class="modal fixed z-[1000] pt-[60px] left-0 top-0 w-full h-full overflow-auto bg-black/80 hidden">
+    <span class="close absolute top-[30px] right-[40px] text-white text-[40px] font-bold cursor-pointer transition-colors duration-200 hover:text-[#ff6961]" id="modalClose">&times;</span>
+    <img class="modal-content mx-auto block max-w-[90%] max-h-[80vh] rounded-lg animate-zoom" id="modalImg" alt="Full Certificate">
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="assets/js/aos.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/kursor.js"></script>
+<script src="assets/js/svg4everybody.min.js"></script>
+<script src="assets/js/css-vars-ponyfill.min.js"></script>
+<script src="assets/js/unfetch.js"></script>
+
+</body>
+</html>
