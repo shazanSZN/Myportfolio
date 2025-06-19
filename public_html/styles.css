@@ -1,21 +1,57 @@
-/* styles.css */
-/* @tailwind base;
+/* === Tailwind Base Imports === */
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* === Custom Keyframes & Animations === */
+@layer utilities {
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse {
+        0% { opacity: 0.6; transform: scale(1); }
+        100% { opacity: 0.9; transform: scale(1.05); }
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes zoom {
+        from { transform: scale(0.7); }
+        to { transform: scale(1); }
+    }
+
+    .animate-zoom {
+        animation: zoom 0.3s ease;
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-pulse {
+        animation: pulse 6s infinite alternate;
+    }
+
+    .animate-rotate {
+        animation: rotate 30s linear infinite;
+    }
+}
+
+/* === Custom Utility Classes === */
 @layer utilities {
     .transform-style-preserve-3d {
         transform-style: preserve-3d;
     }
+
     .perspective-1000 {
         perspective: 1000px;
     }
-    .animate-scroll-wheel {
-        animation: scrollAnimation 2s infinite;
-    }
-    .animate-zoom {
-        animation: zoom 0.3s ease;
-    }
+
     .highlight {
         background: linear-gradient(to right, #232E35, #7E74F1);
         -webkit-background-clip: text;
@@ -23,25 +59,86 @@
         color: transparent;
         background-size: 200% auto;
     }
+
     .dark .highlight {
         background: linear-gradient(to right, #FFFFFF, #7E74F1);
         -webkit-background-clip: text;
         background-clip: text;
     }
 
-    #hero {
-        position: relative;
-        overflow: hidden;
-        perspective: 1200px;
-        transform-style: preserve-3d;
+    .education-3d-container,
+    .services-3d-container,
+    .experience-3d-container,
+    .certificates-3d-container,
+    .contact-3d-container {
+        z-index: -1;
+        opacity: 0.3;
     }
 
-    .hero-glow {
-        pointer-events: none;
-        mix-blend-mode: screen;
-        transition: background 0.3s ease;
+    .portfolio-3d-container,
+    .blog-3d-container {
+        z-index: 1;
     }
 
-} */
+    .dark .education-3d-container canvas,
+    .dark .services-3d-container canvas,
+    .dark .experience-3d-container canvas,
+    .dark .certificates-3d-container canvas,
+    .dark .contact-3d-container canvas {
+        filter: brightness(0.8) contrast(1.2);
+    }
+}
 
+/* === Responsive Rules === */
+html {
+    font-size: 16px;
+}
 
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .hero-content {
+        order: 2;
+        text-align: center;
+    }
+
+    .hero-image {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .education-3d-container,
+    .services-3d-container,
+    .experience-3d-container,
+    .certificates-3d-container,
+    .contact-3d-container {
+        display: none;
+    }
+}
+
+/* === General Styling === */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.mobile-nav {
+    transition: transform 0.3s ease;
+}
+
+a, button {
+    min-width: 44px;
+    min-height: 44px;
+}
