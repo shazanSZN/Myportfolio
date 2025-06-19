@@ -13,7 +13,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
     const DOM = {
         themeToggle: document.querySelector('.theme-color-toggle'),
         moonIcon: document.querySelector('.moon'),
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         yearElement: document.querySelector('.year')
     };
 
-    // App State
     const state = {
         currentTheme: localStorage.getItem('theme') ||
             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         threeJSInitialized: false
     };
 
-    // Initialize the application
     function init() {
         console.log('Initializing application...');
         setTheme(state.currentTheme);
@@ -50,12 +47,28 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCopyrightYear();
         initThirdPartyLibs();
 
-        // Initialize animations after everything is loaded
         window.addEventListener('load', () => {
             console.log('Window loaded, initializing animations...');
             initAnimations();
             initThreeJSEffects();
         });
+    }
+
+    function setupEventListeners() {
+        if (DOM.mobileMenuToggle) {
+            DOM.mobileMenuToggle.addEventListener('click', () => {
+                document.querySelector('.mobile-nav').classList.toggle('translate-x-full');
+            });
+        }
+
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', () => {
+                document.querySelector('.mobile-nav').classList.add('translate-x-full');
+            });
+        }
+
+        // Add other listeners here as needed...
     }
 
     // Set up all event listeners
