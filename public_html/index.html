@@ -286,6 +286,27 @@
                     </div>
 
 
+                     <style>
+                        @keyframes spin-slow {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+
+                        .animate-spin-slow {
+                            animation: spin-slow 40s linear infinite; /* slowed from 20s to 40s */
+                        }
+
+                        @keyframes bounce-slow {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-20px); }
+                        }
+
+                        .animate-bounce-slow {
+                            animation: bounce-slow 5s ease-in-out infinite;
+                        }
+                    </style>
+
+
 
                     <!-- SVG masked image -->
                     <svg viewBox="0 0 800 800" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
