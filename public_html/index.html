@@ -85,7 +85,7 @@
 
     <!-- Your compiled all-in-one CSS -->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./dist/output.css">
+
 
 
     <!-- External libraries -->
@@ -109,29 +109,37 @@
 <!-- Header -->
 <header class="header py-4 sticky top-0 z-50 mt-6 bg-light/80 dark:bg-midnight-express/80 backdrop-blur-sm transition-all duration-300">
     <div class="container max-w-[1200px] px-4 mx-auto flex items-center justify-between">
-        <div class="logo w-[113px] h-10 fill-cinder cursor-pointer dark:fill-white">
-            <svg viewBox="0 0 114 41">
+
+        <!-- Logo -->
+        <a href="#" class="logo w-[113px] h-10 block" aria-label="Shazan logo">
+            <svg viewBox="0 0 114 41" class="fill-cinder dark:fill-white w-full h-full">
                 <use xlink:href="assets/img/sprite.svg#gif"></use>
             </svg>
-        </div>
+        </a>
 
         <!-- Mobile Menu Button -->
-        <button class="md:hidden mobile-menu-toggle w-10 h-10 flex items-center justify-center">
+        <button
+                class="md:hidden mobile-menu-toggle w-10 h-10 flex items-center justify-center"
+                type="button"
+                aria-label="Open mobile menu"
+        >
             <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24">
                 <use xlink:href="assets/img/sprite.svg#menu"></use>
             </svg>
         </button>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden md:block">
+        <nav class="hidden md:block" aria-label="Main navigation">
             <ul class="nav-links flex items-center">
                 <li class="services active mr-6 lg:mr-14"><a href="#education-skill">Education</a></li>
                 <li class="portfolios mr-6 lg:mr-14"><a href="#portfolios">Portfolios</a></li>
                 <li class="experience mr-6 lg:mr-14"><a href="#experience">Experience</a></li>
                 <li class="blog mr-6 lg:mr-14"><a href="#blogs">Blog</a></li>
                 <li class="more-links relative cursor-pointer">
-                    <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white"><use xlink:href="assets/img/sprite.svg#more-links"></use></svg>
-                    <ul class="menu-list absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-[60px] left-[-3px] p-5 rounded-lg invisible opacity-0 transition-all duration-200 z-100">
+                    <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white">
+                        <use xlink:href="assets/img/sprite.svg#more-links"></use>
+                    </svg>
+                    <ul class="menu-list absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-[60px] left-[-3px] p-5 rounded-lg invisible opacity-0 transition-all duration-200 z-[100]">
                         <li class="testimonials pb-4"><a href="#work">Certificate</a></li>
                         <li class="education-skill pb-4"><a href="#services">Specialized</a></li>
                         <li class="contact"><a href="#contact">Contact</a></li>
@@ -144,12 +152,12 @@
         <div class="mobile-nav fixed inset-0 bg-white dark:bg-midnight-express z-40 translate-x-full transition-transform duration-300 md:hidden">
             <div class="container px-4 py-8">
                 <div class="flex justify-between items-center mb-8">
-                    <div class="logo w-[113px] h-10 fill-cinder dark:fill-white">
-                        <svg viewBox="0 0 114 41">
+                    <a href="#" class="logo w-[113px] h-10 block" aria-label="Shazan logo">
+                        <svg viewBox="0 0 114 41" class="fill-cinder dark:fill-white w-full h-full">
                             <use xlink:href="assets/img/sprite.svg#gif"></use>
                         </svg>
-                    </div>
-                    <button class="mobile-menu-close w-10 h-10 flex items-center justify-center">
+                    </a>
+                    <button class="mobile-menu-close w-10 h-10 flex items-center justify-center" type="button" aria-label="Close menu">
                         <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24">
                             <use xlink:href="assets/img/sprite.svg#close"></use>
                         </svg>
@@ -164,25 +172,51 @@
                     <li><a href="#services" class="block py-2 text-lg">Specialized</a></li>
                     <li><a href="#contact" class="block py-2 text-lg">Contact</a></li>
                     <li class="mt-8">
-                        <a href="assets/mycv.pdf/Shazan cv" target="_blank" class="btn btn-outline-light download-resume inline-block">Resume</a>
+                        <a href="assets/mycv.pdf/Shazan-cv.pdf" target="_blank" class="btn btn-outline-light download-resume inline-block" rel="noopener noreferrer">Resume</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div class="right-content hidden md:flex items-center">
-            <div class="theme-color-toggle mr-8 flex items-center justify-center relative">
-                <svg class="moon w-6 h-6 fill-cinder dark:fill-white cursor-pointer transition-all duration-200" viewBox="0 0 24 24">
+        <!-- Dark Mode Toggle + Resume -->
+        <div class="right-content hidden md:flex items-center gap-6">
+
+            <!-- Dark Mode Toggle Button -->
+            <button
+                    type="button"
+                    class="theme-color-toggle relative w-12 h-12 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300"
+                    aria-label="Toggle dark mode"
+            >
+                <!-- Moon Icon (Light mode visible) -->
+                <svg
+                        class="moon w-6 h-6 fill-cinder dark:fill-white transition-all duration-300 rotate-0 scale-100 dark:scale-0 dark:rotate-90"
+                        viewBox="0 0 24 24"
+                >
                     <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
                 </svg>
-                <svg class="sun w-6 h-6 fill-cinder dark:fill-white cursor-pointer transition-all duration-200 invisible opacity-0 scale-0 absolute" viewBox="0 0 24 24">
+
+                <!-- Sun Icon (Dark mode visible) -->
+                <svg
+                        class="sun w-6 h-6 fill-cinder dark:fill-white transition-all duration-300 absolute scale-0 rotate-90 dark:scale-100 dark:rotate-0"
+                        viewBox="0 0 24 24"
+                >
                     <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
                 </svg>
-            </div>
-            <a href="assets/mycv.pdf/Shazan cv" target="_blank" class="btn btn-outline-light download-resume">Resume</a>
+            </button>
+
+            <!-- Resume Button -->
+            <a
+                    href="assets/mycv.pdf/Shazan-cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline-light download-resume px-4 py-2 border border-cinder dark:border-white rounded-lg text-sm hover:bg-light-3 dark:hover:bg-cinder transition"
+            >
+                Resume
+            </a>
         </div>
-    </div>
+
 </header>
+
 <main>
     <!-- Hero Section -->
     <section class="hero-section relative min-h-screen flex flex-col md:flex-row items-center py-[60px] md:py-[120px] overflow-hidden">
