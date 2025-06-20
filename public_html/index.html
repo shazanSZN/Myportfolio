@@ -129,26 +129,26 @@
         </button>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden md:block" aria-label="Main navigation">
+        <nav class="hidden md:block" aria-label="Main navigation" role="navigation">
             <ul class="nav-links flex items-center">
-                <li class="services active mr-6 lg:mr-14"><a href="#education-skill">Education</a></li>
+                <li class="education mr-6 lg:mr-14"><a href="#education-skill">Education</a></li>
                 <li class="portfolios mr-6 lg:mr-14"><a href="#portfolios">Portfolios</a></li>
                 <li class="experience mr-6 lg:mr-14"><a href="#experience">Experience</a></li>
                 <li class="blog mr-6 lg:mr-14"><a href="#blogs">Blog</a></li>
-                <li class="more-links relative cursor-pointer">
+                <li class="more-links relative cursor-pointer group">
                     <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white">
                         <use xlink:href="assets/img/sprite.svg#more-links"></use>
                     </svg>
-                    <ul class="menu-list absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-[60px] left-[-3px] p-5 rounded-lg invisible opacity-0 transition-all duration-200 z-[100]">
-                        <li class="testimonials pb-4"><a href="#work">Certificate</a></li>
-                        <li class="education-skill pb-4"><a href="#services">Specialized</a></li>
+                    <ul class="menu-list absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-[60px] left-[-3px] p-5 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                        <li class="certificate pb-4"><a href="#work">Certificate</a></li>
+                        <li class="specialized pb-4"><a href="#services">Specialized</a></li>
                         <li class="contact"><a href="#contact">Contact</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
 
-        <!-- Mobile Navigation (Hidden by default) -->
+        <!-- Mobile Navigation -->
         <div class="mobile-nav fixed inset-0 bg-white dark:bg-midnight-express z-40 translate-x-full transition-transform duration-300 md:hidden">
             <div class="container px-4 py-8">
                 <div class="flex justify-between items-center mb-8">
@@ -168,11 +168,11 @@
                     <li><a href="#portfolios" class="block py-2 text-lg">Portfolios</a></li>
                     <li><a href="#experience" class="block py-2 text-lg">Experience</a></li>
                     <li><a href="#blogs" class="block py-2 text-lg">Blog</a></li>
-                    <li><a href="#work" class="block py-2 text-lg">Certificates</a></li>
+                    <li><a href="#work" class="block py-2 text-lg">Certificate</a></li>
                     <li><a href="#services" class="block py-2 text-lg">Specialized</a></li>
                     <li><a href="#contact" class="block py-2 text-lg">Contact</a></li>
                     <li class="mt-8">
-                        <a href="assets/mycv.pdf/Shazan-cv.pdf" target="_blank" class="btn btn-outline-light download-resume inline-block" rel="noopener noreferrer">Resume</a>
+                        <a href="assets/mycv/Shazan-cv.pdf" target="_blank" class="btn btn-outline-light download-resume inline-block" rel="noopener noreferrer">Resume</a>
                     </li>
                 </ul>
             </div>
@@ -187,7 +187,7 @@
                     class="theme-color-toggle relative w-12 h-12 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300"
                     aria-label="Toggle dark mode"
             >
-                <!-- Moon Icon (Light mode visible) -->
+                <!-- Moon Icon -->
                 <svg
                         class="moon w-6 h-6 fill-cinder dark:fill-white transition-all duration-300 rotate-0 scale-100 dark:scale-0 dark:rotate-90"
                         viewBox="0 0 24 24"
@@ -195,7 +195,7 @@
                     <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
                 </svg>
 
-                <!-- Sun Icon (Dark mode visible) -->
+                <!-- Sun Icon -->
                 <svg
                         class="sun w-6 h-6 fill-cinder dark:fill-white transition-all duration-300 absolute scale-0 rotate-90 dark:scale-100 dark:rotate-0"
                         viewBox="0 0 24 24"
@@ -206,7 +206,7 @@
 
             <!-- Resume Button -->
             <a
-                    href="assets/mycv.pdf/Shazan-cv.pdf"
+                    href="assets/mycv/Shazan-cv.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn btn-outline-light download-resume px-4 py-2 border border-cinder dark:border-white rounded-lg text-sm hover:bg-light-3 dark:hover:bg-cinder transition"
@@ -214,8 +214,9 @@
                 Resume
             </a>
         </div>
-
+    </div>
 </header>
+
 
 <main>
     <!-- Hero Section -->
@@ -282,216 +283,421 @@
     </section>
 
     <!-- Education & Skills Section -->
-    <section class="education-skill-section py-[96px] px-4 bg-white/5 backdrop-blur-sm font-primary text-cinder transition-all duration-300 dark:bg-midnight-express/70 dark:text-white relative overflow-hidden" id="education-skill">
-        <!-- Decorative background elements -->
+    <section class="education-skill-section py-12 md:py-20 lg:py-24 px-4 bg-white/5 backdrop-blur-sm font-primary text-cinder transition-all duration-300 dark:bg-midnight-express/70 dark:text-white relative overflow-hidden" id="education-skill">
+        <!-- Decorative background elements with subtle animation -->
         <div class="education-3d-container absolute w-full h-full top-0 left-0 pointer-events-none overflow-hidden">
-            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-purple/5 to-transparent dark:from-purple-dark/5"></div>
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-purple/5 to-transparent dark:from-purple-dark/5 animate-pulse-slow"></div>
         </div>
 
         <div class="container max-w-[1200px] px-4 mx-auto relative">
-            <!-- Section Header with Enhanced Styling -->
-            <div class="section-name text-center mb-16" data-aos="fade-up">
-                <p class="above-title font-semibold text-sm tracking-[0.1em] text-purple uppercase mb-3">Learning Journey</p>
-                <h4 class="title text-4xl font-bold text-cinder dark:text-white relative inline-block">
-                    <span class="relative z-10">Education & Skills</span>
-                    <span class="absolute bottom-1 left-0 w-full h-2 bg-purple-light-2 dark:bg-purple-dark-2 opacity-30 z-0 -rotate-1"></span>
+            <!-- Section Header with improved visual hierarchy -->
+            <div class="section-name text-center mb-10 md:mb-16" data-aos="fade-up">
+                <p class="above-title font-semibold text-xs sm:text-sm tracking-[0.2em] text-purple uppercase mb-2 md:mb-3 transform transition-all duration-500 hover:translate-y-[-2px]">
+                    Learning Journey
+                </p>
+                <h4 class="title text-3xl sm:text-4xl md:text-5xl font-bold text-cinder dark:text-white relative inline-block">
+                <span class="relative z-10 bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">
+                    Education & Skills
+                </span>
+                    <span class="absolute bottom-0 left-0 w-full h-2 bg-purple-light-2 dark:bg-purple-dark-2 opacity-30 z-0 -rotate-1 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
                 </h4>
             </div>
 
-            <div class="education-skill-wrapper flex flex-wrap gap-12 max-w-[1100px] mx-auto justify-between">
-                <!-- Education Timeline with Enhanced Visuals -->
-                <div class="education flex-1 min-w-[320px] relative pl-12 border-l-4 border-purple-light-2 dark:border-purple-dark/30">
-                    <!-- Timeline Connector -->
-                    <div class="absolute left-[-2px] top-0 h-full w-[4px] bg-gradient-to-b from-purple via-purple-light-2 to-purple dark:from-purple-dark dark:via-purple-dark/50 dark:to-purple-dark rounded-full"></div>
+            <div class="education-skill-wrapper flex flex-col lg:flex-row gap-8 md:gap-12 max-w-[1100px] mx-auto">
+                <!-- Education Timeline with enhanced visual elements -->
+                <div class="education w-full lg:w-1/2 relative pl-10 md:pl-12 border-l-4 border-purple-light-2 dark:border-purple-dark/30">
+                    <!-- Animated Timeline Connector -->
+                    <div class="absolute left-[-2px] top-0 h-full w-[4px] bg-gradient-to-b from-purple via-purple-light-2 to-purple dark:from-purple-dark dark:via-purple-dark/50 dark:to-purple-dark rounded-full animate-pulse-slow"></div>
 
                     <!-- Education Item 1 -->
-                    <div class="education-item relative mb-14 pl-10 group" data-aos="fade-up" data-aos-delay="100">
-                        <!-- Timeline Dot -->
-                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-md transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg"></div>
+                    <div class="education-item relative mb-12 md:mb-16 pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Glowing Timeline Dot -->
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
 
-                        <h4 class="school font-bold text-xl text-purple dark:text-purple-light mb-1 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">Open University of Sri Lanka (OUSL)</h4>
-                        <p class="degree-field font-medium text-sm text-cinder-light dark:text-gray-300 mb-2">
-                            Bachelor of Software Engineering (Honours) - Faculty of Engineering Technology
-                        </p>
-                        <p class="date font-semibold text-xs text-white mb-3 inline-block px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">2021 - Present</p>
-                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
-                            Currently pursuing an in-depth degree focused on software development, system design, and engineering principles. Coursework includes:
-                        </p>
-                        <ul class="mt-2 pl-5 list-disc text-sm text-cinder-light dark:text-gray-300 space-y-1">
-                            <li>Advanced programming & algorithms</li>
-                            <li>Software testing & quality assurance</li>
-                            <li>Database systems & cloud computing</li>
-                            <li>Project management & agile methodologies</li>
-                        </ul>
+                        <!-- Education Content -->
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                Open University of Sri Lanka (OUSL)
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                Bachelor of Software Engineering (Honours)
+                                <span class="block text-purple/80 dark:text-purple-light/70 text-xs md:text-sm mt-1">
+                                Faculty of Engineering Technology
+                            </span>
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2021 - Present
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Colombo, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Currently pursuing an in-depth degree focused on software development, system design, and engineering principles.
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <h5 class="text-xs font-semibold text-purple dark:text-purple-light mb-2 uppercase tracking-wider">
+                                    Key Coursework:
+                                </h5>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Advanced programming & algorithms</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Software testing & quality assurance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Database systems & cloud computing</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Project management & agile methodologies</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Education Item 2 -->
-                    <div class="education-item relative mb-14 pl-10 group" data-aos="fade-up" data-aos-delay="150">
-                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-md transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg"></div>
+                    <div class="education-item relative mb-12 md:mb-16 pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="150">
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
 
-                        <h4 class="school font-bold text-xl text-purple dark:text-purple-light mb-1 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">Sri Lanka Institute of Advanced Technological Education (SLIATE)</h4>
-                        <p class="degree-field font-medium text-sm text-cinder-light dark:text-gray-300 mb-2">Higher National Diploma in Information Technology (HND)</p>
-                        <p class="date font-semibold text-xs text-white mb-3 inline-block px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">2020 - 2022</p>
-                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
-                            Comprehensive diploma emphasizing practical IT skills with key achievements:
-                        </p>
-                        <ul class="mt-2 pl-5 list-disc text-sm text-cinder-light dark:text-gray-300 space-y-1">
-                            <li>Developed 5+ full-stack web applications</li>
-                            <li>Implemented relational database systems</li>
-                            <li>Completed 3-month industry internship</li>
-                            <li>Graduated with Distinction (GPA 3.8)</li>
-                        </ul>
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                Sri Lanka Institute of Advanced Technological Education (SLIATE)
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                Higher National Diploma in Information Technology (HND)
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2020 - 2022
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Colombo, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Comprehensive diploma emphasizing practical IT skills with key achievements:
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Developed 5+ full-stack web applications</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Implemented relational database systems</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Completed 3-month industry internship</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Graduated with Distinction (GPA 3.8)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Education Item 3 -->
-                    <div class="education-item relative mb-14 pl-10 group" data-aos="fade-up" data-aos-delay="200">
-                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-md transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg"></div>
+                    <div class="education-item relative mb-12 md:mb-16 pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
 
-                        <h4 class="school font-bold text-xl text-purple dark:text-purple-light mb-1 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">National Youth Services Council (SLYC)</h4>
-                        <p class="degree-field font-medium text-sm text-cinder-light dark:text-gray-300 mb-2">NVQ Level-3 - Computer Application Assistant</p>
-                        <p class="date font-semibold text-xs text-white mb-3 inline-block px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">2020 - 2021</p>
-                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
-                            Vocational certification with hands-on training in:
-                        </p>
-                        <ul class="mt-2 pl-5 list-disc text-sm text-cinder-light dark:text-gray-300 space-y-1">
-                            <li>Microsoft Office Specialist certification</li>
-                            <li>Hardware troubleshooting & maintenance</li>
-                            <li>Basic networking fundamentals</li>
-                            <li>End-user technical support</li>
-                        </ul>
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                National Youth Services Council (SLYC)
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                NVQ Level-3 - Computer Application Assistant
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2020 - 2021
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Colombo, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Vocational certification with hands-on training in:
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Microsoft Office Specialist certification</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Hardware troubleshooting & maintenance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Basic networking fundamentals</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">End-user technical support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Education Item 4 -->
-                    <div class="education-item relative pl-10 group" data-aos="fade-up" data-aos-delay="250">
-                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-md transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg"></div>
+                    <div class="education-item relative pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="250">
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
 
-                        <h4 class="school font-bold text-xl text-purple dark:text-purple-light mb-1 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">Zahira College, Kalmunai</h4>
-                        <p class="degree-field font-medium text-sm text-cinder-light dark:text-gray-300 mb-2">
-                            GCE Advanced Level - Engineering Technology Stream
-                        </p>
-                        <p class="date font-semibold text-xs text-white mb-3 inline-block px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">2013 - 2018</p>
-                        <p class="details text-sm leading-6 text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
-                            Technical secondary education with specialized subjects:
-                        </p>
-                        <ul class="mt-2 pl-5 list-disc text-sm text-cinder-light dark:text-gray-300 space-y-1">
-                            <li>Combined Mathematics (A)</li>
-                            <li>Engineering Technology (A)</li>
-                            <li>Physics (B)</li>
-                            <li>Chemistry (C)</li>
-                        </ul>
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                Zahira College, Kalmunai
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                GCE Advanced Level - Engineering Technology Stream
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2013 - 2018
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Kalmunai, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Technical secondary education with specialized subjects:
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Combined Mathematics (A)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Engineering Technology (A)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Physics (B)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Chemistry (C)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Skills Section -->
-                <div class="skills flex-1 min-w-[320px] max-w-[500px]" data-aos="fade-left" data-aos-delay="300">
-                    <div class="skills-card bg-white dark:bg-midnight-express p-8 rounded-xl shadow-lg border border-light-3 dark:border-gray-800">
-                        <h4 class="skills-title font-bold text-2xl text-cinder dark:text-white mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-purple after:rounded-full">
-                            Technical Skills
-                        </h4>
-
-                        <!-- Skill Categories -->
-                        <div class="skill-category mb-8">
-                            <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center">
-                                <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                <!-- Skills Section with enhanced card design -->
+                <div class="skills w-full lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="300">
+                    <div class="skills-card bg-white dark:bg-midnight-express p-6 md:p-8 rounded-2xl shadow-xl border border-light-3 dark:border-gray-800 hover:shadow-2xl transition-all duration-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="skills-title font-bold text-2xl md:text-3xl text-cinder dark:text-white relative">
+                            <span class="bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">
+                                Technical Skills
+                            </span>
+                            </h4>
+                            <div class="w-10 h-10 rounded-full bg-purple-light-2 dark:bg-gray-800 flex items-center justify-center">
+                                <svg class="w-5 h-5 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
                                     <use xlink:href="assets/img/sprite.svg#code"></use>
                                 </svg>
-                                Programming Languages
-                            </h5>
-                            <div class="skill-items grid grid-cols-2 gap-4">
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
-                                    </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">JavaScript</span>
-                                </div>
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
-                                    </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">PHP</span>
-                                </div>
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
-                                    </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Java</span>
-                                </div>
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
-                                    </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Python</span>
-                                </div>
                             </div>
                         </div>
 
-                        <!-- Web Development Skills -->
-                        <div class="skill-category mb-8">
-                            <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center">
-                                <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                    <use xlink:href="assets/img/sprite.svg#globe"></use>
-                                </svg>
-                                Web Development
-                            </h5>
-                            <div class="skill-items grid grid-cols-2 gap-4">
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
+                        <!-- Skill Categories with improved layout -->
+                        <div class="space-y-8">
+                            <!-- Programming Languages -->
+                            <div class="skill-category">
+                                <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center text-lg">
+                                    <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#code"></use>
+                                    </svg>
+                                    Programming Languages
+                                </h5>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">JavaScript</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 90%"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">HTML5/CSS3</span>
-                                </div>
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">PHP</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 85%"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">React.js</span>
-                                </div>
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Java</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 80%"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Laravel</span>
-                                </div>
-                                <div class="skill-item flex items-center">
-                                    <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                                        <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                            <use xlink:href="assets/img/sprite.svg#check"></use>
-                                        </svg>
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Python</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 75%"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Node.js</span>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Other Skills -->
-                        <div class="skill-category">
-                            <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center">
-                                <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                    <use xlink:href="assets/img/sprite.svg#tool"></use>
-                                </svg>
-                                Other Competencies
-                            </h5>
-                            <div class="skill-tags flex flex-wrap gap-2">
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">MySQL</span>
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">MongoDB</span>
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">Git</span>
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">Docker</span>
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">AWS</span>
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">Agile</span>
+                            <!-- Web Development -->
+                            <div class="skill-category">
+                                <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center text-lg">
+                                    <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#globe"></use>
+                                    </svg>
+                                    Web Development
+                                </h5>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">HTML5/CSS3</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 95%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">React.js</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 85%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Laravel</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
+                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                                <use xlink:href="assets/img/sprite.svg#check"></use>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Node.js</span>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other Competencies with tag cloud -->
+                            <div class="skill-category">
+                                <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center text-lg">
+                                    <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#tool"></use>
+                                    </svg>
+                                    Other Competencies
+                                </h5>
+                                <div class="flex flex-wrap gap-3">
+                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
+                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                                    </svg>
+                                    MySQL
+                                </span>
+                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
+                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                                    </svg>
+                                    MongoDB
+                                </span>
+                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
+                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                                    </svg>
+                                    Git
+                                </span>
+                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
+                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                                    </svg>
+                                    Docker
+                                </span>
+                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
+                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                                    </svg>
+                                    AWS
+                                </span>
+                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
+                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
+                                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                                    </svg>
+                                    Agile
+                                </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -499,6 +705,23 @@
             </div>
         </div>
     </section>
+
+    <!-- Add these animations to your CSS -->
+    <style>
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        @keyframes ping-slow {
+            75%, 100% { transform: scale(1.5); opacity: 0; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .animate-ping-slow {
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+    </style>
 
     <!-- Services Section -->
     <section class="service-section bg-light py-[114px] mt-[196px] dark:bg-midnight-express relative overflow-hidden" id="services">
