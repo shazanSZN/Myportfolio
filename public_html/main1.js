@@ -1,18 +1,10 @@
 /**
- * Portfolio Application - Main File
- * Handles core functionality and initialization
+ * Main Application - Handles core functionality (excluding header)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const DOM = {
-        themeToggle: document.querySelector('.theme-color-toggle'),
-        moonIcon: document.querySelector('.moon'),
-        sunIcon: document.querySelector('.sun'),
-        mobileMenuToggle: document.querySelector('.mobile-menu-toggle'),
-        navLinks: document.querySelector('.nav-links'),
-        moreLinks: document.querySelector('.more-links'),
-        menuList: document.querySelector('.menu-list'),
+    const appDOM = {
         experienceTabs: document.querySelectorAll('.companies-list li'),
         experienceContents: document.querySelectorAll('.content'),
         backToTop: document.querySelector('.back-to-top'),
@@ -22,22 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
         workImgs: document.querySelectorAll('.work_img img'),
         contactForm: document.querySelector('form[name="contactForm"]'),
         yearElement: document.querySelector('.year')
-
-
     };
 
     // Application state
-    const state = {
-        currentTheme: localStorage.getItem('theme') ||
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-        mobileMenuOpen: false,
+    const appState = {
         currentExperienceTab: 'aimpos'
     };
 
     // Initialize the application
-    function init() {
-        console.log('Initializing application...');
-        setTheme(state.currentTheme);
+    function initApp() {
+        console.log('Initializing main application...');
         setupEventListeners();
         updateCopyrightYear();
         initThirdPartyLibs();
@@ -50,38 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set up all event listeners
     function setupEventListeners() {
-        console.log('Setting up event listeners...');
-
-        // Theme toggle
-        if (DOM.themeToggle) {
-            DOM.themeToggle.addEventListener('click', toggleTheme);
-        } else {
-            console.warn('Theme toggle element not found');
-        }
-
-        // Mobile menu
-        if (DOM.mobileMenuToggle) {
-            DOM.mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-        } else {
-            console.warn('Mobile menu toggle element not found');
-        }
-
-        // More links dropdown
-        if (DOM.moreLinks) {
-            DOM.moreLinks.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleDropdownMenu();
-            });
-        } else {
-            console.warn('More links element not found');
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', closeDropdownMenu);
+        console.log('Setting up main application event listeners...');
 
         // Experience tabs
-        if (DOM.experienceTabs && DOM.experienceTabs.length > 0) {
-            DOM.experienceTabs.forEach(tab => {
+        if (appDOM.experienceTabs && appDOM.experienceTabs.length > 0) {
+            appDOM.experienceTabs.forEach(tab => {
                 tab.addEventListener('click', () => switchExperienceTab(tab.dataset.tab));
             });
         } else {
@@ -90,167 +49,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Back to top button
         window.addEventListener('scroll', debounce(handleScroll, 100));
-        if (DOM.backToTop) {
-            DOM.backToTop.addEventListener('click', scrollToTop);
+        if (appDOM.backToTop) {
+            appDOM.backToTop.addEventListener('click', scrollToTop);
         } else {
             console.warn('Back to top button not found');
         }
 
         // Certificate modal
-        if (DOM.workImgs && DOM.workImgs.length > 0) {
-            DOM.workImgs.forEach(img => {
+        if (appDOM.workImgs && appDOM.workImgs.length > 0) {
+            appDOM.workImgs.forEach(img => {
                 img.addEventListener('click', () => openModal(img));
             });
         } else {
             console.warn('Work images not found for modal');
         }
 
-        if (DOM.modalClose) {
-            DOM.modalClose.addEventListener('click', closeModal);
+        if (appDOM.modalClose) {
+            appDOM.modalClose.addEventListener('click', closeModal);
         } else {
             console.warn('Modal close button not found');
         }
 
-        if (DOM.modal) {
-            DOM.modal.addEventListener('click', (e) => {
-                if (e.target === DOM.modal) closeModal();
+        if (appDOM.modal) {
+            appDOM.modal.addEventListener('click', (e) => {
+                if (e.target === appDOM.modal) closeModal();
             });
         } else {
             console.warn('Modal element not found');
         }
 
         // Form submission
-        if (DOM.contactForm) {
-            DOM.contactForm.addEventListener('submit', handleFormSubmit);
+        if (appDOM.contactForm) {
+            appDOM.contactForm.addEventListener('submit', handleFormSubmit);
         } else {
             console.warn('Contact form not found');
         }
-
-        // Mobile navigation
-        const mobileMenuClose = document.querySelector('.mobile-menu-close');
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', () => {
-                document.querySelector('.mobile-nav').classList.add('translate-x-full');
-            });
-        }
     }
-
-    // Theme functions
-    function setTheme(theme) {
-        if (!['dark', 'light'].includes(theme)) {
-            console.warn(`Invalid theme: ${theme}`);
-            return;
-        }
-
-        console.log(`Setting theme to ${theme}`);
-        state.currentTheme = theme;
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem('theme', theme);
-
-        if (!DOM.sunIcon || !DOM.moonIcon) {
-            console.warn('Theme icons not found');
-            return;
-        }
-
-        const toggleClasses = ['invisible', 'opacity-0', 'scale-0', 'absolute'];
-
-        if (theme === 'dark') {
-            DOM.sunIcon.classList.remove(...toggleClasses);
-            DOM.sunIcon.classList.add('relative');
-            DOM.moonIcon.classList.add(...toggleClasses);
-            DOM.moonIcon.classList.remove('relative');
-        } else {
-            DOM.moonIcon.classList.remove(...toggleClasses);
-            DOM.moonIcon.classList.add('relative');
-            DOM.sunIcon.classList.add(...toggleClasses);
-            DOM.sunIcon.classList.remove('relative');
-        }
-    }
-
-    function toggleTheme() {
-        console.log('Toggling theme');
-        const newTheme = state.currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    }
-
-// Mobile menu functions
-    function toggleMobileMenu() {
-        if (!DOM.navLinks) {
-            console.error('Nav links element not found');
-            return;
-        }
-
-        state.mobileMenuOpen = !state.mobileMenuOpen;
-        console.log(`Mobile menu ${state.mobileMenuOpen ? 'opened' : 'closed'}`);
-        DOM.navLinks.classList.toggle('active', state.mobileMenuOpen);
-        document.body.style.overflow = state.mobileMenuOpen ? 'hidden' : '';
-    }
-
-// Dropdown menu functions
-    function toggleDropdownMenu() {
-        if (!DOM.menuList) {
-            console.warn('Menu list not found');
-            return;
-        }
-
-        console.log('Toggling dropdown menu');
-        DOM.menuList.classList.toggle('invisible');
-        DOM.menuList.classList.toggle('opacity-0');
-    }
-
-    function closeDropdownMenu() {
-        if (DOM.menuList && !DOM.menuList.classList.contains('invisible')) {
-            console.log('Closing dropdown menu');
-            DOM.menuList.classList.add('invisible', 'opacity-0');
-        }
-    }
-
-// Handle mobile navigation
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const menuClose = document.querySelector('.mobile-menu-close');
-        const mobileMenu = document.getElementById('mobile-navigation');
-        const backdrop = document.getElementById('mobile-backdrop');
-        const navLinks = document.querySelectorAll('#mobile-navigation a');
-
-
-
-        if (!menuToggle || !menuClose || !mobileMenu || !backdrop) {
-            console.error('Mobile menu elements not found');
-            return;
-        }
-
-        const openMenu = () => {
-            mobileMenu.classList.replace('-translate-x-full', 'translate-x-0');
-            mobileMenu.setAttribute('aria-hidden', 'false');
-            menuToggle.setAttribute('aria-expanded', 'true');
-            backdrop.classList.replace('opacity-0', 'opacity-100');
-            backdrop.classList.replace('pointer-events-none', 'pointer-events-auto');
-            document.body.style.overflow = 'hidden';
-        };
-
-        const closeMenu = () => {
-            mobileMenu.classList.replace('translate-x-0', '-translate-x-full');
-            mobileMenu.setAttribute('aria-hidden', 'true');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            backdrop.classList.replace('opacity-100', 'opacity-0');
-            backdrop.classList.replace('pointer-events-auto', 'pointer-events-none');
-            document.body.style.overflow = '';
-        };
-
-        menuToggle.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
-        backdrop.addEventListener('click', closeMenu);
-        navLinks.forEach(link => link.addEventListener('click', closeMenu));
-    });
-
 
     // Experience tabs functions
     function switchExperienceTab(tabId) {
         console.log(`Switching to experience tab: ${tabId}`);
 
-        if (DOM.experienceTabs) {
-            DOM.experienceTabs.forEach(tab => {
+        if (appDOM.experienceTabs) {
+            appDOM.experienceTabs.forEach(tab => {
                 const isActive = tab.dataset.tab === tabId;
                 tab.classList.toggle('active', isActive);
                 tab.classList.toggle('font-medium', isActive);
@@ -258,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        if (DOM.experienceContents) {
-            DOM.experienceContents.forEach(content => {
+        if (appDOM.experienceContents) {
+            appDOM.experienceContents.forEach(content => {
                 const isActive = content.id === tabId;
                 content.classList.toggle('active', isActive);
                 content.classList.toggle('visible', isActive);
@@ -277,18 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        state.currentExperienceTab = tabId;
+        appState.currentExperienceTab = tabId;
     }
 
     // Scroll functions
     function handleScroll() {
-        if (!DOM.backToTop) return;
+        if (!appDOM.backToTop) return;
 
         const showButton = window.pageYOffset > 300;
-        DOM.backToTop.classList.toggle('opacity-0', !showButton);
-        DOM.backToTop.classList.toggle('invisible', !showButton);
-        DOM.backToTop.classList.toggle('opacity-100', showButton);
-        DOM.backToTop.classList.toggle('visible', showButton);
+        appDOM.backToTop.classList.toggle('opacity-0', !showButton);
+        appDOM.backToTop.classList.toggle('invisible', !showButton);
+        appDOM.backToTop.classList.toggle('opacity-100', showButton);
+        appDOM.backToTop.classList.toggle('visible', showButton);
     }
 
     function scrollToTop() {
@@ -301,26 +142,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal functions
     function openModal(imgElement) {
-        if (!DOM.modal || !DOM.modalImg) {
+        if (!appDOM.modal || !appDOM.modalImg) {
             console.warn('Modal elements not found');
             return;
         }
 
         console.log('Opening modal');
-        DOM.modal.classList.remove('hidden');
-        DOM.modalImg.src = imgElement.src;
-        DOM.modalImg.alt = imgElement.alt;
+        appDOM.modal.classList.remove('hidden');
+        appDOM.modalImg.src = imgElement.src;
+        appDOM.modalImg.alt = imgElement.alt;
         document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-        if (!DOM.modal) {
+        if (!appDOM.modal) {
             console.warn('Modal element not found');
             return;
         }
 
         console.log('Closing modal');
-        DOM.modal.classList.add('hidden');
+        appDOM.modal.classList.add('hidden');
         document.body.style.overflow = '';
     }
 
@@ -494,6 +335,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Animation initialization
+    function initAnimations() {
+        console.log('Initializing animations...');
+        // Add any animation initialization code here
+    }
+
     // Utility functions
     function debounce(func, wait) {
         let timeout;
@@ -505,8 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateCopyrightYear() {
-        if (DOM.yearElement) {
-            DOM.yearElement.textContent = new Date().getFullYear();
+        if (appDOM.yearElement) {
+            appDOM.yearElement.textContent = new Date().getFullYear();
             console.log('Copyright year updated');
         } else {
             console.warn('Year element not found');
@@ -514,5 +361,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Start the application
-    init();
+    initApp();
 });
