@@ -129,13 +129,14 @@
             </svg>
         </a>
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Button - UPDATED with data attribute -->
         <button
                 class="md:hidden mobile-menu-toggle w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 type="button"
                 aria-label="Menu"
                 aria-expanded="false"
                 aria-controls="mobile-navigation"
+                data-mobile-menu-toggle
         >
             <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
                 <use xlink:href="assets/img/sprite.svg#menu"></use>
@@ -207,17 +208,15 @@
             </a>
         </div>
 
-        <!-- Mobile Navigation - UPDATED VERSION -->
-        <nav
+        <!-- Mobile Navigation - UPDATED with data attributes -->
+        <div
                 id="mobile-navigation"
-                class="mobile-nav fixed inset-0 z-40 -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-midnight-express md:hidden"
+                class="mobile-menu fixed inset-0 z-40 -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-midnight-express md:hidden"
                 aria-label="Mobile menu"
                 aria-hidden="true"
+                data-mobile-menu
         >
             <div class="flex flex-col h-full px-4 py-6 overflow-y-auto">
-
-
-
                 <!-- Header: Logo and Close Button -->
                 <div class="flex justify-between items-center mb-8">
                     <a href="#" class="w-[113px] h-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Shazan - Home">
@@ -228,25 +227,23 @@
                     <button
                             class="mobile-menu-close w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             aria-label="Close menu"
+                            data-mobile-menu-close
                     >
                         <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
                             <use xlink:href="assets/img/sprite.svg#close"></use>
                         </svg>
                     </button>
-
-
                 </div>
 
-
-                <!-- Navigation Links -->
+                <!-- Navigation Links - UPDATED with data attributes -->
                 <ul class="flex-1 space-y-4" role="menu">
-                    <li role="none"><a href="#education-skill" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📘 Education</a></li>
-                    <li role="none"><a href="#portfolios" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">🎨 Portfolios</a></li>
-                    <li role="none"><a href="#experience" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">💼 Experience</a></li>
-                    <li role="none"><a href="#blogs" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📝 Blog</a></li>
-                    <li role="none"><a href="#work" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📄 Certificate</a></li>
-                    <li role="none"><a href="#services" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">🔧 Specialized</a></li>
-                    <li role="none"><a href="#contact" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📞 Contact</a></li>
+                    <li role="none"><a href="#education-skill" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📘 Education</a></li>
+                    <li role="none"><a href="#portfolios" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>🎨 Portfolios</a></li>
+                    <li role="none"><a href="#experience" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>💼 Experience</a></li>
+                    <li role="none"><a href="#blogs" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📝 Blog</a></li>
+                    <li role="none"><a href="#work" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📄 Certificate</a></li>
+                    <li role="none"><a href="#services" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>🔧 Specialized</a></li>
+                    <li role="none"><a href="#contact" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📞 Contact</a></li>
                 </ul>
 
                 <!-- Footer: Theme Toggle & Resume -->
@@ -279,11 +276,15 @@
                     </a>
                 </div>
             </div>
-        </nav>
+        </div>
 
+        <!-- Mobile Menu Backdrop - ADDED -->
+        <div
+                class="mobile-menu-backdrop fixed inset-0 z-30 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+                data-mobile-backdrop
+        ></div>
     </div>
 </header>
-
 <!-- Backdrop for mobile menu -->
 <div id="mobile-backdrop" class="fixed inset-0 z-30 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
 
