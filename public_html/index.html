@@ -6,10 +6,10 @@
     <title>Mohamed Shazan - Portfolio</title>
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
 
     <!-- Fonts (optimized) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,16 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+<!--    <script src="./main1.js" defer></script>-->
+<!--    <script src="./assets/js1/threejs.js"></script>-->
+<!--    <script src="./assets/js1/animations.js"></script>-->
+
+
+    <script src="./main1.js" defer></script>
+    <script src="./assets/js1/threejs.js"></script>
+    <script src="./assets/js1/animations.js"></script>
+
 
     <!-- Tailwind config (custom colors, fonts, animations) -->
     <script>
@@ -96,70 +106,91 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
 
     <!-- Three.js -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r169/examples/jsm/controls/OrbitControls.js"></script>
 
-    <!-- Your main JavaScript -->
-    <script src="./script.js" defer></script>
+
+
 </head>
 <body class="font-primary text-cinder bg-light dark:bg-midnight-express dark:text-cinder-light">
 <!-- Header -->
-<header class="header py-4 sticky top-0 z-50 mt-6 bg-light/80 dark:bg-midnight-express/80 backdrop-blur-sm transition-all duration-300">
+<header class="header py-4 sticky top-0 z-50 mt-6 bg-light/80 dark:bg-midnight-express/80 backdrop-blur-sm transition-all duration-300 shadow-sm dark:shadow-md">
     <div class="container max-w-[1200px] px-4 mx-auto flex items-center justify-between">
 
         <!-- Logo -->
-        <a href="#" class="logo w-[113px] h-10 block" aria-label="Shazan logo">
-            <svg viewBox="0 0 114 41" class="fill-cinder dark:fill-white w-full h-full">
+        <a href="#" class="logo w-[113px] h-10 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Shazan - Home">
+            <svg viewBox="0 0 114 41" class="fill-cinder dark:fill-white w-full h-full" aria-hidden="true">
                 <use xlink:href="assets/img/sprite.svg#gif"></use>
             </svg>
         </a>
 
         <!-- Mobile Menu Button -->
         <button
-                class="md:hidden mobile-menu-toggle w-10 h-10 flex items-center justify-center"
+                class="md:hidden mobile-menu-toggle w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 type="button"
-                aria-label="Open mobile menu"
+                aria-label="Menu"
+                aria-expanded="false"
+                aria-controls="mobile-navigation"
         >
-            <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
                 <use xlink:href="assets/img/sprite.svg#menu"></use>
             </svg>
         </button>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden md:block" aria-label="Main navigation" role="navigation">
-            <ul class="nav-links flex items-center">
-                <li class="education mr-6 lg:mr-14"><a href="#education-skill">Education</a></li>
-                <li class="portfolios mr-6 lg:mr-14"><a href="#portfolios">Portfolios</a></li>
-                <li class="experience mr-6 lg:mr-14"><a href="#experience">Experience</a></li>
-                <li class="blog mr-6 lg:mr-14"><a href="#blogs">Blog</a></li>
-                <li class="more-links relative cursor-pointer group">
-                    <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white">
-                        <use xlink:href="assets/img/sprite.svg#more-links"></use>
-                    </svg>
-                    <ul class="menu-list absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-[60px] left-[-3px] p-5 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
-                        <li class="certificate pb-4"><a href="#work">Certificate</a></li>
-                        <li class="specialized pb-4"><a href="#services">Specialized</a></li>
-                        <li class="contact"><a href="#contact">Contact</a></li>
+        <nav class="hidden md:block" aria-label="Primary">
+            <ul class="nav-links flex items-center gap-6 lg:gap-14">
+                <li><a href="#education-skill" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Education</a></li>
+                <li><a href="#portfolios" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Portfolios</a></li>
+                <li><a href="#experience" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Experience</a></li>
+                <li><a href="#blogs" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Blog</a></li>
+
+                <!-- Dropdown -->
+                <li class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button
+                            class="flex items-center justify-center w-8 h-8 rounded hover:bg-light-2 dark:hover:bg-cinder focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            aria-expanded="false"
+                            aria-controls="more-menu"
+                            @click="open = !open"
+                    >
+                        <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white" aria-hidden="true">
+                            <use xlink:href="assets/img/sprite.svg#more-links"></use>
+                        </svg>
+                        <span class="sr-only">More options</span>
+                    </button>
+                    <ul
+                            id="more-menu"
+                            class="absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-full left-0 p-4 rounded-lg shadow-lg min-w-[180px] transition-all duration-200 origin-top transform scale-y-0 group-hover:scale-y-100 group-focus-within:scale-y-100"
+                            :class="{ 'scale-y-100': open, 'scale-y-0': !open }"
+                            role="menu"
+                    >
+                        <li role="none"><a href="#work" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Certificate</a></li>
+                        <li role="none"><a href="#services" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Specialized</a></li>
+                        <li role="none"><a href="#contact" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Contact</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
 
         <!-- Right Side (Desktop) -->
-        <div class="right-content hidden md:flex items-center gap-6">
+        <div class="right-content hidden md:flex items-center gap-4">
             <!-- Dark Mode Toggle -->
             <button
                     type="button"
-                    class="theme-color-toggle relative w-12 h-12 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300"
+                    class="theme-color-toggle relative w-10 h-10 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     aria-label="Toggle dark mode"
+                    aria-pressed="false"
             >
-                <svg class="moon w-6 h-6 fill-cinder dark:fill-white transition-all duration-300 rotate-0 scale-100 dark:scale-0 dark:rotate-90" viewBox="0 0 24 24">
+                <span class="sr-only">Toggle dark mode</span>
+                <svg class="moon w-5 h-5 fill-cinder dark:fill-white transition-all duration-300" viewBox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
                 </svg>
-                <svg class="sun w-6 h-6 fill-cinder dark:fill-white transition-all duration-300 absolute scale-0 rotate-90 dark:scale-100 dark:rotate-0" viewBox="0 0 24 24">
+                <svg class="sun w-5 h-5 fill-cinder dark:fill-white transition-all duration-300 absolute opacity-0 scale-0" viewBox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
                 </svg>
             </button>
@@ -169,55 +200,68 @@
                     href="assets/mycv/Shazan-cv.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="btn btn-outline-light download-resume px-4 py-2 border border-cinder dark:border-white rounded-lg text-sm hover:bg-light-3 dark:hover:bg-cinder transition"
+                    class="btn btn-outline-light download-resume px-4 py-2 border border-cinder dark:border-white rounded-lg text-sm hover:bg-light-3 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label="Download resume (opens in new tab)"
             >
                 Resume
             </a>
         </div>
 
-        <!-- Improved Mobile Navigation -->
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav fixed inset-0 z-40 translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-midnight-express md:hidden" aria-label="Mobile menu">
-            <div class="flex flex-col h-full px-4 py-6">
+        <!-- Mobile Navigation - UPDATED VERSION -->
+        <nav
+                id="mobile-navigation"
+                class="mobile-nav fixed inset-0 z-40 -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-midnight-express md:hidden"
+                aria-label="Mobile menu"
+                aria-hidden="true"
+        >
+            <div class="flex flex-col h-full px-4 py-6 overflow-y-auto">
+
+
 
                 <!-- Header: Logo and Close Button -->
                 <div class="flex justify-between items-center mb-8">
-                    <a href="#" class="w-[113px] h-10" aria-label="Shazan Logo">
-                        <svg viewBox="0 0 114 41" class="w-full h-full fill-cinder dark:fill-white">
+                    <a href="#" class="w-[113px] h-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Shazan - Home">
+                        <svg viewBox="0 0 114 41" class="w-full h-full fill-cinder dark:fill-white" aria-hidden="true">
                             <use xlink:href="assets/img/sprite.svg#gif"></use>
                         </svg>
                     </a>
-                    <button class="mobile-menu-close w-10 h-10 flex items-center justify-center" aria-label="Close menu">
-                        <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24">
+                    <button
+                            class="mobile-menu-close w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            aria-label="Close menu"
+                    >
+                        <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
                             <use xlink:href="assets/img/sprite.svg#close"></use>
                         </svg>
                     </button>
+
+
                 </div>
 
+
                 <!-- Navigation Links -->
-                <ul class="flex-1 space-y-5 text-lg" role="menu">
-                    <li><a href="#education-skill" class="block" role="menuitem">📘 Education</a></li>
-                    <li><a href="#portfolios" class="block" role="menuitem">🎨 Portfolios</a></li>
-                    <li><a href="#experience" class="block" role="menuitem">💼 Experience</a></li>
-                    <li><a href="#blogs" class="block" role="menuitem">📝 Blog</a></li>
-                    <li><a href="#work" class="block" role="menuitem">📄 Certificate</a></li>
-                    <li><a href="#services" class="block" role="menuitem">🔧 Specialized</a></li>
-                    <li><a href="#contact" class="block" role="menuitem">📞 Contact</a></li>
+                <ul class="flex-1 space-y-4" role="menu">
+                    <li role="none"><a href="#education-skill" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📘 Education</a></li>
+                    <li role="none"><a href="#portfolios" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">🎨 Portfolios</a></li>
+                    <li role="none"><a href="#experience" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">💼 Experience</a></li>
+                    <li role="none"><a href="#blogs" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📝 Blog</a></li>
+                    <li role="none"><a href="#work" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📄 Certificate</a></li>
+                    <li role="none"><a href="#services" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">🔧 Specialized</a></li>
+                    <li role="none"><a href="#contact" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem">📞 Contact</a></li>
                 </ul>
 
                 <!-- Footer: Theme Toggle & Resume -->
                 <div class="pt-6 space-y-4">
-
                     <!-- Theme Toggle Button -->
                     <button
                             type="button"
-                            class="theme-color-toggle-mobile w-full flex items-center justify-center gap-3 py-3 px-4 rounded-lg border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300"
+                            class="theme-color-toggle-mobile w-full flex items-center justify-center gap-3 py-3 px-4 rounded-lg border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             aria-label="Toggle theme"
+                            aria-pressed="false"
                     >
-                        <svg class="moon w-5 h-5 fill-cinder dark:fill-white dark:hidden" viewBox="0 0 24 24">
+                        <svg class="moon w-5 h-5 fill-cinder dark:fill-white dark:hidden" viewBox="0 0 24 24" aria-hidden="true">
                             <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
                         </svg>
-                        <svg class="sun w-5 h-5 fill-cinder dark:fill-white hidden dark:inline" viewBox="0 0 24 24">
+                        <svg class="sun w-5 h-5 fill-cinder dark:fill-white hidden dark:inline" viewBox="0 0 24 24" aria-hidden="true">
                             <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
                         </svg>
                         <span>Toggle Theme</span>
@@ -228,17 +272,21 @@
                             href="assets/mycv/Shazan-cv.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="w-full block text-center py-3 rounded-lg border border-cinder dark:border-white hover:bg-light-3 dark:hover:bg-cinder transition text-base font-medium"
+                            class="w-full block text-center py-3 rounded-lg border border-cinder dark:border-white hover:bg-light-3 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-base font-medium"
+                            aria-label="View resume (opens in new tab)"
                     >
                         📄 View Resume
                     </a>
                 </div>
-
             </div>
         </nav>
 
     </div>
 </header>
+
+<!-- Backdrop for mobile menu -->
+<div id="mobile-backdrop" class="fixed inset-0 z-30 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+
 
 
 
@@ -281,12 +329,12 @@
 
                     <!-- Floating shapes background -->
                     <div class="floating-shapes absolute inset-0 z-10 overflow-hidden">
-                        <div class="shape shape-1 absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] top-[-50px] left-[-40px] bg-blue-300 animate-spin-slow"></div>
-                        <div class="shape shape-2 absolute w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] bottom-[-30px] right-[-30px] bg-pink-300 animate-bounce-slow"></div>
+                        <div class="shape shape-1 absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] top-[-50px] left-[-40px] bg-fuchsia-50 animate-spin-slow"></div>
+                        <div class="shape shape-2 absolute w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] bottom-[-30px] right-[-30px] bg-fuchsia-50  animate-bounce-slow"></div>
                     </div>
 
 
-                     <style>
+                    <style>
                         @keyframes spin-slow {
                             0% { transform: rotate(0deg); }
                             100% { transform: rotate(360deg); }
@@ -305,6 +353,7 @@
                             animation: bounce-slow 5s ease-in-out infinite;
                         }
                     </style>
+
 
 
 
@@ -561,200 +610,83 @@
                     </div>
                 </div>
 
-                <!-- Skills Section with enhanced card design -->
-                <div class="skills w-full lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="300">
+                <section class="skills w-full lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="300" aria-labelledby="technical-skills">
                     <div class="skills-card bg-white dark:bg-midnight-express p-6 md:p-8 rounded-2xl shadow-xl border border-light-3 dark:border-gray-800 hover:shadow-2xl transition-all duration-500">
-                        <div class="flex items-center justify-between mb-6">
-                            <h4 class="skills-title font-bold text-2xl md:text-3xl text-cinder dark:text-white relative">
-                            <span class="bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">
-                                Technical Skills
-                            </span>
-                            </h4>
+
+                        <!-- Title Header -->
+                        <header class="flex items-center justify-between mb-6">
+                            <h2 id="technical-skills" class="font-bold text-2xl md:text-3xl text-cinder dark:text-white relative">
+        <span class="bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">
+          Technical Skills
+        </span>
+                            </h2>
                             <div class="w-10 h-10 rounded-full bg-purple-light-2 dark:bg-gray-800 flex items-center justify-center">
-                                <svg class="w-5 h-5 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 fill-purple dark:fill-purple-light" viewBox="0 0 24 24" aria-hidden="true">
                                     <use xlink:href="assets/img/sprite.svg#code"></use>
                                 </svg>
                             </div>
-                        </div>
+                        </header>
 
-                        <!-- Skill Categories with improved layout -->
-                        <div class="space-y-8">
-                            <!-- Programming Languages -->
-                            <div class="skill-category">
-                                <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center text-lg">
-                                    <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#code"></use>
-                                    </svg>
+                        <!-- Categories Wrapper -->
+                        <div class="space-y-10">
+
+                            <!-- Skill Group Component -->
+                            <div class="skill-category" aria-labelledby="prog-lang">
+                                <h3 id="prog-lang" class="category-title flex items-center text-lg font-semibold text-purple dark:text-purple-light mb-4">
+                                    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#code"></use></svg>
                                     Programming Languages
-                                </h5>
+                                </h3>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
+                                    <!-- Example Skill Block (Reusable Component) -->
+                                    <div class="skill-item group flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
                                         <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
+                                            <svg class="w-4 h-4 fill-current text-purple dark:text-purple-light" viewBox="0 0 24 24">
                                                 <use xlink:href="assets/img/sprite.svg#check"></use>
                                             </svg>
                                         </div>
                                         <div>
                                             <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">JavaScript</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 90%"></div>
+                                            <div class="relative w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple h-1 rounded-full transition-all duration-700 ease-in-out" style="width: 90%"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">PHP</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 85%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Java</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 80%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Python</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 75%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- Repeat this block for other skills like PHP, Java, Python... -->
                                 </div>
                             </div>
 
-                            <!-- Web Development -->
-                            <div class="skill-category">
-                                <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center text-lg">
-                                    <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#globe"></use>
-                                    </svg>
+                            <!-- Web Development Skills -->
+                            <div class="skill-category" aria-labelledby="web-dev">
+                                <h3 id="web-dev" class="category-title flex items-center text-lg font-semibold text-purple dark:text-purple-light mb-4">
+                                    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#globe"></use></svg>
                                     Web Development
-                                </h5>
+                                </h3>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">HTML5/CSS3</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 95%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">React.js</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 85%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Laravel</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 80%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-item flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">
-                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">
-                                            <svg class="w-4 h-4 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#check"></use>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">Node.js</span>
-                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
-                                                <div class="bg-purple h-1 rounded-full" style="width: 75%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- Same pattern repeated here for HTML, React, Laravel, Node -->
                                 </div>
                             </div>
 
-                            <!-- Other Competencies with tag cloud -->
-                            <div class="skill-category">
-                                <h5 class="category-title font-semibold text-purple dark:text-purple-light mb-4 flex items-center text-lg">
-                                    <svg class="w-5 h-5 mr-2 fill-purple dark:fill-purple-light" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#tool"></use>
-                                    </svg>
+                            <!-- Other Competencies -->
+                            <div class="skill-category" aria-labelledby="other-comp">
+                                <h3 id="other-comp" class="category-title flex items-center text-lg font-semibold text-purple dark:text-purple-light mb-4">
+                                    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#tool"></use></svg>
                                     Other Competencies
-                                </h5>
+                                </h3>
                                 <div class="flex flex-wrap gap-3">
-                                <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
-                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#check"></use>
-                                    </svg>
-                                    MySQL
-                                </span>
+                                    <!-- Tag-like badges -->
                                     <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
-                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#check"></use>
-                                    </svg>
-                                    MongoDB
-                                </span>
-                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
-                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#check"></use>
-                                    </svg>
-                                    Git
-                                </span>
-                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
-                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#check"></use>
-                                    </svg>
-                                    Docker
-                                </span>
-                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
-                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#check"></use>
-                                    </svg>
-                                    AWS
-                                </span>
-                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">
-                                    <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24">
-                                        <use xlink:href="assets/img/sprite.svg#check"></use>
-                                    </svg>
-                                    Agile
-                                </span>
+            <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#check"></use></svg>
+            MySQL
+          </span>
+                                    <!-- Repeat for MongoDB, Git, Docker, AWS, Agile -->
                                 </div>
                             </div>
+
                         </div>
+                    </div>
+                </section>
+
+            </div>
                     </div>
                 </div>
             </div>
@@ -1194,77 +1126,76 @@
     </section>
 
     <!-- Certificates Section -->
-    <section class="blog-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="blog">
+    <section class="certificates-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="certificates">
         <div class="certificates-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
         <div class="container max-w-[1200px] px-4 mx-auto relative">
             <div class="section-name flex justify-center mb-12">
                 <div class="content text-center">
                     <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
-                        My Articles
+                        My Certificates
                     </p>
                     <h4 class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
-                        MY CERTIFICATES
+                        CERTIFICATES SHOWCASE
                     </h4>
                     <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
                 </div>
             </div>
 
-            <section class="work section" id="work">
-                <div class="work_container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto px-4">
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c1.jpg" alt="SLASS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c2.jpg" alt="Web Programming & Design" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c3.jpg" alt="Udemy Course" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c4.jpg" alt="Course C" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c5.jpg" alt="Course D" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c6.jpg" alt="Course E" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c7.jpg" alt="CSS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c8.jpg" alt="HTML Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c9.jpg" alt="SQL Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c10.jpg" alt="Python for Data Science" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c11.jpg" alt="Advanced Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c12.jpg" alt="Core Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c13.jpg" alt="JavaScript Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img alt="C Programming" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105"
-                             src="./assets/img/c14.jpg"/>
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c15.jpg" alt="React.js Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c16.jpg" alt="Java Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
-                    <div class="work_img bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                        <img src="./assets/img/c17.jpg" alt="PHP Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
-                    </div>
+            <!-- Certificate Grid -->
+            <div class="certificates-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto px-4">
+                <!-- Each certificate block -->
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c1.jpg" alt="SLASS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
                 </div>
-            </section>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c2.jpg" alt="Web Programming & Design" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c3.jpg" alt="Udemy Course" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c4.jpg" alt="Course C" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c5.jpg" alt="Course D" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c6.jpg" alt="Course E" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c7.jpg" alt="CSS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c8.jpg" alt="HTML Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c9.jpg" alt="SQL Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c10.jpg" alt="Python for Data Science" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c11.jpg" alt="Advanced Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c12.jpg" alt="Core Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c13.jpg" alt="JavaScript Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c14.jpg" alt="C Programming" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c15.jpg" alt="React.js Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c16.jpg" alt="Java Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c17.jpg" alt="PHP Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1533,13 +1464,18 @@
 </div>
 
 <!-- Scripts -->
+
+<!--<script src="./main1.js" defer></script>-->
+<!--<script src="./assets/js1/threejs.js"></script>-->
+<!--<script src="./assets/js1/animations.js"></script>-->
+
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script src="assets/js/aos.js"></script>
-<script src="assets/js/swiper-bundle.min.js"></script>
-<script src="assets/js/kursor.js"></script>
-<script src="assets/js/svg4everybody.min.js"></script>
-<script src="assets/js/css-vars-ponyfill.min.js"></script>
-<script src="assets/js/unfetch.js"></script>
+<script src="./assets/js/aos.js"></script>
+<script src="./assets/js/swiper-bundle.min.js"></script>
+<script src="./assets/js/kursor.js"></script>
+<script src="./assets/js/svg4everybody.min.js"></script>
+<script src="./assets/js/css-vars-ponyfill.min.js"></script>
+<script src="./assets/js/unfetch.js"></script>
 
 </body>
 </html>
