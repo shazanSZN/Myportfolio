@@ -19,14 +19,16 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-<!--    <script src="./main1.js" defer></script>-->
-<!--    <script src="./assets/js1/threejs.js"></script>-->
-<!--    <script src="./assets/js1/animations.js"></script>-->
+    <!--    <script src="./main1.js" defer></script>-->
+    <!--    <script src="./assets/js1/threejs.js"></script>-->
+    <!--    <script src="./assets/js1/animations.js"></script>-->
 
 
     <script src="./main1.js" defer></script>
     <script src="./assets/js1/threejs.js"></script>
     <script src="./assets/js1/animations.js"></script>
+    <script src="./assets/js1/header.js"></script>
+
 
 
     <!-- Tailwind config (custom colors, fonts, animations) -->
@@ -129,19 +131,36 @@
             </svg>
         </a>
 
-        <!-- Mobile Menu Button - UPDATED with data attribute -->
-        <button
-                class="md:hidden mobile-menu-toggle w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                type="button"
-                aria-label="Menu"
-                aria-expanded="false"
-                aria-controls="mobile-navigation"
-                data-mobile-menu-toggle
-        >
-            <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                <use xlink:href="assets/img/sprite.svg#menu"></use>
-            </svg>
-        </button>
+        <!-- Mobile Controls (Toggle + Menu) -->
+        <div class="flex items-center md:hidden space-x-2">
+            <!-- Theme Toggle Button (Visible on mobile) -->
+            <button
+                    type="button"
+                    class="theme-color-toggle w-10 h-10 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+            >
+                <svg class="moon w-5 h-5 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                    <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
+                </svg>
+                <svg class="sun w-5 h-5 fill-cinder dark:fill-white absolute opacity-0 scale-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
+                </svg>
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button
+                    class="mobile-menu-toggle w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    type="button"
+                    aria-label="Menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-navigation"
+            >
+                <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                    <use xlink:href="assets/img/sprite.svg#menu"></use>
+                </svg>
+            </button>
+        </div>
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:block" aria-label="Primary">
@@ -152,12 +171,11 @@
                 <li><a href="#blogs" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Blog</a></li>
 
                 <!-- Dropdown -->
-                <li class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                <li class="relative group">
                     <button
                             class="flex items-center justify-center w-8 h-8 rounded hover:bg-light-2 dark:hover:bg-cinder focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             aria-expanded="false"
                             aria-controls="more-menu"
-                            @click="open = !open"
                     >
                         <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white" aria-hidden="true">
                             <use xlink:href="assets/img/sprite.svg#more-links"></use>
@@ -166,8 +184,7 @@
                     </button>
                     <ul
                             id="more-menu"
-                            class="absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-full left-0 p-4 rounded-lg shadow-lg min-w-[180px] transition-all duration-200 origin-top transform scale-y-0 group-hover:scale-y-100 group-focus-within:scale-y-100"
-                            :class="{ 'scale-y-100': open, 'scale-y-0': !open }"
+                            class="absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-full left-0 p-4 rounded-lg shadow-lg min-w-[180px] transition-all duration-200 origin-top transform scale-y-0 group-hover:scale-y-100"
                             role="menu"
                     >
                         <li role="none"><a href="#work" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Certificate</a></li>
@@ -188,10 +205,10 @@
                     aria-pressed="false"
             >
                 <span class="sr-only">Toggle dark mode</span>
-                <svg class="moon w-5 h-5 fill-cinder dark:fill-white transition-all duration-300" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="moon w-5 h-5 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
                 </svg>
-                <svg class="sun w-5 h-5 fill-cinder dark:fill-white transition-all duration-300 absolute opacity-0 scale-0" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="sun w-5 h-5 fill-cinder dark:fill-white absolute opacity-0 scale-0" viewBox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
                 </svg>
             </button>
@@ -208,85 +225,51 @@
             </a>
         </div>
 
-        <!-- Mobile Navigation - UPDATED with data attributes -->
-        <div
+        <!-- Mobile Navigation -->
+        <nav
                 id="mobile-navigation"
-                class="mobile-menu fixed inset-0 z-40 -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-midnight-express md:hidden"
-                aria-label="Mobile menu"
+                class="fixed top-0 left-0 z-40 h-full w-64 bg-white dark:bg-gray-900 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
                 aria-hidden="true"
-                data-mobile-menu
         >
-            <div class="flex flex-col h-full px-4 py-6 overflow-y-auto">
-                <!-- Header: Logo and Close Button -->
-                <div class="flex justify-between items-center mb-8">
-                    <a href="#" class="w-[113px] h-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Shazan - Home">
-                        <svg viewBox="0 0 114 41" class="w-full h-full fill-cinder dark:fill-white" aria-hidden="true">
-                            <use xlink:href="assets/img/sprite.svg#gif"></use>
-                        </svg>
-                    </a>
-                    <button
-                            class="mobile-menu-close w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                            aria-label="Close menu"
-                            data-mobile-menu-close
-                    >
-                        <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                            <use xlink:href="assets/img/sprite.svg#close"></use>
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Navigation Links - UPDATED with data attributes -->
-                <ul class="flex-1 space-y-4" role="menu">
-                    <li role="none"><a href="#education-skill" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📘 Education</a></li>
-                    <li role="none"><a href="#portfolios" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>🎨 Portfolios</a></li>
-                    <li role="none"><a href="#experience" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>💼 Experience</a></li>
-                    <li role="none"><a href="#blogs" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📝 Blog</a></li>
-                    <li role="none"><a href="#work" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📄 Certificate</a></li>
-                    <li role="none"><a href="#services" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>🔧 Specialized</a></li>
-                    <li role="none"><a href="#contact" class="block py-3 px-4 rounded-lg hover:bg-light-2 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" role="menuitem" data-mobile-nav-link>📞 Contact</a></li>
-                </ul>
-
-                <!-- Footer: Theme Toggle & Resume -->
-                <div class="pt-6 space-y-4">
-                    <!-- Theme Toggle Button -->
-                    <button
-                            type="button"
-                            class="theme-color-toggle-mobile w-full flex items-center justify-center gap-3 py-3 px-4 rounded-lg border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                            aria-label="Toggle theme"
-                            aria-pressed="false"
-                    >
-                        <svg class="moon w-5 h-5 fill-cinder dark:fill-white dark:hidden" viewBox="0 0 24 24" aria-hidden="true">
-                            <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
-                        </svg>
-                        <svg class="sun w-5 h-5 fill-cinder dark:fill-white hidden dark:inline" viewBox="0 0 24 24" aria-hidden="true">
-                            <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
-                        </svg>
-                        <span>Toggle Theme</span>
-                    </button>
-
-                    <!-- Resume Button -->
-                    <a
-                            href="assets/mycv/Shazan-cv.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="w-full block text-center py-3 rounded-lg border border-cinder dark:border-white hover:bg-light-3 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-base font-medium"
-                            aria-label="View resume (opens in new tab)"
-                    >
-                        📄 View Resume
-                    </a>
-                </div>
+            <div class="flex items-center justify-between p-4 border-b border-gray-300 dark:border-gray-700">
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Menu</h2>
+                <!-- Close button -->
+                <button
+                        aria-label="Close mobile menu"
+                        class="mobile-menu-close w-10 h-10 flex items-center justify-center p-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <!-- X icon -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
             </div>
-        </div>
 
-        <!-- Mobile Menu Backdrop - ADDED -->
+            <ul id="menu" class="flex flex-col space-y-3 p-5 bg-gray-900 rounded-lg text-gray-100 font-semibold text-base shadow-lg">
+                <li>
+                    <a href="#home" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">Home</a>
+                </li>
+                <li>
+                    <a href="#about" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">About</a>
+                </li>
+                <li>
+                    <a href="#services" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">Services</a>
+                </li>
+                <li>
+                    <a href="#contact" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Backdrop -->
         <div
-                class="mobile-menu-backdrop fixed inset-0 z-30 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
-                data-mobile-backdrop
+                id="mobile-backdrop"
+                class="fixed inset-0 bg-black bg-opacity-30 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+                aria-hidden="true"
         ></div>
     </div>
 </header>
-<!-- Backdrop for mobile menu -->
-<div id="mobile-backdrop" class="fixed inset-0 z-30 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
 
 
 
@@ -611,105 +594,106 @@
                     </div>
                 </div>
 
-<!--                <section class="skills w-full lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="300" aria-labelledby="technical-skills">-->
-<!--                    <div class="skills-card bg-white dark:bg-midnight-express p-6 md:p-8 rounded-2xl shadow-xl border border-light-3 dark:border-gray-800 hover:shadow-2xl transition-all duration-500">-->
+<!--            <section class="skills w-full mt-6" data-aos="fade-up" data-aos-delay="300" aria-labelledby="technical-skills">-->
+<!--    <div class="skills-card bg-white dark:bg-midnight-express p-4 md:p-6 rounded-xl shadow-md border border-light-3 dark:border-gray-800 hover:shadow-lg transition-all duration-300 max-w-6xl mx-auto">-->
 
-<!--                        &lt;!&ndash; Title Header &ndash;&gt;-->
-<!--                        <header class="flex items-center justify-between mb-6">-->
-<!--                            <h2 id="technical-skills" class="font-bold text-2xl md:text-3xl text-cinder dark:text-white relative">-->
-<!--        <span class="bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">-->
-<!--          Technical Skills-->
-<!--        </span>-->
-<!--                            </h2>-->
-<!--                            <div class="w-10 h-10 rounded-full bg-purple-light-2 dark:bg-gray-800 flex items-center justify-center">-->
-<!--                                <svg class="w-5 h-5 fill-purple dark:fill-purple-light" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--                                    <use xlink:href="assets/img/sprite.svg#code"></use>-->
-<!--                                </svg>-->
-<!--                            </div>-->
-<!--                        </header>-->
+<!--        &lt;!&ndash; Compact Title Header &ndash;&gt;-->
+<!--                <header class="flex items-center justify-center space-x-3 mb-6">-->
+<!--                    <div class="w-10 h-10 rounded-full bg-purple-light-2 dark:bg-gray-800 flex items-center justify-center">-->
+<!--                        <svg class="w-5 h-5 fill-purple dark:fill-purple-light" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                            <use xlink:href="assets/img/sprite.svg#code"></use>-->
+<!--                        </svg>-->
+<!--                    </div>-->
+<!--                    <h2 id="technical-skills" class="font-bold text-xl md:text-2xl text-cinder dark:text-white">-->
+<!--                <span class="bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">-->
+<!--                    Technical Skills-->
+<!--                </span>-->
+<!--                    </h2>-->
+<!--                </header>-->
 
-<!--                        &lt;!&ndash; Categories Wrapper &ndash;&gt;-->
-<!--                        <div class="space-y-10">-->
+<!--                &lt;!&ndash; Horizontal Layout for Categories &ndash;&gt;-->
+<!--                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">-->
 
-<!--                            &lt;!&ndash; Skill Group Component &ndash;&gt;-->
-<!--                            <div class="skill-category" aria-labelledby="prog-lang">-->
-<!--                                <h3 id="prog-lang" class="category-title flex items-center text-lg font-semibold text-purple dark:text-purple-light mb-4">-->
-<!--                                    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#code"></use></svg>-->
-<!--                                    Programming Languages-->
-<!--                                </h3>-->
-<!--                                <div class="grid grid-cols-2 gap-4">-->
-<!--                                    &lt;!&ndash; Example Skill Block (Reusable Component) &ndash;&gt;-->
-<!--                                    <div class="skill-item group flex items-center p-3 rounded-lg hover:bg-purple-light-1/30 dark:hover:bg-gray-800/50 transition-colors duration-300">-->
-<!--                                        <div class="skill-icon w-9 h-9 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3 shadow-inner">-->
-<!--                                            <svg class="w-4 h-4 fill-current text-purple dark:text-purple-light" viewBox="0 0 24 24">-->
-<!--                                                <use xlink:href="assets/img/sprite.svg#check"></use>-->
-<!--                                            </svg>-->
-<!--                                        </div>-->
-<!--                                        <div>-->
-<!--                                            <span class="skill-name text-sm font-medium text-cinder dark:text-gray-300">JavaScript</span>-->
-<!--                                            <div class="relative w-full bg-gray-200 rounded-full h-1 mt-1">-->
-<!--                                                <div class="bg-purple h-1 rounded-full transition-all duration-700 ease-in-out" style="width: 90%"></div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+<!--                    &lt;!&ndash; Programming Languages &ndash;&gt;-->
+<!--                    <div class="skill-category" aria-labelledby="prog-lang">-->
+<!--                        <h3 id="prog-lang" class="category-title text-center text-sm font-semibold text-purple dark:text-purple-light mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">-->
+<!--                            Programming-->
+<!--                        </h3>-->
+<!--                        <div class="grid grid-cols-2 gap-2">-->
+<!--                            &lt;!&ndash; Compact Skill Item &ndash;&gt;-->
+<!--                            <div class="skill-item group flex items-center p-2 rounded-md hover:bg-purple-light-1/20 dark:hover:bg-gray-800/30 transition-colors duration-200">-->
+<!--                                <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-2 shadow-inner">-->
+<!--                                    <svg class="w-4 h-4 fill-current text-purple dark:text-purple-light" viewBox="0 0 24 24">-->
+<!--                                        <use xlink:href="assets/img/sprite.svg#javascript"></use>-->
+<!--                                    </svg>-->
+<!--                                </div>-->
+<!--                                <div class="flex-1 min-w-0">-->
+<!--                                    <span class="skill-name text-xs font-medium text-cinder dark:text-gray-300 truncate">JavaScript</span>-->
+<!--                                    <div class="relative w-full bg-gray-200 rounded-full h-1 mt-1">-->
+<!--                                        <div class="bg-purple h-1 rounded-full" style="width: 90%"></div>-->
 <!--                                    </div>-->
-<!--                                    &lt;!&ndash; Repeat this block for other skills like PHP, Java, Python... &ndash;&gt;-->
 <!--                                </div>-->
 <!--                            </div>-->
-
-<!--                            &lt;!&ndash; Web Development Skills &ndash;&gt;-->
-<!--                            <div class="skill-category" aria-labelledby="web-dev">-->
-<!--                                <h3 id="web-dev" class="category-title flex items-center text-lg font-semibold text-purple dark:text-purple-light mb-4">-->
-<!--                                    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#globe"></use></svg>-->
-<!--                                    Web Development-->
-<!--                                </h3>-->
-<!--                                <div class="grid grid-cols-2 gap-4">-->
-<!--                                    &lt;!&ndash; Same pattern repeated here for HTML, React, Laravel, Node &ndash;&gt;-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Other Competencies &ndash;&gt;-->
-<!--                            <div class="skill-category" aria-labelledby="other-comp">-->
-<!--                                <h3 id="other-comp" class="category-title flex items-center text-lg font-semibold text-purple dark:text-purple-light mb-4">-->
-<!--                                    <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#tool"></use></svg>-->
-<!--                                    Other Competencies-->
-<!--                                </h3>-->
-<!--                                <div class="flex flex-wrap gap-3">-->
-<!--                                    &lt;!&ndash; Tag-like badges &ndash;&gt;-->
-<!--                                    <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1.5 rounded-full hover:bg-purple hover:text-white dark:hover:bg-purple-light dark:hover:text-black transition-all duration-300 flex items-center">-->
-<!--            <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use xlink:href="assets/img/sprite.svg#check"></use></svg>-->
-<!--            MySQL-->
-<!--          </span>-->
-<!--                                    &lt;!&ndash; Repeat for MongoDB, Git, Docker, AWS, Agile &ndash;&gt;-->
-<!--                                </div>-->
-<!--                            </div>-->
-
+<!--                            &lt;!&ndash; Add more languages... &ndash;&gt;-->
 <!--                        </div>-->
 <!--                    </div>-->
-<!--                </section>-->
+
+<!--                    &lt;!&ndash; Web Development &ndash;&gt;-->
+<!--                    <div class="skill-category" aria-labelledby="web-dev">-->
+<!--                        <h3 id="web-dev" class="category-title text-center text-sm font-semibold text-purple dark:text-purple-light mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">-->
+<!--                            Web Dev-->
+<!--                        </h3>-->
+<!--                        <div class="grid grid-cols-2 gap-2">-->
+<!--                            &lt;!&ndash; Compact Skill Item &ndash;&gt;-->
+<!--                            <div class="skill-item group flex items-center p-2 rounded-md hover:bg-purple-light-1/20 dark:hover:bg-gray-800/30 transition-colors duration-200">-->
+<!--                                <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-2 shadow-inner">-->
+<!--                                    <svg class="w-4 h-4 fill-current text-purple dark:text-purple-light" viewBox="0 0 24 24">-->
+<!--                                        <use xlink:href="assets/img/sprite.svg#react"></use>-->
+<!--                                    </svg>-->
+<!--                                </div>-->
+<!--                                <div class="flex-1 min-w-0">-->
+<!--                                    <span class="skill-name text-xs font-medium text-cinder dark:text-gray-300 truncate">React</span>-->
+<!--                                    <div class="relative w-full bg-gray-200 rounded-full h-1 mt-1">-->
+<!--                                        <div class="bg-purple h-1 rounded-full" style="width: 88%"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Add more web skills... &ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Other Competencies &ndash;&gt;-->
+<!--                    <div class="skill-category" aria-labelledby="other-comp">-->
+<!--                        <h3 id="other-comp" class="category-title text-center text-sm font-semibold text-purple dark:text-purple-light mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">-->
+<!--                            Tools & More-->
+<!--                        </h3>-->
+<!--                        <div class="flex flex-wrap justify-center gap-1.5">-->
+<!--                            &lt;!&ndash; Micro Tags &ndash;&gt;-->
+<!--                            <span class="tag text-[10px] bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-2 py-1 rounded-full">-->
+<!--                        MySQL-->
+<!--                    </span>-->
+<!--                            <span class="tag text-[10px] bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-2 py-1 rounded-full">-->
+<!--                        Git-->
+<!--                    </span>-->
+<!--                            <span class="tag text-[10px] bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-2 py-1 rounded-full">-->
+<!--                        Docker-->
+<!--                    </span>-->
+<!--                            &lt;!&ndash; Add more tags... &ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--    </section>&ndash;&gt;-->
 
             </div>
-                    </div>
+        </div>
 
 
 
     </section>
 
-    <!-- Add these animations to your CSS -->
-    <style>
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        @keyframes ping-slow {
-            75%, 100% { transform: scale(1.5); opacity: 0; }
-        }
-        .animate-pulse-slow {
-            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        .animate-ping-slow {
-            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-    </style>
+
 
     <!-- Services Section -->
     <section class="service-section bg-light py-[114px] mt-[196px] dark:bg-midnight-express relative overflow-hidden" id="services">
