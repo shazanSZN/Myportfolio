@@ -1,322 +1,799 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohamed Shazan - Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+    <!-- Fonts (optimized) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/css/aos.css" rel="stylesheet">
-    <link href="assets/css/swiper-bundle.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/kursor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--    <script src="./main1.js" defer></script>-->
+    <!--    <script src="./assets/js1/threejs.js"></script>-->
+    <!--    <script src="./assets/js1/animations.js"></script>-->
+
+
+    <script src="./main1.js" defer></script>
+    <script src="./assets/js1/threejs.js"></script>
+    <script src="./assets/js1/animations.js"></script>
+    <script src="./assets/js1/header.js"></script>
+
+
+
+    <!-- Tailwind config (custom colors, fonts, animations) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: '#7E74F1',
+                        'purple-light-1': '#EAE6FE',
+                        'purple-light-2': '#F5F3FE',
+                        cinder: '#232E35',
+                        'cinder-light': '#656D72',
+                        light: '#FBFBFB',
+                        'light-2': '#f1f1f1',
+                        'light-3': '#f5f5f5',
+                        'light-4': '#D9D9D9',
+                        'midnight-express': '#081c48',
+                        licorice: '#1A1F2C',
+                    },
+                    fontFamily: {
+                        primary: ['Inter', 'sans-serif'],
+                        secondary: ['Plus Jakarta Sans', 'serif'],
+                    },
+                    fontSize: {
+                        xs: '0.75rem',
+                        sm: '0.875rem',
+                        base: '1rem',
+                        lg: '1.125rem',
+                        xl: '1.25rem',
+                        '2xl': '1.5rem',
+                        '3xl': '1.875rem',
+                        '4xl': '2.25rem',
+                        '5xl': '3rem',
+                        '6xl': '4rem',
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        pulse: 'pulse 6s infinite alternate',
+                        rotate: 'rotate 30s linear infinite',
+                        zoom: 'zoom 0.3s ease',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        pulse: {
+                            '0%': { opacity: '0.6', transform: 'scale(1)' },
+                            '100%': { opacity: '0.9', transform: 'scale(1.05)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        zoom: {
+                            from: { transform: 'scale(0.7)' },
+                            to: { transform: 'scale(1)' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Your compiled all-in-one CSS -->
     <link rel="stylesheet" href="./styles.css">
-    <title>Portfolio Website | DevChapter</title>
+
+
+
+    <!-- External libraries -->
+    <link href="./assets/css/aos.css" rel="stylesheet">
+    <link href="./assets/css/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/kursor.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r169/examples/jsm/controls/OrbitControls.js"></script>
+
+
+
 </head>
-<body>
-<header class="header">
-    <div class="container">
-        <div class="logo" data-aos-delay="200" data-aos="fade-down">
-            <svg viewBox="0 0 114 41">
+<body class="font-primary text-cinder bg-light dark:bg-midnight-express dark:text-cinder-light">
+<!-- Header -->
+<header class="header py-4 sticky top-0 z-50 mt-6 bg-light/80 dark:bg-midnight-express/80 backdrop-blur-sm transition-all duration-300 shadow-sm dark:shadow-md">
+    <div class="container max-w-[1200px] px-4 mx-auto flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#" class="logo w-[113px] h-10 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Shazan - Home">
+            <svg viewBox="0 0 114 41" class="fill-cinder dark:fill-white w-full h-full" aria-hidden="true">
                 <use xlink:href="assets/img/sprite.svg#gif"></use>
             </svg>
-        </div>
-        <nav class="nav">
-            <ul class="nav-links">
-                <li class="services active" data-aos-delay="200" data-aos="fade-down"><a href="#education-skill">Education</a></li>
-                <li class="portfolios" data-aos-delay="250" data-aos="fade-down"><a href="#portfolios">Portfolios</a></li>
-                <li class="experience" data-aos-delay="300" data-aos="fade-down"><a href="#experience">Experience</a></li>
-                <li class="blog" data-aos-delay="350" data-aos="fade-down"><a href="#blogs">Blog</a></li>
+        </a>
 
-                <li class="testimonials mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="#testimonials">Testimonials</a></li>
-                <li class="education-skill mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="#work">Education</a></li>
-                <li class="contact mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="#contact">Contact</a></li>
-                <li class="mobile-link" data-aos-delay="350" data-aos="fade-down"><a href="assets/Resume.pdf" >Resume</a></li>
-                <li data-aos-delay="400" data-aos="fade-down" class="more-links">
-                    <svg viewBox="0 0 12 3"><use xlink:href="assets/img/sprite.svg#more-links"></use></svg>
-                    <ul class="menu-list">
-                        <li class="testimonials"><a href="#work">Certificate</a></li>
-                        <li class="education-skill"><a href="#services">Specialized </a></li>
-                        <li class="contact"><a href="#contact">Contact</a></li>
+        <!-- Mobile Controls (Toggle + Menu) -->
+        <div class="flex items-center md:hidden space-x-2">
+            <!-- Theme Toggle Button (Visible on mobile) -->
+            <button
+                    type="button"
+                    class="theme-color-toggle w-10 h-10 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+            >
+                <svg class="moon w-5 h-5 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                    <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
+                </svg>
+                <svg class="sun w-5 h-5 fill-cinder dark:fill-white absolute opacity-0 scale-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
+                </svg>
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button
+                    class="mobile-menu-toggle w-10 h-10 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    type="button"
+                    aria-label="Menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-navigation"
+            >
+                <svg class="w-6 h-6 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                    <use xlink:href="assets/img/sprite.svg#menu"></use>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:block" aria-label="Primary">
+            <ul class="nav-links flex items-center gap-6 lg:gap-14">
+                <li><a href="#education-skill" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Education</a></li>
+                <li><a href="#portfolios" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Portfolios</a></li>
+                <li><a href="#experience" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Experience</a></li>
+                <li><a href="#blogs" class="hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded px-2 py-1 transition-colors duration-200">Blog</a></li>
+
+                <!-- Dropdown -->
+                <li class="relative group">
+                    <button
+                            class="flex items-center justify-center w-8 h-8 rounded hover:bg-light-2 dark:hover:bg-cinder focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                            aria-expanded="false"
+                            aria-controls="more-menu"
+                    >
+                        <svg viewBox="0 0 12 3" class="w-3 h-[3px] fill-cinder dark:fill-white" aria-hidden="true">
+                            <use xlink:href="assets/img/sprite.svg#more-links"></use>
+                        </svg>
+                        <span class="sr-only">More options</span>
+                    </button>
+                    <ul
+                            id="more-menu"
+                            class="absolute bg-white dark:bg-midnight-express border border-light-2 dark:border-light-4 top-full left-0 p-4 rounded-lg shadow-lg min-w-[180px] transition-all duration-200 origin-top transform scale-y-0 group-hover:scale-y-100"
+                            role="menu"
+                    >
+                        <li role="none"><a href="#work" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Certificate</a></li>
+                        <li role="none"><a href="#services" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Specialized</a></li>
+                        <li role="none"><a href="#contact" class="block px-3 py-2 hover:bg-light-2 dark:hover:bg-cinder rounded transition-colors duration-200" role="menuitem">Contact</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
-        <div class="right-content" data-aos-delay="500" data-aos="fade-down">
-            <div class="theme-color-toggle">
-                <svg class="moon" viewBox="0 0 24 24">
+
+        <!-- Right Side (Desktop) -->
+        <div class="right-content hidden md:flex items-center gap-4">
+            <!-- Dark Mode Toggle -->
+            <button
+                    type="button"
+                    class="theme-color-toggle relative w-10 h-10 flex items-center justify-center rounded-full border border-light-4 dark:border-light hover:bg-light-2 dark:hover:bg-cinder transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+            >
+                <span class="sr-only">Toggle dark mode</span>
+                <svg class="moon w-5 h-5 fill-cinder dark:fill-white" viewBox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="assets/img/sprite.svg#moon-icon"></use>
                 </svg>
-                <svg class="sun" viewBox="0 0 24 24">
+                <svg class="sun w-5 h-5 fill-cinder dark:fill-white absolute opacity-0 scale-0" viewBox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="assets/img/sprite.svg#sun-icon"></use>
                 </svg>
-            </div>
-            <a href="assets/Resume.pdf" target="_blank" class="btn btn-outline-light download-resume">Resume</a>
-            <svg class="mobile-menu-toggle" viewBox="0 0 24 24">
-                <use xlink:href="assets/img/sprite.svg#menu"></use>
-            </svg>
+            </button>
+
+            <!-- Resume Button -->
+            <a
+                    href="assets/mycv/Shazan-cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline-light download-resume px-4 py-2 border border-cinder dark:border-white rounded-lg text-sm hover:bg-light-3 dark:hover:bg-cinder transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label="Download resume (opens in new tab)"
+            >
+                Resume
+            </a>
         </div>
-    </div>
-</header>
-<main>
-    
-    
-    
-    
-    
-<section class="hero-section">
-    <div class="container">
-        <div class="content" data-aos="fade-up">
-            <p class="above-title mb-16">My name is</p>
-            <h1 class="full-name">Mohamed <span style="color:#7E74F1;">Shazan.</span></h1>
-            <h1 class="full-name">I'M <span class="primary">Freelancer</span></h1>
-            <p class="about">Creative full-stack developer with more than 6 months of experience in enterprise companies and startups. Proficient in .NET, Java, JavaScript, and React. Passionate about UI/UX.</p>
-            <a href="assets/" target="_blank" class="btn btn-outline-light download-resume-mobile">Download Resume</a>
-            <ul class="social-icons">
+
+        <!-- Mobile Navigation -->
+        <nav
+                id="mobile-navigation"
+                class="fixed top-0 left-0 z-40 h-full w-64 bg-white dark:bg-gray-900 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+                aria-hidden="true"
+        >
+            <div class="flex items-center justify-between p-4 border-b border-gray-300 dark:border-gray-700">
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Menu</h2>
+                <!-- Close button -->
+                <button
+                        aria-label="Close mobile menu"
+                        class="mobile-menu-close w-10 h-10 flex items-center justify-center p-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <!-- X icon -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <ul id="menu" class="flex flex-col space-y-3 p-5 bg-gray-900 rounded-lg text-gray-100 font-semibold text-base shadow-lg">
                 <li>
-                    <a href="https://www.instagram.com/shazan_szn_?r=nametag">
-                        <svg viewBox="0 0 24 24">
-                            <use xlink:href="assets/img/sprite.svg#instagram-icon"></use>
-                        </svg>
-                    </a>
+                    <a href="#home" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">Home</a>
                 </li>
                 <li>
-                    <a href="https://github.com/Mohamedshazan">
-                        <svg viewBox="0 0 24 24">
-                            <use xlink:href="assets/img/sprite.svg#github-icon"></use>
-                        </svg>
-                    </a>
+                    <a href="#about" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">About</a>
                 </li>
                 <li>
-                    <a href="https://twitter.com/ar_shasan0?t=3wHCQjnCHRHM-Eay_WT9lQ&s=35">
-                        <svg viewBox="0 0 24 24">
-                            <use xlink:href="assets/img/sprite.svg#twitter-icon"></use>
-                        </svg>
-                    </a>
+                    <a href="#services" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">Services</a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/mohamed-shazan">
-                        <svg viewBox="0 0 24 24">
-                            <use xlink:href="assets/img/sprite.svg#linkedin-icon"></use>
-                        </svg>
-                    </a>
+                    <a href="#contact" class="block px-6 py-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200" tabindex="0" role="menuitem">Contact</a>
                 </li>
             </ul>
-        </div>
-        
-        
- <div class="image" data-aos="fade-up">
-    <div class="cover">
-        <svg class="home__blob" width="100%" height="100%" viewBox="0 0 669 665" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <mask id="mask0" mask-type="alpha">
-                <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-            </mask>
-           
-        </svg>
-        
-        
+
+        </nav>
+
+        <!-- Backdrop -->
+        <div
+                id="mobile-backdrop"
+                class="fixed inset-0 bg-black bg-opacity-30 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+                aria-hidden="true"
+        ></div>
     </div>
-    
-     <g mask="url(#mask0)">
-                <!--<image class="home__blob-img" x="-80" y="20" width="4000" height="1000" href="assets/img/b7.jpg"/>-->
-                
-                 <img class="avatar" src="assets/img/11.png" height="100" alt="shazan img">
-            </g>
-</div>
-</div>
+</header>
 
 
 
 
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section relative min-h-screen flex flex-col md:flex-row items-center py-[60px] md:py-[120px] overflow-hidden">
+        <div class="container max-w-[1200px] px-4 mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+            <div class="content w-full md:w-1/2 order-2 md:order-1 max-w-[600px] relative z-30 mt-8 md:mt-0" id="hero-content">
+                <div class="intro-text mb-12">
+                    <p class="above-title" id="above-title">Hi, my name is</p>
+                    <h1 class="full-name text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1] my-0 mx-0 mb-4 font-extrabold text-cinder dark:text-white" id="full-name">Mohamed <span class="highlight">Shazan</span>.</h1>
+                    <h2 class="profession text-[clamp(1.25rem,3vw,1.75rem)] leading-[1.3] my-0 mx-0 mb-6 font-medium text-cinder-light" id="profession">
+                        I'm a <span class="typing primary"></span>
+                    </h2>
 
-
-
-  <!--<div class="image" data-aos="fade-up">-->
-  <!--              <div class="cover">-->
-  <!--                  <svg class="lines-vector" viewBox="0 0 199 210">-->
-  <!--                      <use xlink:href="assets/img/sprite.svg#lines-vector"></use>-->
-  <!--                  </svg>-->
-  <!--              </div>-->
-  <!--              <img class="avatar" src="assets/img/11.png" alt="shazan img">-->
-  <!--          </div>-->
-        
-
-
-
-</section>
-
-
-<!--EDUCATION & SKILLSSSSSS    -->
-
-    <section class="education-skill-section" id="education-skill">
-        <div class="container">
-            <div class="section-name" data-aos="fade-up">
-                <p class="above-title">Learning Path</p>
-                <h4 class="title">Education & Skills</h4>
-            </div>
-            <div class="education-skill-wrapper">
-                <div class="education">
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="100">
-                        <h4 class="school">OPEN UNIVERSITY OF SRILANKA [OUSL]</h4>
-                        <p class="degree-field">Faculty Of Engineering Technology Department Of  Electrical &
-                            Computer Engineering Bachelor Of Software Engineering HONOURS[BSE]</p>
-                        <p class="date">2021 Present</p>
-                    </div>
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="150">
-                        <h4 class="school">SRILANKA INSTITUTE OF ADVANCED TECHNOLOGICAL EDUCATION[SLIATE]</h4>
-                        <p class="degree-field">Higher National Diploma in Information Technology [HND]</p>
-                        <p class="date">2020 - 2022</p>
-                    </div>
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="school">NATIONAL YOUTH SERVICES COUNCIL [SLYC]</h4>
-                        <p class="degree-field">National Vocational Qualification [NVQ LEVEL-3] IN Computer Application Assistent </p>
-                        <p class="date">2020 - 2021</p>
-                    </div>
-
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="school">ZAHIRA COLLAGE KALMUNAI</h4>
-                        <p class="degree-field">Completed General Certificate Of Education Advanced Level ,Conducted by Department of Education Srilanka </p>
-                        <p class="date">2013 - 2018</p>
+                    <div class="about text-[clamp(1rem,2vw,1.125rem)] leading-[1.7] my-0 mx-0 mb-10 text-cinder-light max-w-[90%]" id="about">
+                        <p>I'm an IT professional with nearly 2 years of experience: 6 months as a Software Engineering Intern and over a year and a half as a Senior IT Support Executive at a UK-based software company.</p>
+                        <p>I specialize in <strong>technical support</strong>, <strong>troubleshooting</strong>, <strong>SQL Server management</strong>, and configuring <strong>network infrastructure for EPOS systems</strong>.</p>
+                        <p class="quote">"Turning complex tech issues into smooth solutions - one ticket at a time."</p>
                     </div>
                 </div>
-                <div class="skill">
-                    <p class="description" data-aos="fade-up" data-aos-delay="50">For 6+ Month, I have been continuously learning in the field of front-end and back-end experimenting
-                        with new technologies and frameworks, and here you can see a summary of my skills.</p>
-                    <div class="progress-bar-wrapper" data-aos="fade-up" data-aos-delay="60">
-                        <div class="progress-bar">
-                            <p class="label">JavaScript</p>
-                            <div class="main-bar"><div class="fill" data-width="70"></div></div>
-                        </div>
-                        <div class="progress-bar">
-                            <p class="label">ReactJS</p>
-                            <div class="main-bar"><div class="fill" data-width="60"></div></div>
-                        </div>
-                        <div class="progress-bar">
-                            <p class="label">Html</p>
-                            <div class="main-bar"><div class="fill" data-width="90"></div></div>
-                        </div>
-                        <div class="progress-bar">
-                            <p class="label">java</p>
-                            <div class="main-bar"><div class="fill" data-width="70"></div></div>
-                        </div>
-                        <div class="progress-bar">
-                            <p class="label">Php</p>
-                            <div class="main-bar"><div class="fill" data-width="50"></div></div>
+
+                <div class="cta-buttons flex gap-4 mb-12">
+                    <a href="assets/mycv.pdf/Shazan cv" target="_blank" class="btn btn-primary download-resume px-8 py-4 text-base font-semibold rounded-full transition-all duration-400" id="resume-btn" aria-label="Download Resume">📄 Download Resume</a>
+                    <a href="#contact" class="btn btn-outline px-8 py-4 text-base font-semibold rounded-full border-2 border-purple text-purple bg-transparent transition-all duration-400" id="contact-btn">📬 Contact Me</a>
+                </div>
+
+                <ul class="social-icons flex items-center gap-4 mt-6" id="social-icons">
+                    <li><a href="#" aria-label="Instagram"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#instagram-icon"></use></svg></a></li>
+                    <li><a href="#" aria-label="GitHub"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#github-icon"></use></svg></a></li>
+                    <li><a href="#" aria-label="Twitter"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#twitter-icon"></use></svg></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><svg class="w-6 h-6"><use xlink:href="assets/img/sprite.svg#linkedin-icon"></use></svg></a></li>
+                </ul>
+            </div>
+
+            <div class="image w-full md:w-1/2 order-1 md:order-2 max-w-[500px] relative mb-8 md:mb-0" id="hero-image">
+
+                <!-- Container with visual effects -->
+                <div class="cover glowing-border relative w-full h-[350px] sm:h-[450px] md:h-[500px] rounded-2xl overflow-hidden transform-style-preserve-3d perspective-1000">
+
+                    <!-- Floating shapes background -->
+                    <div class="floating-shapes absolute inset-0 z-10 overflow-hidden">
+                        <div class="shape shape-1 absolute w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] top-[-50px] left-[-40px] bg-fuchsia-50 animate-spin-slow"></div>
+                        <div class="shape shape-2 absolute w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] bottom-[-30px] right-[-30px] bg-fuchsia-50  animate-bounce-slow"></div>
+                    </div>
+
+
+                    <style>
+                        @keyframes spin-slow {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+
+                        .animate-spin-slow {
+                            animation: spin-slow 40s linear infinite; /* slowed from 20s to 40s */
+                        }
+
+                        @keyframes bounce-slow {
+                            0%, 100% { transform: translateY(0); }
+                            50% { transform: translateY(-20px); }
+                        }
+
+                        .animate-bounce-slow {
+                            animation: bounce-slow 5s ease-in-out infinite;
+                        }
+                    </style>
+
+
+
+
+                    <!-- SVG masked image -->
+                    <svg viewBox="0 0 800 800" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <title>Profile Image Mask - Mohamed Shazan</title>
+                        <defs>
+                            <filter id="blobShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="15" stdDeviation="25" flood-color="#000" flood-opacity="0.3" />
+                            </filter>
+                            <mask id="maskBlob">
+                                <circle cx="400" cy="400" r="400" fill="white" />
+                            </mask>
+                        </defs>
+                        <g mask="url(#maskBlob)">
+                            <image href="assets/img/1.jpg" x="0" y="0" width="800" height="800" preserveAspectRatio="xMidYMid slice" />
+                        </g>
+                    </svg>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="scroll-indicator absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
+            <span class="text-xs tracking-[2px] text-cinder-light mb-2">Scroll</span>
+            <div class="mouse w-6 h-10 border-2 border-cinder-light rounded-xl flex justify-center pt-1">
+                <div class="wheel w-1 h-2 bg-purple rounded animate-scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Skills Section -->
+    <section class="education-skill-section py-12 md:py-20 lg:py-24 px-4 bg-white/5 backdrop-blur-sm font-primary text-cinder transition-all duration-300 dark:bg-midnight-express/70 dark:text-white relative overflow-hidden" id="education-skill">
+        <!-- Decorative background elements with subtle animation -->
+        <div class="education-3d-container absolute w-full h-full top-0 left-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-purple/5 to-transparent dark:from-purple-dark/5 animate-pulse-slow"></div>
+        </div>
+
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+            <!-- Section Header with improved visual hierarchy -->
+            <div class="section-name text-center mb-10 md:mb-16" data-aos="fade-up">
+                <p class="above-title font-semibold text-xs sm:text-sm tracking-[0.2em] text-purple uppercase mb-2 md:mb-3 transform transition-all duration-500 hover:translate-y-[-2px]">
+                    Learning Journey
+                </p>
+                <h4 class="title text-3xl sm:text-4xl md:text-5xl font-bold text-cinder dark:text-white relative inline-block">
+                <span class="relative z-10 bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">
+                    Education & Skills
+                </span>
+                    <span class="absolute bottom-0 left-0 w-full h-2 bg-purple-light-2 dark:bg-purple-dark-2 opacity-30 z-0 -rotate-1 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
+                </h4>
+            </div>
+
+            <div class="education-skill-wrapper flex flex-col lg:flex-row gap-8 md:gap-12 max-w-[1100px] mx-auto">
+                <!-- Education Timeline with enhanced visual elements -->
+                <div class="education w-full lg:w-1/2 relative pl-10 md:pl-12 border-l-4 border-purple-light-2 dark:border-purple-dark/30">
+                    <!-- Animated Timeline Connector -->
+                    <div class="absolute left-[-2px] top-0 h-full w-[4px] bg-gradient-to-b from-purple via-purple-light-2 to-purple dark:from-purple-dark dark:via-purple-dark/50 dark:to-purple-dark rounded-full animate-pulse-slow"></div>
+
+                    <!-- Education Item 1 -->
+                    <div class="education-item relative mb-12 md:mb-16 pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Glowing Timeline Dot -->
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
-                            <div class="progress-bar">
-                                <p class="label">MYSQL</p>
-                                <div class="main-bar"><div class="fill" data-width="50"></div></div>
+                        <!-- Education Content -->
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                Open University of Sri Lanka (OUSL)
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                Bachelor of Software Engineering (Honours)
+                                <span class="block text-purple/80 dark:text-purple-light/70 text-xs md:text-sm mt-1">
+                                Faculty of Engineering Technology
+                            </span>
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2021 - Present
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Colombo, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Currently pursuing an in-depth degree focused on software development, system design, and engineering principles.
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <h5 class="text-xs font-semibold text-purple dark:text-purple-light mb-2 uppercase tracking-wider">
+                                    Key Coursework:
+                                </h5>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Advanced programming & algorithms</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Software testing & quality assurance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Database systems & cloud computing</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Project management & agile methodologies</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-<!--                        </div> <div class="progress-bar">-->
-<!--                        <p class="label"> Google clude Firebase</p>-->
-<!--                        <div class="main-bar"><div class="fill" data-width="40"></div></div>-->
+                    <!-- Education Item 2 -->
+                    <div class="education-item relative mb-12 md:mb-16 pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="150">
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                Sri Lanka Institute of Advanced Technological Education (SLIATE)
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                Higher National Diploma in Information Technology (HND)
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2020 - 2022
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Colombo, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Comprehensive diploma emphasizing practical IT skills with key achievements:
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Developed 5+ full-stack web applications</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Implemented relational database systems</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Completed 3-month industry internship</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Graduated with Distinction (GPA 3.8)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Item 3 -->
+                    <div class="education-item relative mb-12 md:mb-16 pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                National Youth Services Council (SLYC)
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                NVQ Level-3 - Computer Application Assistant
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2020 - 2021
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Colombo, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Vocational certification with hands-on training in:
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Microsoft Office Specialist certification</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Hardware troubleshooting & maintenance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Basic networking fundamentals</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">End-user technical support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Item 4 -->
+                    <div class="education-item relative pl-8 md:pl-10 group" data-aos="fade-up" data-aos-delay="250">
+                        <div class="absolute left-[-14px] top-1 w-6 h-6 rounded-full bg-purple border-4 border-white dark:border-midnight-express shadow-lg transition-all duration-300 group-hover:scale-125 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-purple/50">
+                            <div class="absolute inset-0 rounded-full bg-purple/20 animate-ping-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        <div class="transform transition-all duration-300 group-hover:-translate-x-1">
+                            <h4 class="school font-bold text-xl md:text-2xl text-purple dark:text-purple-light mb-2 transition-all duration-300 group-hover:text-purple-dark dark:group-hover:text-purple">
+                                Zahira College, Kalmunai
+                            </h4>
+                            <p class="degree-field font-medium text-sm md:text-base text-cinder-light dark:text-gray-300 mb-3 leading-snug">
+                                GCE Advanced Level - Engineering Technology Stream
+                            </p>
+                            <div class="flex items-center gap-3 mb-4">
+                            <span class="date font-semibold text-xs text-white px-3 py-1 bg-purple rounded-full shadow-sm transition-all duration-300 group-hover:bg-purple-dark dark:group-hover:bg-purple-light">
+                                2013 - 2018
+                            </span>
+                                <span class="text-xs text-cinder-light dark:text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-1"></i> Kalmunai, Sri Lanka
+                            </span>
+                            </div>
+                            <p class="details text-sm md:text-base leading-relaxed text-cinder-light dark:text-gray-300 transition-all duration-300 group-hover:text-cinder dark:group-hover:text-gray-200">
+                                Technical secondary education with specialized subjects:
+                            </p>
+                            <div class="mt-4 pl-1">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Combined Mathematics (A)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Engineering Technology (A)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Physics (B)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-2 mt-1">•</span>
+                                        <span class="text-sm text-cinder-light dark:text-gray-300">Chemistry (C)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--            <section class="skills w-full mt-6" data-aos="fade-up" data-aos-delay="300" aria-labelledby="technical-skills">-->
+<!--    <div class="skills-card bg-white dark:bg-midnight-express p-4 md:p-6 rounded-xl shadow-md border border-light-3 dark:border-gray-800 hover:shadow-lg transition-all duration-300 max-w-6xl mx-auto">-->
+
+<!--        &lt;!&ndash; Compact Title Header &ndash;&gt;-->
+<!--                <header class="flex items-center justify-center space-x-3 mb-6">-->
+<!--                    <div class="w-10 h-10 rounded-full bg-purple-light-2 dark:bg-gray-800 flex items-center justify-center">-->
+<!--                        <svg class="w-5 h-5 fill-purple dark:fill-purple-light" viewBox="0 0 24 24" aria-hidden="true">-->
+<!--                            <use xlink:href="assets/img/sprite.svg#code"></use>-->
+<!--                        </svg>-->
+<!--                    </div>-->
+<!--                    <h2 id="technical-skills" class="font-bold text-xl md:text-2xl text-cinder dark:text-white">-->
+<!--                <span class="bg-gradient-to-r from-purple to-purple-dark bg-clip-text text-transparent dark:from-purple-light dark:to-purple">-->
+<!--                    Technical Skills-->
+<!--                </span>-->
+<!--                    </h2>-->
+<!--                </header>-->
+
+<!--                &lt;!&ndash; Horizontal Layout for Categories &ndash;&gt;-->
+<!--                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">-->
+
+<!--                    &lt;!&ndash; Programming Languages &ndash;&gt;-->
+<!--                    <div class="skill-category" aria-labelledby="prog-lang">-->
+<!--                        <h3 id="prog-lang" class="category-title text-center text-sm font-semibold text-purple dark:text-purple-light mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">-->
+<!--                            Programming-->
+<!--                        </h3>-->
+<!--                        <div class="grid grid-cols-2 gap-2">-->
+<!--                            &lt;!&ndash; Compact Skill Item &ndash;&gt;-->
+<!--                            <div class="skill-item group flex items-center p-2 rounded-md hover:bg-purple-light-1/20 dark:hover:bg-gray-800/30 transition-colors duration-200">-->
+<!--                                <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-2 shadow-inner">-->
+<!--                                    <svg class="w-4 h-4 fill-current text-purple dark:text-purple-light" viewBox="0 0 24 24">-->
+<!--                                        <use xlink:href="assets/img/sprite.svg#javascript"></use>-->
+<!--                                    </svg>-->
+<!--                                </div>-->
+<!--                                <div class="flex-1 min-w-0">-->
+<!--                                    <span class="skill-name text-xs font-medium text-cinder dark:text-gray-300 truncate">JavaScript</span>-->
+<!--                                    <div class="relative w-full bg-gray-200 rounded-full h-1 mt-1">-->
+<!--                                        <div class="bg-purple h-1 rounded-full" style="width: 90%"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Add more languages... &ndash;&gt;-->
+<!--                        </div>-->
 <!--                    </div>-->
 
-<!--                        <div class="progress-bar">-->
-<!--                            <p class="label"> java</p>-->
-<!--                            <div class="main-bar"><div class="fill" data-width="55"></div></div>-->
+<!--                    &lt;!&ndash; Web Development &ndash;&gt;-->
+<!--                    <div class="skill-category" aria-labelledby="web-dev">-->
+<!--                        <h3 id="web-dev" class="category-title text-center text-sm font-semibold text-purple dark:text-purple-light mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">-->
+<!--                            Web Dev-->
+<!--                        </h3>-->
+<!--                        <div class="grid grid-cols-2 gap-2">-->
+<!--                            &lt;!&ndash; Compact Skill Item &ndash;&gt;-->
+<!--                            <div class="skill-item group flex items-center p-2 rounded-md hover:bg-purple-light-1/20 dark:hover:bg-gray-800/30 transition-colors duration-200">-->
+<!--                                <div class="skill-icon w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full flex items-center justify-center mr-2 shadow-inner">-->
+<!--                                    <svg class="w-4 h-4 fill-current text-purple dark:text-purple-light" viewBox="0 0 24 24">-->
+<!--                                        <use xlink:href="assets/img/sprite.svg#react"></use>-->
+<!--                                    </svg>-->
+<!--                                </div>-->
+<!--                                <div class="flex-1 min-w-0">-->
+<!--                                    <span class="skill-name text-xs font-medium text-cinder dark:text-gray-300 truncate">React</span>-->
+<!--                                    <div class="relative w-full bg-gray-200 rounded-full h-1 mt-1">-->
+<!--                                        <div class="bg-purple h-1 rounded-full" style="width: 88%"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Add more web skills... &ndash;&gt;-->
 <!--                        </div>-->
+<!--                    </div>-->
 
-<!--                        <div class="progress-bar">-->
-<!--                            <p class="label"> MYSQL</p>-->
-<!--                            <div class="main-bar"><div class="fill" data-width="55"></div></div>-->
+<!--                    &lt;!&ndash; Other Competencies &ndash;&gt;-->
+<!--                    <div class="skill-category" aria-labelledby="other-comp">-->
+<!--                        <h3 id="other-comp" class="category-title text-center text-sm font-semibold text-purple dark:text-purple-light mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">-->
+<!--                            Tools & More-->
+<!--                        </h3>-->
+<!--                        <div class="flex flex-wrap justify-center gap-1.5">-->
+<!--                            &lt;!&ndash; Micro Tags &ndash;&gt;-->
+<!--                            <span class="tag text-[10px] bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-2 py-1 rounded-full">-->
+<!--                        MySQL-->
+<!--                    </span>-->
+<!--                            <span class="tag text-[10px] bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-2 py-1 rounded-full">-->
+<!--                        Git-->
+<!--                    </span>-->
+<!--                            <span class="tag text-[10px] bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-2 py-1 rounded-full">-->
+<!--                        Docker-->
+<!--                    </span>-->
+<!--                            &lt;!&ndash; Add more tags... &ndash;&gt;-->
 <!--                        </div>-->
+<!--                    </div>-->
 
-                    </div>
-                </div>
+<!--                </div>-->
+<!--            </div>-->
+<!--    </section>&ndash;&gt;-->
+
             </div>
         </div>
-     </div>
+
+
+
     </section>
 
 
 
-<!--SERVICES SPECIALIZED;   -->
-
-    <section class="service-section" id="services">
-        <div class="container">
-            <div class="section-name center" data-aos="fade-up">
-                <div class="content">
-                    <p class="above-title">Services</p>
-                    <h4 class="title">Specialized in</h4>
-                </div>
+    <!-- Services Section -->
+    <section class="service-section bg-light py-[114px] mt-[196px] dark:bg-midnight-express relative overflow-hidden" id="services">
+        <div class="services-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+            <div class="section-name text-center mb-12" data-aos="fade-up">
+                <p class="above-title font-semibold text-sm tracking-[0.1em] text-purple uppercase mb-2">Services
+                </p>
+                <h4 class="title text-4xl font-bold text-cinder dark:text-white">Specialized in
+                </h4>
             </div>
-            <div class="service-item-wrapper">
-                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon">
-                        <svg viewBox="0 0 25 24">
+
+            <div class="service-item-wrapper flex items-center justify-between flex-wrap gap-12 pt-[104px]">
+                <div class="service-item bg-white dark:bg-licorice rounded-lg px-12 py-14 text-center min-w-[320px] flex-1 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mb-6 mx-auto flex items-center justify-center">
+                        <svg viewBox="0 0 25 24" class="w-6 h-6 fill-purple">
                             <use xlink:href="assets/img/sprite.svg#ux-service"></use>
                         </svg>
                     </div>
-                    <h4 class="title">6 +</h4>
-                    <p class="body"> Month Of Experience.</p>
+                    <h4 class="title font-medium text-2xl leading-[30px] mb-4 text-cinder dark:text-white">2 +</h4>
+                    <p class="body font-normal text-sm leading-6 text-cinder-light">year Of Experience.</p>
                 </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="250">
-                    <div class="icon">
-                        <svg viewBox="0 0 25 24">
+                <div class="service-item bg-white dark:bg-licorice rounded-lg px-12 py-14 text-center min-w-[320px] flex-1 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-lg" data-aos="fade-up" data-aos-delay="250">
+                    <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mb-6 mx-auto flex items-center justify-center">
+                        <svg viewBox="0 0 25 24" class="w-6 h-6 fill-purple">
                             <use xlink:href="assets/img/sprite.svg#app-development"></use>
                         </svg>
                     </div>
-                    <h4 class="title">5+</h4>
-                    <p class="body">Project Completed.</p>
+                    <h4 class="title font-medium text-2xl leading-[30px] mb-4 text-cinder dark:text-white">5+</h4>
+                    <p class="body font-normal text-sm leading-6 text-cinder-light">Project Completed.</p>
                 </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon">
-                        <svg viewBox="0 0 25 24">
+                <div class="service-item bg-white dark:bg-licorice rounded-lg px-12 py-14 text-center min-w-[320px] flex-1 transition-all duration-300 hover:-translate-y-2.5 hover:shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mb-6 mx-auto flex items-center justify-center">
+                        <svg viewBox="0 0 25 24" class="w-6 h-6 fill-purple">
                             <use xlink:href="assets/img/sprite.svg#web-development"></use>
                         </svg>
                     </div>
-                    <h4 class="title">0+</h4>
-                    <p class="body">Awards Won</p>
+                    <h4 class="title font-medium text-2xl leading-[30px] mb-4 text-cinder dark:text-white">0+</h4>
+                    <p class="body font-normal text-sm leading-6 text-cinder-light">Awards Won</p>
                 </div>
             </div>
         </div>
-
     </section>
 
-
-<!--FEATURED PORTFOLIOS  ..===============================================================================================================;   -->
-
-    <section class="portfolio-section" id="portfolios">
-        <div class="container">
-            <div class="section-name" data-aos="fade-up" data-aos-delay="200">
+    <!-- Portfolio Section -->
+    <section class="portfolio-section py-[104px]" id="portfolios">
+        <div class="container max-w-[1200px] px-4 mx-auto">
+            <div class="section-name flex items-center justify-between mb-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="content">
-                    <p class="above-title">My works</p>
-                    <h4 class="title">Featured Portfolios</h4>
+                    <p class="above-title text-purple dark:text-purple-light font-medium mb-2">
+                        My works
+                    </p>
+                    <h4 class="title text-4xl font-bold text-cinder dark:text-white relative inline-block">
+                        <span class="relative z-10">Featured Portfolios</span>
+                        <span class="absolute bottom-1 left-0 w-full h-2 bg-purple-light-2 dark:bg-purple-dark-2 opacity-30 z-0"></span>
+                    </h4>
                 </div>
-                <div class="slider-navigation">
-                    <div class="prev">
-                        <svg viewBox="0 0 24 24">
+
+                <div class="slider-navigation flex items-center">
+                    <div class="prev mr-4 w-10 h-10 bg-purple-light-2 dark:bg-licorice rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-purple hover:shadow-lg hover:shadow-purple/30 dark:hover:shadow-purple-dark/20 group">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple dark:fill-white transition-all duration-300 group-hover:fill-white">
                             <use xlink:href="assets/img/sprite.svg#arrow-left"></use>
                         </svg>
                     </div>
-                    <div class="next">
-                        <svg viewBox="0 0 24 24">
+                    <div class="next w-10 h-10 bg-purple-light-2 dark:bg-licorice rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-purple hover:shadow-lg hover:shadow-purple/30 dark:hover:shadow-purple-dark/20 group">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple dark:fill-white transition-all duration-300 group-hover:fill-white">
                             <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
                         </svg>
                     </div>
                 </div>
             </div>
 
-            <div class="portfolio-item-wrapper">
+            <div class="portfolio-item-wrapper mt-[72px]">
                 <div class="swiper">
                     <div class="swiper-wrapper">
+                        <!-- Portfolio Item 1 -->
                         <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/Tourisam.png">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-purple-light-2 to-purple opacity-10 dark:from-purple-dark-3 dark:to-purple-dark"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog5.png" alt="Tourism Website" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                    <span class="absolute top-4 right-4 bg-purple text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">
+                                    Featured
+                                </span>
                                 </figure>
-                                <div class="detail">
-                                    <h4 class="title">Tourism Website.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">HTML,CSS,JS</span>
-                                        <a class="link" href="https://github.com/Mohamedshazan/Tourism-Wabsite.git">
-                                            <svg viewBox="0 0 24 24">
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Tourism Website</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">HTML5</span>
+                                            <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">CSS3</span>
+                                            <span class="tag text-xs bg-purple-light-2 dark:bg-gray-800 text-purple dark:text-purple-light px-3 py-1 rounded-full">JavaScript</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-purple-light-2 dark:bg-gray-800 rounded-full items-center justify-center transition-all duration-300 hover:bg-purple hover:shadow-md"
+                                           href="https://github.com/Mohamedshazan/Tourism-Wabsite.git"
+                                           target="_blank"
+                                           aria-label="View Tourism Website">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-purple dark:fill-white">
                                                 <use xlink:href="assets/img/sprite.svg#link"></use>
                                             </svg>
                                         </a>
@@ -325,17 +802,61 @@
                             </article>
                         </div>
 
+                        <!-- Portfolio Item 2 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="250">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-blue-100 to-blue-400 opacity-10 dark:from-blue-900 dark:to-blue-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog1.png" alt="Laravel CRUD App" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">CRUD Application</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full">Laravel</span>
+                                            <span class="tag text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full">PHP</span>
+                                            <span class="tag text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-full">MySQL</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-blue-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View CRUD Application">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-blue-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 3 -->
                         <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/laraval%20crud.jpg">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-green-100 to-green-400 opacity-10 dark:from-green-900 dark:to-green-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog2.jpg" alt="Medical Booking App" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                    <span class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">
+                                    Mobile
+                                </span>
                                 </figure>
-                                <div class="detail">
-                                    <h4 class="title">CRUD APPLICATION OPERATION.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">php-lARAVEL-MYSQL-BOOTSTRUP </span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Medical Booking App</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-1 rounded-full">Java</span>
+                                            <span class="tag text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-1 rounded-full">Android</span>
+                                            <span class="tag text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-3 py-1 rounded-full">Firebase</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-green-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View Medical Booking App">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-green-600 dark:fill-white">
                                                 <use xlink:href="assets/img/sprite.svg#link"></use>
                                             </svg>
                                         </a>
@@ -344,36 +865,28 @@
                             </article>
                         </div>
 
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/vujs%20laravel.png">
-                                </figure>
-                                <div class="detail">
-                                    <h4 class="title">MEDICAL BOOKING Mobile Application.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">JAVA-ANDROID STUDIO</span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#link"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
+                        <!-- Portfolio Item 4 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="350">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-orange-100 to-orange-400 opacity-10 dark:from-orange-900 dark:to-orange-600"></div>
                                 </div>
-                            </article>
-                        </div>
-<br>
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/portfolio-item-3.jpg">
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog3.jpg" alt="E-commerce Dashboard" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
                                 </figure>
-                                <div class="detail">
-                                    <h4 class="title">Music App.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">JAVA-ANDROID STUDIO</span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">E-commerce Dashboard</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 px-3 py-1 rounded-full">React</span>
+                                            <span class="tag text-xs bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 px-3 py-1 rounded-full">Node.js</span>
+                                            <span class="tag text-xs bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 px-3 py-1 rounded-full">MongoDB</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-orange-100 dark:bg-orange-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-orange-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View E-commerce Dashboard">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-orange-600 dark:fill-white">
                                                 <use xlink:href="assets/img/sprite.svg#link"></use>
                                             </svg>
                                         </a>
@@ -382,17 +895,61 @@
                             </article>
                         </div>
 
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/portfolio-item-4.jpg">
+                        <!-- Portfolio Item 5 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-cyan-100 to-cyan-400 opacity-10 dark:from-cyan-900 dark:to-cyan-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog4.jpg" alt="Weather App" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                    <span class="absolute top-4 right-4 bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">
+                                    API
+                                </span>
                                 </figure>
-                                <div class="detail">
-                                    <h4 class="title">Blog Website.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">Jekyll</span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Weather Application</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 px-3 py-1 rounded-full">Vue.js</span>
+                                            <span class="tag text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 px-3 py-1 rounded-full">OpenWeather API</span>
+                                            <span class="tag text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300 px-3 py-1 rounded-full">Geolocation</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-cyan-100 dark:bg-cyan-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-cyan-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View Weather Application">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-cyan-600 dark:fill-white">
+                                                <use xlink:href="assets/img/sprite.svg#link"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Portfolio Item 6 -->
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="450">
+                            <article class="portfolio-item h-[410px] relative group transition-all duration-300 hover:-translate-y-2">
+                                <div class="portfolio-3d-container absolute inset-0 w-full h-full rounded-lg overflow-hidden z-0">
+                                    <div class="threejs-placeholder absolute inset-0 w-full h-full bg-gradient-to-br from-pink-100 to-pink-400 opacity-10 dark:from-pink-900 dark:to-pink-600"></div>
+                                </div>
+                                <figure class="overflow-hidden h-[calc(100%-8px)] relative z-10 rounded-t-lg rounded-b-[10px]">
+                                    <img src="./assets/img/blog5.png" alt="Social Media Dashboard" class="w-full h-full object-cover rounded-t-lg rounded-b-[10px] opacity-80 transition-all duration-300 group-hover:opacity-100">
+                                </figure>
+                                <div class="detail bg-white dark:bg-midnight-express w-full p-6 transition-all duration-300 absolute bottom-0 left-0 shadow-lg z-20 border border-light-3 dark:border-gray-800 border-t-0 rounded-bl-lg rounded-br-lg group-hover:shadow-xl">
+                                    <h4 class="title font-medium text-lg leading-5 mb-3 text-cinder dark:text-white">Social Media Dashboard</h4>
+                                    <div class="bottom flex items-center justify-between">
+                                        <div class="tags flex flex-wrap gap-2">
+                                            <span class="tag text-xs bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-full">Angular</span>
+                                            <span class="tag text-xs bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-full">D3.js</span>
+                                            <span class="tag text-xs bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 px-3 py-1 rounded-full">REST API</span>
+                                        </div>
+                                        <a class="link inline-flex w-8 h-8 bg-pink-100 dark:bg-pink-900 rounded-full items-center justify-center transition-all duration-300 hover:bg-pink-500 hover:shadow-md"
+                                           href="#"
+                                           target="_blank"
+                                           aria-label="View Social Media Dashboard">
+                                            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-pink-600 dark:fill-white">
                                                 <use xlink:href="assets/img/sprite.svg#link"></use>
                                             </svg>
                                         </a>
@@ -404,514 +961,506 @@
                 </div>
             </div>
         </div>
+    </section>
 
 
+    <!-- Experience Section -->
+    <section class="experience-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="experience">
+        <div class="experience-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto flex flex-col md:flex-row relative">
+            <div class="side w-full md:w-[300px] md:mr-[144px] relative flex-shrink-0 mb-10 md:mb-0">
+                <div class="section-name text-center mb-8" data-aos="fade-up">
+                    <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
+                        Career Path
+                    </p>
+                    <h4 class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
+                        Work Experience
+                    </h4>
+                    <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
+                </div>
 
-
-        <div class="container">
-            <div class="section-name" data-aos="fade-up" data-aos-delay="200">
-                <!--                <div class="content">-->
-                <!--                    <p class="above-title">My works</p>-->
-                <!--                    <h4 class="title">Featured Portfolios</h4>-->
-                <!--                </div>-->
-                <div class="slider-navigation">
-                    <div class="prev">
-                        <svg viewBox="0 0 24 24">
-                            <use xlink:href="assets/img/sprite.svg#arrow-left"></use>
-                        </svg>
-                    </div>
-                    <div class="next">
-                        <svg viewBox="0 0 24 24">
+                <div class="companies-list relative">
+                    <div class="selector bg-white dark:bg-purple-light-2 w-full md:w-[300px] h-14 absolute left-0 top-0 z-0 rounded transition-all duration-300 hidden md:block">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple absolute right-4 top-4">
                             <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
                         </svg>
                     </div>
+                    <ul class="mt-20 flex md:block overflow-x-auto pb-4 md:pb-0 relative z-10">
+                        <li class="active py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 font-medium text-purple whitespace-nowrap md:whitespace-normal" data-tab="aimpos" data-aos="fade-up">
+                            AIMPOS (PVT) LTD
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="trace" data-aos-delay="50" data-aos="fade-up">
+                            Trace Sri Lanka
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="ilt" data-aos-delay="100" data-aos="fade-up">
+                            ILT Software
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="safanas" data-aos-delay="150" data-aos="fade-up">
+                            Safanas Construction
+                        </li>
+                        <li class="py-3.5 px-6 mb-2 cursor-pointer transition-all duration-300 whitespace-nowrap md:whitespace-normal" data-tab="mexaire" data-aos-delay="200" data-aos="fade-up">
+                            Mexaire Company
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="portfolio-item-wrapper">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/Tourisam.png">
-                                </figure>
-                                <div class="detail">
-                                    <h4 class="title">LOGIN SYSTEM.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">REACT JS-TYPESCRIPT- FIREBASE</span>
-                                        <a class="link" href="https://github.com/Mohamedshazan/Tourism-Wabsite.git">
-                                            <svg viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#link"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/myportpolio.jpg">
-                                </figure>
-                                <div class="detail">
-                                    <h4 class="title">PORTPOLIO WEBSITE.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">HTML-CSS-JAVASCRIPT </span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#link"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/portfolio-item-3.jpg">
-                                </figure>
-                                <div class="detail">
-                                    <h4 class="title">CRUD APPLICATION.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">VUEJS - LARAVEL-MYSQL-PHP</span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#link"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <br>
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/portfolio-item-3.jpg">
-                                </figure>
-                                <div class="detail">
-                                    <h4 class="title">CRUD APPLICATION.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">VUEJS - LARAVEL-MYSQL-PHP</span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#link"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-                            <article class="portfolio-item">
-                                <figure>
-                                    <img src="assets/img/portfolio-item-4.jpg">
-                                </figure>
-                                <div class="detail">
-                                    <h4 class="title">Blog Website.</h4>
-                                    <div class="bottom">
-                                        <span class="tag">Jekyll</span>
-                                        <a class="link" href="#">
-                                            <svg viewBox="0 0 24 24">
-                                                <use xlink:href="assets/img/sprite.svg#link"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+            <div class="main-content flex-grow">
+                <!-- AIMPOS Experience -->
+                <div class="content active pt-8 relative visible opacity-100 w-auto h-auto translate-y-0 transition-all duration-400" id="aimpos">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Senior IT Support Executive <span class="company-name text-purple">AIMPOS (PVT) LTD</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo 06, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">Jan 2024 - Present · Full-time</p>
+                        <ul class="stack-list flex items-center py-4 flex-wrap gap-2">
+                            <li class="tag">SQL Server</li>
+                            <li class="tag">Networking</li>
+                            <li class="tag">Remote Desktop</li>
+                            <li class="tag">EPOS Systems</li>
+                        </ul>
                     </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Delivered expert-level IT support for a UK-based EPOS software platform serving retail and hospitality clients.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Handled daily troubleshooting of SQL Server connection errors, backup failures, and permission conflicts.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Configured static IPs, routers, port forwarding, and firewall rules to support secure EPOS connectivity and Watchman CCTV systems.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Installed and maintained a wide range of hardware, including thermal receipt printers, barcode scanners, card payment terminals, and network devices.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Deployed EPOS systems for new customers including setup, testing, activation, and customer onboarding.</li>
+                    </ul>
+                </div>
+
+                <!-- Trace Sri Lanka Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="trace">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Intern Software Engineer <span class="company-name text-purple">Trace Sri Lanka (T2T Organization)</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">Jun 2023 - Dec 2023 · Internship</p>
+                        <ul class="stack-list flex items-center py-4 flex-wrap gap-2">
+                            <li class="tag">Next.js</li>
+                            <li class="tag">TypeScript</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">ShadCN UI</li>
+                            <li class="tag">Docker</li>
+                        </ul>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Actively participated in the full SDLC of two major products: Trace Reservation System and T2T Logbook.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Built modern and reusable front-end components using Next.js and ShadCN design libraries.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Wrote optimized SQL queries and structured PostgreSQL schemas for real-time performance and scalability.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Packaged and deployed builds via Docker, ensuring consistent environments across local and production servers.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Implemented clean UI patterns and ensured responsive design compatibility across devices.</li>
+                    </ul>
+                </div>
+
+                <!-- ILT Software Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="ilt">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Full-Stack Developer <span class="company-name text-purple">ILT Software</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">2022 - Present · Full-time</p>
+                        <ul class="stack-list flex items-center py-4 flex-wrap gap-2">
+                            <li class="tag">React.js</li>
+                            <li class="tag">Next.js</li>
+                            <li class="tag">TypeScript</li>
+                            <li class="tag">Firebase</li>
+                        </ul>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Developed and maintained scalable web applications including user dashboards, admin portals, and e-commerce features.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Optimized page load speed and Core Web Vitals using dynamic imports and advanced caching techniques.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Integrated Firebase services (Auth, Firestore, Hosting) into Next.js for serverless deployments.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Built responsive, accessible interfaces with clean UX using TailwindCSS and modular architecture.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Designed REST APIs and consumed third-party integrations using Axios and SWR for real-time data syncing.</li>
+                    </ul>
+                </div>
+
+                <!-- Safanas Construction Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="safanas">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Trainee Technical Assistant <span class="company-name text-purple">Safanas Construction</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Kurunegala, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">2020 · Full-time</p>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Assisted civil engineers in project planning, site inspection, and daily reporting of progress.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Monitored site compliance with safety standards and material usage accuracy.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Coordinated tasks among construction workers to meet timeline requirements.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Helped track and log construction phases in coordination with supervisors and contractors.</li>
+                    </ul>
+                </div>
+
+                <!-- Mexaire Company Experience -->
+                <div class="content pt-8 absolute invisible opacity-0 w-0 h-0 translate-y-10" id="mexaire">
+                    <div class="headline" data-aos-delay="50" data-aos="fade-up">
+                        <h4 class="job-title font-medium text-lg leading-[22px] pb-3 text-cinder dark:text-white">Trainee Electrician <span class="company-name text-purple">Mexaire Company</span></h4>
+                        <p class="location pb-1.5 border-b border-cinder-light">Colombo, Sri Lanka</p>
+                        <p class="period font-medium text-sm leading-6 text-cinder-light">2019 · Full-time</p>
+                    </div>
+                    <div class="line border-b border-light-2 w-full my-4 mb-7"></div>
+                    <ul class="responsibilities pl-7">
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Installed and maintained electrical systems for residential and commercial buildings as part of the Altaire project team.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Learned basic wiring, safety protocols, and electrical tool handling.</li>
+                        <li class="pb-3 relative list-none after:content-[''] after:absolute after:left-[-28px] after:top-[11px] after:w-2.5 after:h-0.5 after:bg-light-4">Assisted senior electricians in troubleshooting and testing equipment.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-
-
-
-<!--WORK EXPERENCE; ========================================================================================================================   -->
-
-
-    <section class="experience-section" id="experience">
-        <div class="container">
-            <div class="side">
-                <div class="section-name" data-aos="fade-up">
-                    <p class="above-title">Career path</p>
-                    <h4 class="title">Work Experience</h4>
-                </div>
-                <div class="companies-list">
-                    <div class="selector">
-                        <svg viewBox="0 0 24 24">
-                            <use xlink:href="assets/img/sprite.svg#arrow-right"></use>
-                        </svg>
-                    </div>
-                    <ul>
-                        <li data-tab="apple" class="active" data-aos="fade-up">ILT Software</li>
-                        <li data-tab="microsoft" data-aos-delay="50" data-aos="fade-up">SAFANAS
-                            CONSTRUCTION</li>
-                        <li data-tab="facebook" data-aos-delay="100" data-aos="fade-up">MEXAIRE COMPANY</li>
-<!--                        <li data-tab="slack" data-aos-delay="150" data-aos="fade-up">Slack</li>-->
-                    </ul>
-                </div>
-            </div>
-            <div class="content active" id="apple">
-                <div class="headline" data-aos-delay="50" data-aos="fade-up">
-                    <h4 class="job-title">Full-stack developer <span class="company-name">ILT</span></h4>
-                    <p class="location">Colombo ,Srilanka</p>
-                    <p class="period"> 2022 -· Full-time</p>
-                    <ul class="stack-list">
-                        <li class="tag">ReactJs</li>
-                        <li class="tag">NextJS</li>
-                        <li class="tag">TypeScript</li>
-                        <li class="tag">Google clude Firebase</li>
-                    </ul>
-                </div>
-                <div class="line"></div>
-                <ul class="responsibilities">
-                    <li data-aos-delay="50" data-aos="fade-up">Improving overall website performance for Expoloader.</li>
-                    <li data-aos-delay="100" data-aos="fade-up">Collaborate with back-end developers and web designers to improve usability</li>
-                    <li data-aos-delay="150" data-aos="fade-up">Add voice search feature for mobile app.</li>
-                    <li data-aos-delay="200" data-aos="fade-up">Developing an admin panel to manage contents, users, products and ...</li>
-                </ul>
-            </div>
-            <div class="content" id="microsoft">
-                <div class="headline" data-aos-delay="50" data-aos="fade-up">
-                    <h4 class="job-title">TRAINEE TECHNICAL ASSISTANT <span class="company-name">SAFANAS
-                            CONSTRUCTION</span></h4>
-                    <p class="location">Gurunagal ,Srilanka</p>
-                    <p class="period"> 2020 · Full-time</p>
-                    <ul class="stack-list">
-<!--                        <li class="tag">ASP.NET</li>-->
-<!--                        <li class="tag">Python</li>-->
-                    </ul>
-                </div>
-                <div class="line"></div>
-                <ul class="responsibilities">
-                    <li>Duties: Supervising Labors, Assisting With
-                        Engineers </li>
-                    <li>Worked In safanas construction PVT Ltd.</li>
-<!--                    <li>Maecenas egestas elit eget enim mattis aliquet eget vitae felis..</li>-->
-<!--                    <li>Nam sodales ultrices nisl sed dictum. Vestibulum ante ipsum primis in faucibus  ...</li>-->
-                </ul>
-            </div>
-            <div class="content" id="facebook">
-                <div class="headline" data-aos-delay="50" data-aos="fade-up">
-                    <h4 class="job-title"> TRAINEE   <span>ELECTRICIAN </span> <span class="company-name">   MEXAIRE  COMPANY</span></h4>
-                    <p class="location">Colome,Srilanka</p>
-                    <p class="period"> 2019 · Full-time</p>
-                    <ul class="stack-list">
-                        <li class="tag">PHP</li>
-                        <li class="tag">React</li>
-                    </ul>
-                </div>
-                <div class="line"></div>
-                <ul class="responsibilities">
-                    <li>Worked In mexaire company |at Altaire
-                        construction PVT Ltd</li>
-
-                </ul>
-            </div>
-         </div>
-    </section>
-
-
-
-
-<!--MY CERTIFICATES ================================================================================================================================-->
-    <section class="blog-section" id="blog">
-        <div class="container">
-            <div class="section-name center" data-aos="fade-up">
-                <div class="content">
-                    <p class="above-title">My articles</p>
-                    <h4 class="title">MY CERTIFICATES</h4>
+    <!-- Certificates Section -->
+    <section class="certificates-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="certificates">
+        <div class="certificates-3d-container absolute w-full h-full top-0 left-0 pointer-events-none"></div>
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
+            <div class="section-name flex justify-center mb-12">
+                <div class="content text-center">
+                    <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
+                        My Certificates
+                    </p>
+                    <h4 class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
+                        CERTIFICATES SHOWCASE
+                    </h4>
+                    <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
                 </div>
             </div>
 
-
-
-
-    <!-- WORK SECTION ===========================================================================================================================-->
-    <section class="work section" id="work" align="center">
-        <h2 class="section-title" data-aos="fade-down"></h2>
-        <br><br>
-
-        <div
-                class="work_container bd_grid"
-                data-aos="fade-down"
-                data-aos-delay="250"
-        >
-            <div class="work_img" align="center">
-                <img src="./assets/img/slass.jpg" alt="" />
+            <!-- Certificate Grid -->
+            <div class="certificates-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-[1200px] mx-auto px-4">
+                <!-- Each certificate block -->
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c1.jpg" alt="SLASS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c2.jpg" alt="Web Programming & Design" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c3.jpg" alt="Udemy Course" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c4.jpg" alt="Course C" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c5.jpg" alt="Course D" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c6.jpg" alt="Course E" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c7.jpg" alt="CSS Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c8.jpg" alt="HTML Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c9.jpg" alt="SQL Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c10.jpg" alt="Python for Data Science" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c11.jpg" alt="Advanced Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c12.jpg" alt="Core Python" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c13.jpg" alt="JavaScript Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c14.jpg" alt="C Programming" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c15.jpg" alt="React.js Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c16.jpg" alt="Java Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
+                <div class="certificate-card bg-white dark:bg-licorice border border-light-2 dark:border-light-4 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
+                    <img src="./assets/img/c17.jpg" alt="PHP Certificate" class="w-full h-[200px] object-cover block transition-transform duration-400 hover:scale-105" />
+                </div>
             </div>
-            <div class="work_img">
-                <img src="./assets/img/wpds.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/udmy.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/courseC.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/courseD.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/courseE.jpg" alt="" />
-            </div>
-
-
-            <div class="work_img">
-                <img src="./assets/img/css.jpg" alt="" />
-            </div>
-
-
-
-            <div class="work_img">
-                <img src="./assets/img/css.jpg" alt="" />
-            </div>
-
-            <div class="work_img">
-                <img src="./assets/img/html.jpg" alt="" />
-            </div>
-
-            <div class="work_img">
-                <img src="./assets/img/SQL.jpg" alt="" />
-            </div>
-
-            <div class="work_img">
-                <img src="./assets/img/pyds.jpg" alt="" />
-            </div>
-
-            <div class="work_img">
-                <img src="./assets/img/pythn%20big.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/pyth%20core.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/javascript.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/c.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/react.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/java.jpg" alt="" />
-            </div>
-            <div class="work_img">
-                <img src="./assets/img/php.jpg" alt="" />
-            </div>
-
         </div>
     </section>
-            <br><br>
 
-<!--PERSONAL BLOGS;  ================================================================================================================================== -->
+    <!-- Blog Section -->
+    <section class="blog-section bg-light py-[104px] dark:bg-midnight-express relative overflow-hidden" id="blogs" aria-labelledby="blog-title">
+        <div class="container max-w-[1200px] px-4 mx-auto relative">
 
-            <section class="blog-section" id="blogs">
-                <div class="container">
-                    <div class="section-name center" data-aos="fade-up">
-                        <div class="content">
-                            <p class="above-title">My articles</p>
-                            <h4 class="title">Personal Blog</h4>
-                        </div>
-                    </div>
-                    <div class="post-item-wrapper">
-                        <article class="post-item" data-aos="fade-up" data-aos-delay="50" >
-                            <figure>
-                                <img src="assets/img/ati.drawio.png" alt="Deploy Next.js Project on Heroku">
-                            </figure>
-                            <div class="content">
-                                <h3 class="title">LARAVEL INSTALL SETUP.
-                                    - August 30, 2022</h3>
-                                <div class="detail">
-                                    <time class="tag">July 15, 2021</time>
-                                </div>
-                                <p class="body">Laravel is a popular PHP web framework known for its elegant syntax, MVC architecture, and developer-friendly features. It offers features like Eloquent ORM, Blade templating, routing, middleware, authentication, and more. </p>
-                                <div class="bottom">
-                                    <a href="https://shasanmsn.blogspot.com/2022/08/overview-to-it-industry-ifs.html">Continue Reading</a>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="post-item" data-aos="fade-up" data-aos-delay="100" >
-                            <figure>
-                                <img src="assets/img/Screenshot 2023-07-14 115213.png" alt="Deploy Next.js Project on Heroku">
-                            </figure>
-                            <div class="content">
-                                <h3 class="title">Beginners guide to laravel.</h3>
-                                <div class="detail">
-                                    <time class="tag">Aug 8, 2020</time>
-                                </div>
-                                <p class="body">Install Laravel: composer global require laravel/installer
-
-Create project: laravel new project-name
-
-Start server: php artisan serve
-
-That's it! Now you have a running Laravel application at "http://localhost:8000". ...</p>
-                                <div class="bottom">
-                                    <a href="https://shasanmsn.blogspot.com/2022/11/how-to-run-laravel-project.html">Continue Reading</a>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="post-item" data-aos="fade-up" data-aos-delay="150" >
-                            <figure>
-                                <img src="assets/img/Screenshot 2023-07-14 115456.png" alt="Deploy Next.js Project on Heroku">
-                            </figure>
-                            <div class="content">
-                                <h3 class="title"> Overview to the IT industry </h3>
-                                <div class="detail">
-                                    <time class="tag">Feb 19, 2021</time>
-                                </div>
-                                <p class="body">The IT industry in Sri Lanka is a growing and promising sector, with government support, a skilled workforce, thriving startups, and a focus on outsourcing services ...</p>
-                                <div class="bottom">
-                                    <a href="https://shasanmsn.blogspot.com/2022/10/laravel-8-crud-application.html">Continue Reading</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+            <!-- Section Header -->
+            <div class="section-name flex justify-center mb-12" data-aos="fade-up">
+                <div class="content text-center">
+                    <p class="above-title font-semibold text-sm tracking-widest text-purple uppercase mb-3">
+                        My Articles
+                    </p>
+                    <h2 id="blog-title" class="title text-4xl font-extrabold text-cinder dark:text-white leading-tight">
+                        Personal Blog
+                    </h2>
+                    <div class="mt-4 w-16 h-1 bg-purple mx-auto rounded"></div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Blog Posts -->
+            <div class="post-item-wrapper mt-[144px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Blog Post 1 -->
+                <article class="post-item bg-white dark:bg-licorice rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-gray-50 dark:hover:bg-[#1d1d1d]" data-aos="fade-up" data-aos-delay="50">
+                    <figure class="h-[243px] m-0 overflow-hidden">
+                        <img
+                                src="assets/img/blog1.png"
+                                alt="Step-by-step Laravel installation setup process"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        />
+                    </figure>
+
+                    <div class="content p-6 border border-light-3 dark:border-light-2 border-t-0 rounded-bl-lg rounded-br-lg">
+                        <h3 class="title font-semibold text-lg leading-6 mb-3 text-cinder dark:text-white">
+                            <a href="https://shasanmsn.blogspot.com/2022/08/overview-to-it-industry-ifs.html" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                Laravel Install Setup - August 30, 2022
+                            </a>
+                        </h3>
+                        <div class="detail mb-3 flex items-center flex-wrap gap-2 text-sm text-cinder-light">
+                            <time class="tag bg-purple-light-2 text-purple px-2 py-1 rounded text-xs font-medium" datetime="2022-08-30">
+                                August 30, 2022
+                            </time>
+                        </div>
+                        <p class="body leading-6 text-cinder-light pb-6 text-sm">
+                            Laravel is a popular PHP web framework known for its elegant syntax, MVC architecture, and developer-friendly features...
+                        </p>
+                        <div class="bottom pt-4 border-t border-light-2 text-center font-medium text-sm text-purple hover:text-cinder dark:hover:text-white transition-colors duration-300">
+                            <a href="https://shasanmsn.blogspot.com/2022/08/overview-to-it-industry-ifs.html" target="_blank" rel="noopener noreferrer">Continue Reading</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="post-item bg-white dark:bg-licorice rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-gray-50 dark:hover:bg-[#1d1d1d]" data-aos="fade-up" data-aos-delay="100">
+                    <figure class="h-[243px] m-0 overflow-hidden">
+                        <img src="assets/img/blog4.jpg" alt="Beginner's guide showing Laravel installation and usage steps" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    </figure>
+                    <div class="content p-6 border border-light-3 dark:border-light-2 border-t-0 rounded-bl-lg rounded-br-lg">
+                        <h3 class="title font-semibold text-lg leading-6 mb-3 text-cinder dark:text-white">
+                            <a href="https://shasanmsn.blogspot.com/2022/11/how-to-run-laravel-project.html" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                Beginners Guide to Laravel
+                            </a>
+                        </h3>
+                        <div class="detail mb-3 flex items-center flex-wrap gap-2 text-sm text-cinder-light">
+                            <time class="tag bg-purple-light-2 text-purple px-2 py-1 rounded text-xs font-medium" datetime="2020-08-08">
+                                August 8, 2020
+                            </time>
+                        </div>
+                        <p class="body leading-6 text-cinder-light pb-6 text-sm">
+                            Install Laravel: composer global require laravel/installer.<br />
+                            Create project: laravel new project-name.<br />
+                            Start server: php artisan serve.
+                        </p>
+                        <div class="bottom pt-4 border-t border-light-2 text-center font-medium text-sm text-purple hover:text-cinder dark:hover:text-white transition-colors duration-300">
+                            <a href="https://shasanmsn.blogspot.com/2022/11/how-to-run-laravel-project.html" target="_blank" rel="noopener noreferrer">Continue Reading</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="post-item bg-white dark:bg-licorice rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-gray-50 dark:hover:bg-[#1d1d1d]" data-aos="fade-up" data-aos-delay="150">
+                    <figure class="h-[243px] m-0 overflow-hidden">
+                        <img src="assets/img/blog2.jpg" alt="Infographic showing key points of Sri Lanka’s IT industry overview" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    </figure>
+                    <div class="content p-6 border border-light-3 dark:border-light-2 border-t-0 rounded-bl-lg rounded-br-lg">
+                        <h3 class="title font-semibold text-lg leading-6 mb-3 text-cinder dark:text-white">
+                            <a href="https://shasanmsn.blogspot.com/2022/10/laravel-8-crud-application.html" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                Overview to the IT Industry
+                            </a>
+                        </h3>
+                        <div class="detail mb-3 flex items-center flex-wrap gap-2 text-sm text-cinder-light">
+                            <time class="tag bg-purple-light-2 text-purple px-2 py-1 rounded text-xs font-medium" datetime="2021-02-19">
+                                February 19, 2021
+                            </time>
+                        </div>
+                        <p class="body leading-6 text-cinder-light pb-6 text-sm">
+                            The IT industry in Sri Lanka is a growing and promising sector, with government support, a skilled workforce, thriving startups, and a focus on outsourcing services...
+                        </p>
+                        <div class="bottom pt-4 border-t border-light-2 text-center font-medium text-sm text-purple hover:text-cinder dark:hover:text-white transition-colors duration-300">
+                            <a href="https://shasanmsn.blogspot.com/2022/10/laravel-8-crud-application.html" target="_blank" rel="noopener noreferrer">Continue Reading</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
 
 
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-form">
-                    <form name="contactForm">
-                        <p class="success-submit-message">Your message has been successfully sent.</p>
-                        <p class="fail-submit-message">An error occurred while sending the message.</p>
-                        <div class="form-control">
-                            <input name="name" class="mb-16" type="text" placeholder="Name" data-aos="fade-up" data-aos-delay="50">
-                            <p class="validation-error name">Please enter your name.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="relative overflow-hidden bg-light py-24 dark:bg-midnight-express">
+        <div class="contact-3d-container absolute inset-0 pointer-events-none"></div>
+        <div class="container max-w-6xl mx-auto px-4 relative">
+            <div class="contact-wrapper flex flex-col lg:flex-row gap-16 items-start">
+
+                <!-- Contact Form -->
+                <div class="contact-form flex-1 min-w-[300px] w-full">
+                    <form name="contactForm" novalidate>
+                        <!-- Form status messages -->
+                        <p class="success-submit-message hidden mb-4 text-sm rounded px-5 py-3 bg-green-50 dark:bg-[#314548] text-green-600 dark:text-[#9db79e]">
+                            Your message has been successfully sent.
+                        </p>
+                        <p class="fail-submit-message hidden mb-4 text-sm rounded px-5 py-3 bg-red-50 dark:bg-[#533643] text-red-600 dark:text-[#b59a98]">
+                            An error occurred while sending the message.
+                        </p>
+
+                        <!-- Name -->
+                        <div class="form-control mb-6 relative">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                            <input id="name" name="name" type="text" placeholder="Enter your name"
+                                   class="w-full p-4 pl-12 text-sm text-gray-800 dark:text-white bg-white dark:bg-licorice border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+                                   required />
+                            <p class="validation-error name hidden text-red-500 text-sm mt-1">Please enter your name.</p>
+                            <div class="absolute top-10 left-4 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A12.072 12.072 0 0112 15c2.485 0 4.779.755 6.879 2.048M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
                         </div>
-                        <div class="form-control">
-                            <input name="email" class="mb-24" type="text" placeholder="Email" data-aos="fade-up" data-aos-delay="100">
-                            <p class="validation-error email">Please enter a valid email address.</p>
+
+                        <!-- Email -->
+                        <div class="form-control mb-6 relative">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                            <input id="email" name="email" type="email" placeholder="Enter your email"
+                                   class="w-full p-4 pl-12 text-sm text-gray-800 dark:text-white bg-white dark:bg-licorice border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+                                   required />
+                            <p class="validation-error email hidden text-red-500 text-sm mt-1">Please enter a valid email address.</p>
+                            <div class="absolute top-10 left-4 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0l-8-8m8 8l-8 8"/></svg>
+                            </div>
                         </div>
-                        <div class="form-control">
-                            <textarea name="message" rows="8" placeholder="Message" data-aos="fade-up" data-aos-delay="150"></textarea>
-                            <p class="validation-error message">Please enter your message.</p>
+
+                        <!-- Message -->
+                        <div class="form-control mb-6">
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Write your message"
+                                      class="w-full p-4 text-sm text-gray-800 dark:text-white bg-white dark:bg-licorice border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none transition"
+                                      required></textarea>
+                            <p class="validation-error message hidden text-red-500 text-sm mt-1">Please enter your message.</p>
                         </div>
-                        <button class="btn btn-primary submit-btn" data-aos="fade-up" data-aos-delay="200">
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                                class="w-full mt-6 inline-flex items-center justify-center gap-2 text-white bg-purple hover:bg-purple-dark dark:bg-purple-light dark:text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-300 focus:outline-none">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                            </svg>
                             Submit
-                            <span class="loading"></span>
                         </button>
                     </form>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-info-item" data-aos="fade-up" data-aos-delay="50">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
+
+                <!-- Contact Info -->
+                <div class="contact-info flex-1 min-w-[300px] w-full space-y-12">
+                    <!-- Address -->
+                    <div class="flex items-start" data-aos="fade-up" data-aos-delay="50">
+                        <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mr-6 flex-shrink-0 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple">
                                 <use xlink:href="assets/img/sprite.svg#address-icon"></use>
                             </svg>
                         </div>
-                        <div class="content">
-                            <h4 class="title">Address</h4>
-                            <p class="body">326, Osman Road,Sainthamaruthu-7,Srilanka</p>
+                        <div>
+                            <h4 class="text-base font-medium text-cinder dark:text-white mb-1">Address</h4>
+                            <p class="text-sm text-cinder-light leading-6">326, Odndksman Road, fgainthamaruthu-7, Sri Lanka</p>
                         </div>
                     </div>
-                    <div class="contact-info-item" data-aos="fade-up" data-aos-delay="150">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
+
+                    <!-- Phone -->
+                    <div class="flex items-start" data-aos="fade-up" data-aos-delay="150">
+                        <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mr-6 flex-shrink-0 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple">
                                 <use xlink:href="assets/img/sprite.svg#phone-icon"></use>
                             </svg>
                         </div>
-                        <div class="content">
-                            <h4 class="title">Phone</h4>
-                            <p class="body">0752668412</p>
+                        <div>
+                            <h4 class="text-base font-medium text-cinder dark:text-white mb-1">Phone</h4>
+                            <p class="text-sm text-cinder-light leading-6">+94 75 266 8414 52</p>
                         </div>
                     </div>
-                    <div class="contact-info-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon">
-                            <svg viewBox="0 0 24 24">
+
+                    <!-- Email -->
+                    <div class="flex items-start" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon w-14 h-14 p-4 bg-purple-light-2 rounded-xl mr-6 flex-shrink-0 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-purple">
                                 <use xlink:href="assets/img/sprite.svg#email-icon"></use>
                             </svg>
                         </div>
-                        <div class="content">
-                            <h4 class="title">Email</h4>
-                            <p class="body">shaloste@gmail.com</p>
+                        <div>
+                            <h4 class="text-base font-medium text-cinder dark:text-white mb-1">Email</h4>
+                            <p class="text-sm text-cinder-light leading-6">shalosyute@gmail.com</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
     </section>
+
+
+
 </main>
 
-
-
-<section>
-<footer class="footer">
-    <ul class="social-icons" data-aos="fade-up" data-aos-delay="50">
-        <li>
-            <a href="https://www.instagram.com/shazan_szn_?r=nametag">
-                <svg viewBox="0 0 24 24">
+<footer class="footer bg-light py-[60px] md:py-[88px] text-center dark:bg-midnight-express">
+    <ul class="social-icons flex justify-center mb-6" data-aos="fade-up" data-aos-delay="50">
+        <li class="mr-4">
+            <a href="https://www.instagram.com/shazan_szn_?r=nametag" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
                     <use xlink:href="assets/img/sprite.svg#instagram-icon"></use>
                 </svg>
             </a>
         </li>
-        <li>
-            <a href="https://github.com/Mohamedshazan">
-                <svg viewBox="0 0 24 24">
+        <li class="mr-4">
+            <a href="https://github.com/Mohamedshazan" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
                     <use xlink:href="assets/img/sprite.svg#github-icon"></use>
                 </svg>
             </a>
         </li>
-        <li>
-            <a href="https://twitter.com/ar_shasan0?t=3wHCQjnCHRHM-Eay_WT9lQ&s=35">
-                <svg viewBox="0 0 24 24">
+        <li class="mr-4">
+            <a href="https://twitter.com/ar_shasan0?t=3wHCQjnCHRHM-Eay_WT9lQ&s=35" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
                     <use xlink:href="assets/img/sprite.svg#twitter-icon"></use>
                 </svg>
             </a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/in/mohamed-shazan">
-                <svg viewBox="0 0 24 24">
+            <a href="https://www.linkedin.com/in/mohamed-shazan" class="w-10 h-10 rounded-full bg-purple-light-2 flex items-center justify-center transition-all duration-300 hover:bg-purple hover:-translate-y-1" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-purple transition-colors duration-300 hover:fill-white">
                     <use xlink:href="assets/img/sprite.svg#linkedin-icon"></use>
                 </svg>
             </a>
         </li>
     </ul>
-    <p class="copyright" data-aos="fade-up" data-aos-delay="100">© <span class="year">year</span>  -  SHAZAN<span class="bold"> SZN</span></p>
+    <p class="copyright font-normal text-sm leading-[17px] text-cinder-light" data-aos="fade-up" data-aos-delay="100">© <span class="year">2024</span> - SHAZAN<span class="font-medium text-purple"> SZN</span></p>
 </footer>
-</section>
 
+<!-- Back to Top Button -->
+<div class="back-to-top fixed bottom-5 right-5 md:bottom-8 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-purple rounded-full flex items-center justify-center cursor-pointer opacity-0 invisible transition-all duration-300 z-[99] hover:-translate-y-1 hover:shadow-lg">
+    <svg viewBox="0 0 24 24" class="w-5 h-5 md:w-6 md:h-6 fill-white">
+        <use xlink:href="assets/img/sprite.svg#arrow-up"></use>
+    </svg>
+</div>
 
-<!--TYPE JS SECTION;  ================================================================================================================================== -->
+<!-- Modal -->
+<div id="imgModal" class="modal fixed z-[1000] pt-[60px] left-0 top-0 w-full h-full overflow-auto bg-black/80 hidden">
+    <span class="close absolute top-[30px] right-[40px] text-white text-[40px] font-bold cursor-pointer transition-colors duration-200 hover:text-[#ff6961]" id="modalClose">&times;</span>
+    <img class="modal-content mx-auto block max-w-[90%] max-h-[80vh] rounded-lg animate-zoom" id="modalImg" alt="Full Certificate">
+</div>
 
-<!--<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>-->
+<!-- Scripts -->
+
+<!--<script src="./main1.js" defer></script>-->
+<!--<script src="./assets/js1/threejs.js"></script>-->
+<!--<script src="./assets/js1/animations.js"></script>-->
+
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-    var typed = new Typed(".primary", { strings: ["Mobile Developer","full-stack developer", "Web Developer", "UIUX Designer"], typeSpeed: 100,
-        backSpeed: 100,
-        loop: true
-    })
-</script>
-
-
-
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>-->
+<script src="./assets/js/aos.js"></script>
+<script src="./assets/js/swiper-bundle.min.js"></script>
+<script src="./assets/js/kursor.js"></script>
+<script src="./assets/js/svg4everybody.min.js"></script>
+<script src="./assets/js/css-vars-ponyfill.min.js"></script>
+<script src="./assets/js/unfetch.js"></script>
 
 </body>
-
-<script src="./script.js"></script>
-<script src="assets/js/aos.js"></script>
-<script src="assets/js/swiper-bundle.min.js"></script>
-<script src="assets/js/kursor.js"></script>
-<script src="assets/js/svg4everybody.min.js"></script>
-<script src="assets/js/css-vars-ponyfill.min.js"></script>
-<script src="assets/js/unfetch.js"></script>
-
-
 </html>
